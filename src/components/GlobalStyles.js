@@ -12,10 +12,10 @@ const GlobalStyles = createGlobalStyle`
     html {
         font-family: 'Lato', sans-serif;
         font-size: 100%;
-        color: ${COLORS.FOREGROUND.main};
     }
     body {
         background-color: ${COLORS.BACKGROUND.main};
+        color: ${COLORS.FOREGROUND.main};
     }
 `;
 
