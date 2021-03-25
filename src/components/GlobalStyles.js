@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import COLORS from 'theme/colors';
+import COLORS from 'themes/colors';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
     * {
         margin: 0;
@@ -19,4 +19,4 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export default GlobalStyle;
+export default GlobalStyles;
