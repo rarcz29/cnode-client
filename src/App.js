@@ -1,14 +1,14 @@
-import GlobalStyles from 'components/GlobalStyles';
+import GlobalStyle from 'components/GlobalStyle';
 import React from 'react';
 import { useRoutes } from 'react-router';
 import routes from 'routes';
 
 function App() {
-    const routing = useRoutes(routes);
+    const routing = useRoutes(routes(true));
 
     return (
         <>
-            <GlobalStyles />
+            <GlobalStyle />
             {routing}
         </>
     );
