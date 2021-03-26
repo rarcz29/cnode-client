@@ -1,7 +1,8 @@
 import React from 'react';
+import { StyledHeader } from './style';
 
 const TopBar = () => {
-    return <div>Top Bar</div>;
+    return <StyledHeader>Top Bar</StyledHeader>;
 };
 
 export default TopBar;

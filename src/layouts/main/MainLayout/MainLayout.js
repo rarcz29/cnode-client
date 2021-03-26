@@ -1,12 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router';
+import TopBar from '../common/TopBar';
 
 const MainLayout = () => {
     return (
-        <div>
-            Main Layout
+        <>
+            <TopBar />
             <Outlet />
-        </div>
+        </>
     );
 };
 

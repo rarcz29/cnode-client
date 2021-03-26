@@ -1,12 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router';
+import { PageSeparator } from './style';
 
 const PanelLayout = () => {
     return (
-        <div>
-            Panel Layout
+        <>
+            <PageSeparator />
             <Outlet />
-        </div>
+        </>
     );
 };
 
