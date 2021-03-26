@@ -1,3 +1,4 @@
+import { Avatar } from '@material-ui/core';
 import { TOP_BAR_HEIGHT } from 'constants/sizes';
 import styled from 'styled-components';
 import COLORS from 'themes/colors';
@@ -14,6 +15,7 @@ export const Header = styled.header`
 
 export const RightSideContainer = styled.div`
     display: flex;
+    align-items: center;
 `;
 
 export const List = styled.ul`
@@ -39,5 +41,12 @@ export const Link = styled.a`
 
     &:hover {
         color: ${COLORS.FOREGROUND.main};
+    }
+`;
+
+export const StyledAvatar = styled(Avatar)`
+    && {
+        margin-left: 2rem;
+        background-color: lightblue;
     }
 `;

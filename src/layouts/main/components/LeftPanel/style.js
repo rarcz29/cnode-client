@@ -5,4 +5,11 @@ export const Container = styled.div`
     width: 350px;
     height: 100%;
     background-color: ${COLORS.BACKGROUND.darker};
+    padding: 1rem;
+`;
+
+export const ButtonsContainer = styled.div`
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
 `;

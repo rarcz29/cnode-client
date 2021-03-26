@@ -1,6 +1,13 @@
 import Logo from 'components/Logo';
 import React from 'react';
-import { Header, Link, List, ListElement, RightSideContainer } from './style';
+import {
+    Header,
+    Link,
+    List,
+    ListElement,
+    RightSideContainer,
+    StyledAvatar,
+} from './style';
 
 const TopBar = ({ className }) => {
     return (
@@ -20,6 +27,7 @@ const TopBar = ({ className }) => {
                         </ListElement>
                     </List>
                 </nav>
+                <StyledAvatar></StyledAvatar>
             </RightSideContainer>
         </Header>
     );
