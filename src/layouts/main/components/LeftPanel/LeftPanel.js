@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container } from './style';
 
 const LeftPanel = () => {
-    return <div>Left Panel</div>;
+    return <Container></Container>;
 };
 
 export default LeftPanel;
