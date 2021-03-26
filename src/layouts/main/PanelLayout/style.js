@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export const PageSeparator = styled.hr`
     width: ${(props) => (props.vertical ? '1px' : props.length)};
     height: ${(props) => (props.vertical ? props.length : '1px')};
-    border: 0.5px solid #173b50;
-    filter: blur(2px);
-    opacity: 0.6;
+    border: 1px solid #173b50;
+    filter: blur(1px);
+    opacity: 0.4;
 `;
 
 export const TopBarContainer = styled.div`
