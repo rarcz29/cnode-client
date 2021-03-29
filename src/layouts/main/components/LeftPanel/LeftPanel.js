@@ -3,9 +3,9 @@ import SearchInput from 'components/common/SearchInput';
 import React from 'react';
 import { ButtonsContainer, Container } from './style';
 
-const LeftPanel = () => {
+const LeftPanel = ({ className }) => {
     return (
-        <Container>
+        <Container className={className}>
             <SearchInput width="100%" height="45px" />
             <ButtonsContainer>
                 <Button width="48%" height="40px" />

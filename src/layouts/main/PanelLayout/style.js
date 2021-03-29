@@ -1,5 +1,6 @@
 import { TOP_BAR_HEIGHT } from 'constants/sizes';
 import styled from 'styled-components';
+import LeftPanel from '../components/LeftPanel';
 
 export const PageSeparator = styled.hr`
     width: ${(props) => (props.vertical ? '1px' : props.length)};
@@ -9,22 +10,32 @@ export const PageSeparator = styled.hr`
     opacity: 0.4;
 `;
 
-export const TopBarContainer = styled.div`
-    position: fixed;
-    width: 100%;
-    z-index: 5;
+export const FixedContainer = styled.div`
+    position: absolute;
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
 `;
 
-export const LeftPanelContainer = styled.div`
-    height: 100%;
+export const HeaderContainer = styled.div`
     position: fixed;
-    top: ${TOP_BAR_HEIGHT}px;
+    width: 100%;
+`;
+
+export const SidePanelContainer = styled.div`
     display: flex;
-    z-index: 4;
+    position: fixed;
+    top: calc(${TOP_BAR_HEIGHT}px + 2px);
+    height: 100%;
+`;
+
+export const FixedRightPanel = styled(LeftPanel)`
+    position: fixed;
+    top: calc(${TOP_BAR_HEIGHT}px + 2px);
+    right: 0;
+    height: 100%;
 `;
 
 export const Main = styled.main`
-    display: static;
     padding-top: calc(${TOP_BAR_HEIGHT}px + 0.5rem);
     padding-left: 1rem;
     padding-right: 1rem;

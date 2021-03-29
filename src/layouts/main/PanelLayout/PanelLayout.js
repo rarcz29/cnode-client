@@ -1,18 +1,19 @@
-import LeftPanel from 'layouts/main/components/LeftPanel';
 import TopBar from 'layouts/main/components/TopBar';
 import React from 'react';
 import { Outlet } from 'react-router';
+import LeftPanel from '../components/LeftPanel';
 import {
-    LeftPanelContainer,
+    FixedRightPanel,
+    HeaderContainer,
     Main,
     PageSeparator,
-    TopBarContainer,
+    SidePanelContainer,
 } from './style';
 
 const PanelLayout = () => {
     return (
         <>
-            <TopBarContainer>
+            {/* <TopBarContainer>
                 <TopBar />
                 <PageSeparator />
             </TopBarContainer>
@@ -20,8 +21,111 @@ const PanelLayout = () => {
                 <LeftPanel />
                 <PageSeparator vertical />
             </LeftPanelContainer>
+            <RightPanelContainer>
+                <RightPanel />
+            </RightPanelContainer> */}
+            {/* <FixedContainer width="100%" height="100vh"> */}
+            <HeaderContainer>
+                <TopBar />
+                <PageSeparator />
+            </HeaderContainer>
+            {/* <SidePanelsContainer> */}
+            <SidePanelContainer>
+                <LeftPanel />
+                <PageSeparator vertical />
+            </SidePanelContainer>
+            <FixedRightPanel />
+            {/* </SidePanelsContainer> */}
+            {/* </FixedContainer> */}
             <Main>
                 <Outlet />
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
+                asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa
+                asdfasdfas asdfasdfasa
             </Main>
         </>
     );
