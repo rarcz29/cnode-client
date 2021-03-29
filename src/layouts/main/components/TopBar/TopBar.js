@@ -12,7 +12,7 @@ import {
 const TopBar = ({ className }) => {
     return (
         <Header className={className}>
-            <Logo />
+            <Logo height="50%" />
             <RightSideContainer>
                 <nav>
                     <List>

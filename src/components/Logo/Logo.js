@@ -2,8 +2,8 @@ import LogoPic from 'assets/logo.png';
 import React from 'react';
 import { StyledImg } from './style';
 
-const Logo = () => {
-    return <StyledImg src={LogoPic} height="45%" />;
+const Logo = (props) => {
+    return <StyledImg src={LogoPic} height={props.height} />;
 };
 
 export default Logo;

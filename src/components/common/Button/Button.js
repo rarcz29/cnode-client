@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyledButton } from './style';
 
-const Button = ({ width, height }) => {
+const Button = (props) => {
     return (
-        <StyledButton width={width} height={height}>
+        <StyledButton {...props} color="primary">
             asdf
         </StyledButton>
     );
