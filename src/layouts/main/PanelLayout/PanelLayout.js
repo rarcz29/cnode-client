@@ -2,7 +2,12 @@ import LeftPanel from 'layouts/main/components/LeftPanel';
 import TopBar from 'layouts/main/components/TopBar';
 import React from 'react';
 import { Outlet } from 'react-router';
-import { LeftPanelContainer, PageSeparator, TopBarContainer } from './style';
+import {
+    LeftPanelContainer,
+    Main,
+    PageSeparator,
+    TopBarContainer,
+} from './style';
 
 const PanelLayout = () => {
     return (
@@ -15,9 +20,9 @@ const PanelLayout = () => {
                 <LeftPanel />
                 <PageSeparator vertical />
             </LeftPanelContainer>
-            <main>
+            <Main>
                 <Outlet />
-            </main>
+            </Main>
         </>
     );
 };

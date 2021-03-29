@@ -22,3 +22,11 @@ export const LeftPanelContainer = styled.div`
     display: flex;
     z-index: 4;
 `;
+
+export const Main = styled.main`
+    display: static;
+    padding-top: calc(${TOP_BAR_HEIGHT}px + 0.5rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0 350px;
+`;

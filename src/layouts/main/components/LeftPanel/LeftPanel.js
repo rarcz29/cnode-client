@@ -1,5 +1,5 @@
-import Button from 'components/Button';
-import SearchInput from 'components/SearchInput';
+import Button from 'components/common/Button';
+import SearchInput from 'components/common/SearchInput';
 import React from 'react';
 import { ButtonsContainer, Container } from './style';
 
