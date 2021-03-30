@@ -6,11 +6,11 @@ import {
     faPlusSquare,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TreeItem, TreeView } from '@material-ui/lab';
 import Button from 'components/common/Button';
 import SearchInput from 'components/common/SearchInput';
 import React from 'react';
-import { ButtonsContainer, Container } from './style';
+import { TreeItem, TreeView } from '../../../../components/common/tree';
+import { ButtonsContainer, Container, TreeViewContainer } from './style';
 
 const LeftPanel = ({ className }) => {
     return (
@@ -34,8 +34,43 @@ const LeftPanel = ({ className }) => {
                     Filter
                 </Button>
             </ButtonsContainer>
-            <div>
+            <TreeViewContainer>
                 <TreeView
+                    defaultCollapseIcon={<FontAwesomeIcon icon={faCaretDown} />}
+                    defaultExpandIcon={<FontAwesomeIcon icon={faCaretRight} />}
+                    multiSelect
+                >
+                    <TreeItem
+                        nodeId="1"
+                        label={
+                            <div>
+                                <FontAwesomeIcon icon={faGithub} />
+                                <span>GitHub</span>
+                            </div>
+                        }
+                    >
+                        <TreeItem nodeId="2" label="Calendar" />
+                        <TreeItem nodeId="3" label="Chrome" />
+                        <TreeItem nodeId="4" label="Webstorm" />
+                    </TreeItem>
+                    <TreeItem nodeId="5" label="Bitbucket">
+                        <TreeItem nodeId="6" label="Material-UI">
+                            <TreeItem nodeId="7" label="src">
+                                <TreeItem nodeId="8" label="index.js" />
+                                <TreeItem nodeId="9" label="tree-view.js" />
+                            </TreeItem>
+                        </TreeItem>
+                    </TreeItem>
+                    <TreeItem nodeId="10" label="GitLab">
+                        <TreeItem nodeId="11" label="Material-UI">
+                            <TreeItem nodeId="12" label="src">
+                                <TreeItem nodeId="13" label="index.js" />
+                                <TreeItem nodeId="14" label="tree-view.js" />
+                            </TreeItem>
+                        </TreeItem>
+                    </TreeItem>
+                </TreeView>
+                {/* <TreeView
                     defaultCollapseIcon={<FontAwesomeIcon icon={faCaretDown} />}
                     defaultExpandIcon={<FontAwesomeIcon icon={faCaretRight} />}
                     multiSelect
@@ -69,8 +104,8 @@ const LeftPanel = ({ className }) => {
                             </TreeItem>
                         </TreeItem>
                     </TreeItem>
-                </TreeView>
-            </div>
+                </TreeView> */}
+            </TreeViewContainer>
         </Container>
     );
 };
