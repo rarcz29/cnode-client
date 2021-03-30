@@ -1,4 +1,5 @@
 import { TOP_BAR_HEIGHT } from 'constants/sizes';
+import Scrollbars from 'react-custom-scrollbars';
 import styled from 'styled-components';
 import COLORS from 'themes/colors';
 
@@ -20,11 +21,22 @@ export const TopInputsContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-    margin: 2rem 0 0 2rem;
+    margin: 2rem 0.2rem 0 2rem;
     height: calc(100% - 85px - 4rem);
-    overflow-y: auto;
 `;
 
 export const TreeViewContainer = styled.div`
-    margin-right: 2rem;
+    margin-right: 0.8rem;
 `;
+
+export const StyledScrollbars = styled(Scrollbars)`
+    background-color: white;
+`;
+
+export const renderThumb = ({ style, ...props }) => {
+    const thumbStyle = {
+        borderRadius: 6,
+        backgroundColor: 'red',
+    };
+    return <div style={{ ...style, ...thumbStyle }} {...props} />;
+};

@@ -9,11 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/common/Button';
 import SearchInput from 'components/common/SearchInput';
 import React from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { TreeItem, TreeView } from '../../../../components/common/tree';
 import {
     ButtonsContainer,
     Container,
     ContentContainer,
+    renderThumb,
     TopInputsContainer,
     TreeViewContainer,
 } from './style';
@@ -43,78 +45,103 @@ const LeftPanel = ({ className }) => {
                 </ButtonsContainer>
             </TopInputsContainer>
             <ContentContainer>
-                <TreeViewContainer>
-                    <TreeView
-                        defaultCollapseIcon={
-                            <FontAwesomeIcon icon={faCaretDown} />
-                        }
-                        defaultExpandIcon={
-                            <FontAwesomeIcon icon={faCaretRight} />
-                        }
-                        multiSelect
-                    >
-                        <TreeItem
-                            nodeId="1"
-                            label={
-                                <div>
-                                    <FontAwesomeIcon icon={faGithub} />
-                                    <span>GitHub</span>
-                                </div>
+                <Scrollbars
+                    renderThumbVertical={renderThumb}
+                    autoHide
+                    autoHideTimeout={1000}
+                    autoHideDuration={250}
+                >
+                    <TreeViewContainer>
+                        <TreeView
+                            defaultCollapseIcon={
+                                <FontAwesomeIcon icon={faCaretDown} />
                             }
+                            defaultExpandIcon={
+                                <FontAwesomeIcon icon={faCaretRight} />
+                            }
+                            multiSelect
                         >
-                            <TreeItem nodeId="2" label="Calendar" />
-                            <TreeItem nodeId="3" label="Chrome" />
-                            <TreeItem nodeId="4" label="Webstorm" />
-                        </TreeItem>
-                        <TreeItem nodeId="5" label="Bitbucket">
-                            <TreeItem nodeId="6" label="Material-UI">
-                                <TreeItem nodeId="7" label="src">
-                                    <TreeItem nodeId="8" label="index.js" />
-                                    <TreeItem nodeId="9" label="tree-view.js" />
+                            <TreeItem
+                                nodeId="1"
+                                label={
+                                    <div>
+                                        <FontAwesomeIcon icon={faGithub} />
+                                        <span>GitHub</span>
+                                    </div>
+                                }
+                            >
+                                <TreeItem nodeId="2" label="Calendar" />
+                                <TreeItem nodeId="3" label="Chrome" />
+                                <TreeItem nodeId="4" label="Webstorm" />
+                            </TreeItem>
+                            <TreeItem nodeId="5" label="Bitbucket">
+                                <TreeItem nodeId="6" label="Material-UI">
+                                    <TreeItem nodeId="7" label="src">
+                                        <TreeItem nodeId="8" label="index.js" />
+                                        <TreeItem
+                                            nodeId="9"
+                                            label="tree-view.js"
+                                        />
+                                    </TreeItem>
                                 </TreeItem>
                             </TreeItem>
-                        </TreeItem>
-                        <TreeItem nodeId="10" label="GitLab">
-                            <TreeItem nodeId="11" label="Material-UI">
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="15" label="src">
-                                    <TreeItem nodeId="16" label="index.js" />
-                                    <TreeItem
-                                        nodeId="17"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
+                            <TreeItem nodeId="10" label="GitLab">
+                                <TreeItem nodeId="11" label="Material-UI">
+                                    <TreeItem nodeId="12" label="src">
+                                        <TreeItem
+                                            nodeId="13"
+                                            label="index.js"
+                                        />
+                                        <TreeItem
+                                            nodeId="14"
+                                            label="tree-view.js"
+                                        />
+                                    </TreeItem>
+                                    <TreeItem nodeId="15" label="src">
+                                        <TreeItem
+                                            nodeId="16"
+                                            label="index.js"
+                                        />
+                                        <TreeItem
+                                            nodeId="17"
+                                            label="tree-view.js"
+                                        />
+                                    </TreeItem>
+                                    <TreeItem nodeId="12" label="src">
+                                        <TreeItem
+                                            nodeId="13"
+                                            label="index.js"
+                                        />
+                                        <TreeItem
+                                            nodeId="14"
+                                            label="tree-view.js"
+                                        />
+                                    </TreeItem>
+                                    <TreeItem nodeId="12" label="src">
+                                        <TreeItem
+                                            nodeId="13"
+                                            label="index.js"
+                                        />
+                                        <TreeItem
+                                            nodeId="14"
+                                            label="tree-view.js"
+                                        />
+                                    </TreeItem>
+                                    <TreeItem nodeId="12" label="src">
+                                        <TreeItem
+                                            nodeId="13"
+                                            label="index.js"
+                                        />
+                                        <TreeItem
+                                            nodeId="14"
+                                            label="tree-view.js"
+                                        />
+                                    </TreeItem>
                                 </TreeItem>
                             </TreeItem>
-                        </TreeItem>
-                    </TreeView>
-                </TreeViewContainer>
+                        </TreeView>
+                    </TreeViewContainer>
+                </Scrollbars>
             </ContentContainer>
         </Container>
     );

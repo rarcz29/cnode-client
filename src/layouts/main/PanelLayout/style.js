@@ -1,6 +1,6 @@
 import { TOP_BAR_HEIGHT } from 'constants/sizes';
 import styled from 'styled-components';
-import LeftPanel from '../components/LeftPanel';
+import RightPanel from '../components/RightPanel/RightPanel';
 
 export const PageSeparator = styled.hr`
     width: ${(props) => (props.vertical ? '1px' : props.length)};
@@ -28,7 +28,7 @@ export const SidePanelContainer = styled.div`
     height: 100%;
 `;
 
-export const FixedRightPanel = styled(LeftPanel)`
+export const FixedRightPanel = styled(RightPanel)`
     position: fixed;
     top: calc(${TOP_BAR_HEIGHT}px + 2px);
     right: 0;

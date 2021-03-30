@@ -8,4 +8,8 @@ const FOREGROUND = {
     darker1: '#D5D8DD',
 };
 
+const BLUE = {
+    main: '#237FD4',
+};
+
 export default { BACKGROUND, FOREGROUND };

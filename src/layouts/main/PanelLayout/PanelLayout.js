@@ -13,30 +13,15 @@ import {
 const PanelLayout = () => {
     return (
         <>
-            {/* <TopBarContainer>
-                <TopBar />
-                <PageSeparator />
-            </TopBarContainer>
-            <LeftPanelContainer>
-                <LeftPanel />
-                <PageSeparator vertical />
-            </LeftPanelContainer>
-            <RightPanelContainer>
-                <RightPanel />
-            </RightPanelContainer> */}
-            {/* <FixedContainer width="100%" height="100vh"> */}
             <HeaderContainer>
                 <TopBar />
                 <PageSeparator />
             </HeaderContainer>
-            {/* <SidePanelsContainer> */}
             <SidePanelContainer>
                 <LeftPanel />
                 <PageSeparator vertical />
             </SidePanelContainer>
             <FixedRightPanel />
-            {/* </SidePanelsContainer> */}
-            {/* </FixedContainer> */}
             <Main>
                 <Outlet />
                 asdfasdfas asdfasdfasa asdfasdfas asdfasdfasa asdfasdfas
