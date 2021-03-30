@@ -6,5 +6,7 @@ export const StyledButton = styled(Button)`
         width: ${(props) => props.width};
         height: ${(props) => props.height};
         border-radius: ${(props) => props.borderRadius || '99999px'};
+        text-transform: none;
+        font-size: 1rem;
     }
 `;

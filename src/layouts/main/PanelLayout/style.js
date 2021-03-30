@@ -7,7 +7,7 @@ export const PageSeparator = styled.hr`
     height: ${(props) => (props.vertical ? props.length : '1px')};
     border: 1px solid #173b50;
     filter: blur(2px);
-    opacity: 0.5;
+    opacity: 0.8;
 `;
 
 export const FixedContainer = styled.div`
