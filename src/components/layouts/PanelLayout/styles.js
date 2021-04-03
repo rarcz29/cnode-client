@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DIMENSIONS from 'constants/dimensions';
 import styled from 'styled-components';
 
@@ -16,4 +17,15 @@ export const ButtonsContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+`;
+
+export const TreeContainer = styled.div`
+    margin-top: 2rem;
+    margin-left: 1rem;
+    background-color: blue;
+`;
+
+export const TreeFontAwesomeIcon = styled(FontAwesomeIcon)`
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
 `;

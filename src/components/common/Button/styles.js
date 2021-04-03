@@ -10,7 +10,7 @@ export const StyledButton = styled(Button)`
         font-family: 'Karla', sans-serif;
         text-transform: none;
         font-size: 1rem;
-        border: ${(props) => (props.showBorder ? '1px' : '0')} solid
+        border: ${(props) => (props.outlined ? '1px' : '0')} solid
             ${(props) => props.borderColor || props.color || 'white'};
         border-radius: ${(props) => (props.rounded ? '99999999999px' : 0)};
 
