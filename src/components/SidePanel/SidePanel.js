@@ -1,8 +1,18 @@
 import React from 'react';
-import { StyledAside } from './styles';
+import { Content, StyledAside, StyledScrollbars } from './styles';
 
-const SidePanel = () => {
-    return <StyledAside></StyledAside>;
+const SidePanel = ({ children }) => {
+    return (
+        <StyledAside>
+            <StyledScrollbars
+                autoHide
+                autoHideTimeout={1000}
+                autoHideDuration={250}
+            >
+                <Content>{children}</Content>
+            </StyledScrollbars>
+        </StyledAside>
+    );
 };
 
 export default SidePanel;
