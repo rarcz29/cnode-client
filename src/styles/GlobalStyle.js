@@ -1,9 +1,7 @@
+import COLORS from 'constants/colors';
 import { createGlobalStyle } from 'styled-components';
-import COLORS from 'themes/colors';
 
 const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-
     * {
         margin: 0;
         padding: 0;
@@ -12,13 +10,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-family: 'Lato', sans-serif;
+        font-family: 'Karla', sans-serif !important;
         font-size: 100%;
     }
-    
+
     body {
-        background-color: ${COLORS.BACKGROUND.main};
-        color: ${COLORS.FOREGROUND.main};
+        background-color: ${COLORS.BACKGROUND.MAIN};
+        color: ${COLORS.FOREGROUND.MAIN};
     }
 `;
 

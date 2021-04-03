@@ -1,19 +1,17 @@
-import AuthLayout from 'layouts/auth/AuthLayout/AuthLayout';
-import PageLayout from 'layouts/main/PageLayout';
-import PanelLayout from 'layouts/main/PanelLayout';
-import React from 'react';
-import { Navigate } from 'react-router';
+import MainLayout from 'components/layouts/MainLayout';
+import PanelLayout from 'components/layouts/PanelLayout';
 
 const routes = (isLoggedIn) => [
     {
         path: '/',
-        element: isLoggedIn ? <PanelLayout /> : <Navigate to="/auth" />,
+        element: <MainLayout />,
+        children: [{ path: '/', element: <PanelLayout /> }],
     },
-    { path: 'community', element: <PageLayout /> },
-    {
-        path: 'auth',
-        element: <AuthLayout />,
-    },
+    // { path: 'community', element: <PageLayout /> },
+    // {
+    //     path: 'auth',
+    //     element: <AuthLayout />,
+    // },
 ];
 
 export default routes;

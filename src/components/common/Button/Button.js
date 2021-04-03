@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyledButton } from './style';
+import { StyledButton } from './styles';
 
 const Button = (props) => {
-    return <StyledButton {...props} color="primary" />;
+    return <StyledButton {...props} />;
 };
 
 export default Button;
