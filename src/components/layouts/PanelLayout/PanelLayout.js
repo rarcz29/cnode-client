@@ -68,6 +68,7 @@ const PanelLayout = () => {
                                     <span>GitHub</span>
                                 </div>
                             }
+                            marginBottom="0.6rem"
                         >
                             <TreeItem nodeId="2" label="Calendar" />
                             <TreeItem nodeId="3" label="Chrome" />
@@ -81,6 +82,7 @@ const PanelLayout = () => {
                                     <span>Bitbucket</span>
                                 </div>
                             }
+                            marginBottom="0.6rem"
                         >
                             <TreeItem nodeId="6" label="Material-UI">
                                 <TreeItem nodeId="7" label="src">

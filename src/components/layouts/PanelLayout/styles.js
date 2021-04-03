@@ -26,6 +26,6 @@ export const TreeContainer = styled.div`
 `;
 
 export const TreeFontAwesomeIcon = styled(FontAwesomeIcon)`
-    font-size: 1.2rem;
-    margin-right: 0.4rem;
+    font-size: 1.2em;
+    margin-right: 0.4em;
 `;
