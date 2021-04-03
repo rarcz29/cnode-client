@@ -2,8 +2,6 @@ import COLORS from 'constants/colors';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
-
     * {
         margin: 0;
         padding: 0;
@@ -12,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-family: 'Karla', sans-serif;
+        font-family: 'Karla', sans-serif !important;
         font-size: 100%;
     }
 

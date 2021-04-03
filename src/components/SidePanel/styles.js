@@ -7,7 +7,6 @@ export const StyledAside = styled.aside`
     height: calc(100vh - ${DIMENSIONS.HEADER_HIGHT}px);
     position: sticky;
     top: ${DIMENSIONS.HEADER_HIGHT}px;
-    background-color: green;
 `;
 
 export const StyledScrollbars = styled(Scrollbars)`

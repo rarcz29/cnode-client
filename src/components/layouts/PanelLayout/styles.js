@@ -9,9 +9,7 @@ export const PanelContainer = styled.div`
 
 export const MainContainer = styled.div`
     width: calc(100vw - ${2 * DIMENSIONS.SIDE_PANEL_WIDTH}px);
-    height: 2000px;
     padding: 1rem 4rem;
-    background-color: pink;
 `;
 
 export const ButtonsContainer = styled.div`
@@ -23,7 +21,6 @@ export const ButtonsContainer = styled.div`
 export const TreeContainer = styled.div`
     margin-top: 2rem;
     margin-left: 1rem;
-    background-color: blue;
 `;
 
 export const TreeFontAwesomeIcon = styled(FontAwesomeIcon)`

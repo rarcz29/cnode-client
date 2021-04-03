@@ -1,11 +1,12 @@
 import { Avatar } from '@material-ui/core';
+import Logo from 'components/Logo';
 import React from 'react';
 import { RightSideContainer, StyledHeader, StyledNav } from './styles';
 
 const Header = () => {
     return (
         <StyledHeader>
-            <h1>.gitnode</h1>
+            <Logo />
             <RightSideContainer>
                 <StyledNav>
                     <ul>
