@@ -10,6 +10,7 @@ export const StyledHeader = styled.header`
     padding: 0 3rem;
     background-color: red;
     position: sticky;
+    top: 0;
 `;
 
 export const RightSideContainer = styled.div`

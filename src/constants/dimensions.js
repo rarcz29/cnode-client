@@ -1,3 +1,4 @@
 const HEADER_HIGHT = 70;
+const SIDE_PANEL_WIDTH = 337;
 
-export default { HEADER_HIGHT };
+export default { HEADER_HIGHT, SIDE_PANEL_WIDTH };
