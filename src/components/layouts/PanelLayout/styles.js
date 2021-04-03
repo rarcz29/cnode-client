@@ -11,3 +11,9 @@ export const MainContainer = styled.div`
     padding: 1rem 4rem;
     background-color: pink;
 `;
+
+export const ButtonsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+`;
