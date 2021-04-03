@@ -1,8 +1,10 @@
+import MainLayout from 'components/layouts/MainLayout';
+
 const routes = (isLoggedIn) => [
-    // {
-    //     path: '/',
-    //     element: isLoggedIn ? <PanelLayout /> : <Navigate to="/auth" />,
-    // },
+    {
+        path: '/',
+        element: <MainLayout />,
+    },
     // { path: 'community', element: <PageLayout /> },
     // {
     //     path: 'auth',
