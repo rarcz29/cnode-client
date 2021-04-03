@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import COLORS from 'constants/colors';
 import DIMENSIONS from 'constants/dimensions';
 import styled from 'styled-components';
 
@@ -28,4 +29,24 @@ export const TreeContainer = styled.div`
 export const TreeFontAwesomeIcon = styled(FontAwesomeIcon)`
     font-size: 1.2em;
     margin-right: 0.4em;
+`;
+
+export const StyledSection = styled.section`
+    width: 100%;
+    margin-bottom: 2rem;
+
+    & > h1 {
+        font-size: 1.125rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.04rem;
+    }
+
+    & > p {
+        color: ${COLORS.FOREGROUND.SECONDARY};
+        font-size: 0.75em;
+
+        & > span {
+            font-weight: bold;
+        }
+    }
 `;

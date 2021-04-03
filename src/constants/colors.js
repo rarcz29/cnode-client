@@ -4,6 +4,7 @@ const BACKGROUND = {
 
 const FOREGROUND = {
     MAIN: '#FFFFFF',
+    SECONDARY: '#D5D8DD',
 };
 
 const RED = '#BA441F';

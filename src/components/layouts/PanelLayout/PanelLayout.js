@@ -1,5 +1,6 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { Badge } from '@material-ui/core';
 import Button from 'components/common/Button';
 import TextInput from 'components/common/TextInput';
 import { TreeItem, TreeView } from 'components/common/tree';
@@ -10,6 +11,7 @@ import {
     ButtonsContainer,
     MainContainer,
     PanelContainer,
+    StyledSection,
     TreeContainer,
     TreeFontAwesomeIcon,
 } from './styles';
@@ -144,7 +146,21 @@ const PanelLayout = () => {
             <MainContainer>
                 <main></main>
             </MainContainer>
-            <SidePanel></SidePanel>
+            <SidePanel>
+                <StyledSection>
+                    <Badge badgeContent={4} color="primary">
+                        <h1>Notifications</h1>
+                    </Badge>
+                </StyledSection>
+                <StyledSection>
+                    <h1>Contacts</h1>
+                    <p>Your contact list is empty.</p>
+                </StyledSection>
+                <StyledSection>
+                    <h1>Teams</h1>
+                    <p>Your team list is empty.</p>
+                </StyledSection>
+            </SidePanel>
         </PanelContainer>
     );
 };
