@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ClickAwayListener } from '@material-ui/core';
 import Badge from 'components/common/Badge';
 import Button from 'components/common/Button';
-import TextInput from 'components/common/TextInput';
 import COLORS from 'constants/colors';
 import React, { useState } from 'react';
 import { ContentContainer, IconsContainer, StyledDiv } from './styles';
@@ -34,13 +33,13 @@ const FixedPanel = () => {
                     <FontAwesomeIcon icon={faGitlab} />
                 </IconsContainer>
                 <ContentContainer>
-                    <TextInput
+                    {/* <TextInput
                         width="100%"
                         height="40px"
                         placeholder="username..."
                         backgroundColor={COLORS.BACKGROUND.MAIN}
                         color={COLORS.FOREGROUND.MAIN}
-                    />
+                    /> */}
                     <Button
                         width="100%"
                         height="35px"

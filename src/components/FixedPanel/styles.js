@@ -2,7 +2,7 @@ import COLORS from 'constants/colors';
 import styled from 'styled-components';
 
 const PANEL_WIDTH = 270;
-const PANEL_HEIGHT = 220;
+const PANEL_HEIGHT = 160;
 const HEADER_HEIGHT = 60;
 
 export const StyledDiv = styled.div`

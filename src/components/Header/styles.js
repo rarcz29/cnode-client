@@ -1,3 +1,4 @@
+import COLORS from 'constants/colors';
 import DIMENSIONS from 'constants/dimensions';
 import styled from 'styled-components';
 
@@ -10,6 +11,7 @@ export const StyledHeader = styled.header`
     padding: 0 3rem;
     position: sticky;
     top: 0;
+    background-color: ${COLORS.BACKGROUND.MAIN};
 `;
 
 export const RightSideContainer = styled.div`
