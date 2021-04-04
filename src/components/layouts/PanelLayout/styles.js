@@ -9,7 +9,7 @@ export const PanelContainer = styled.div`
 
 export const MainContainer = styled.div`
     width: calc(100vw - ${2 * DIMENSIONS.SIDE_PANEL_WIDTH}px);
-    padding: 1rem 4rem;
+    padding: 1.375rem 4rem 1rem 4rem;
 `;
 
 export const ButtonsContainer = styled.div`

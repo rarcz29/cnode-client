@@ -8,10 +8,7 @@ const HEADER_HEIGHT = 60;
 export const StyledDiv = styled.div`
     width: ${PANEL_WIDTH + 'px'};
     height: ${PANEL_HEIGHT + 'px'};
-    border: 3px solid ${COLORS.BACKGROUND.MAIN};
     border-radius: 14px 14px 0 0;
-    border-color: ${(props) =>
-        props.show ? COLORS.DARK_GREY : COLORS.BACKGROUND.MAIN};
     position: fixed;
     bottom: ${(props) =>
         props.show ? '0' : -PANEL_HEIGHT + HEADER_HEIGHT + 'px'};

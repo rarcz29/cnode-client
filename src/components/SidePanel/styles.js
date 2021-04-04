@@ -16,4 +16,5 @@ export const StyledScrollbars = styled(Scrollbars)`
 
 export const Content = styled.div`
     padding: 1rem;
+    padding-top: 1.375rem;
 `;
