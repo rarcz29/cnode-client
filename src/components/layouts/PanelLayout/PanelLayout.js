@@ -7,6 +7,7 @@ import { TreeItem, TreeView } from 'components/common/tree';
 import SidePanel from 'components/SidePanel';
 import COLORS from 'constants/colors';
 import React from 'react';
+import { Outlet } from 'react-router';
 import {
     ButtonsContainer,
     MainContainer,
@@ -144,7 +145,9 @@ const PanelLayout = () => {
                 </TreeContainer>
             </SidePanel>
             <MainContainer>
-                <main></main>
+                <main>
+                    <Outlet />
+                </main>
             </MainContainer>
             <SidePanel>
                 <StyledSection>
