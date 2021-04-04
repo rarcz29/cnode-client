@@ -1,5 +1,14 @@
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBitbucket,
+    faGithub,
+    faGitlab,
+} from '@fortawesome/free-brands-svg-icons';
+import {
+    faCaretDown,
+    faCaretRight,
+    faFolder,
+    faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import Badge from 'components/common/Badge';
 import Button from 'components/common/Button';
 import TextInput from 'components/common/TextInput';
@@ -73,72 +82,241 @@ const PanelLayout = () => {
                             }
                             marginBottom="0.6rem"
                         >
-                            <TreeItem nodeId="2" label="Calendar" />
-                            <TreeItem nodeId="3" label="Chrome" />
-                            <TreeItem nodeId="4" label="Webstorm" />
+                            <TreeItem
+                                nodeId="2"
+                                label={
+                                    <div>
+                                        <TreeFontAwesomeIcon icon={faUser} />
+                                        <span>username1</span>
+                                    </div>
+                                }
+                            >
+                                <TreeItem
+                                    nodeId="3"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="4"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="5"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                            </TreeItem>
                         </TreeItem>
                         <TreeItem
-                            nodeId="5"
+                            nodeId="6"
                             label={
                                 <div>
-                                    <TreeFontAwesomeIcon icon={faGithub} />
+                                    <TreeFontAwesomeIcon icon={faBitbucket} />
                                     <span>Bitbucket</span>
                                 </div>
                             }
                             marginBottom="0.6rem"
                         >
-                            <TreeItem nodeId="6" label="Material-UI">
-                                <TreeItem nodeId="7" label="src">
-                                    <TreeItem nodeId="8" label="index.js" />
-                                    <TreeItem nodeId="9" label="tree-view.js" />
-                                </TreeItem>
+                            <TreeItem
+                                nodeId="7"
+                                label={
+                                    <div>
+                                        <TreeFontAwesomeIcon icon={faUser} />
+                                        <span>username1</span>
+                                    </div>
+                                }
+                            >
+                                <TreeItem
+                                    nodeId="8"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="9"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="10"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                            </TreeItem>
+                            <TreeItem
+                                nodeId="11"
+                                label={
+                                    <div>
+                                        <TreeFontAwesomeIcon icon={faUser} />
+                                        <span>username1</span>
+                                    </div>
+                                }
+                            >
+                                <TreeItem
+                                    nodeId="12"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="13"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="14"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
                             </TreeItem>
                         </TreeItem>
                         <TreeItem
-                            nodeId="10"
+                            nodeId="15"
                             label={
                                 <div>
-                                    <TreeFontAwesomeIcon icon={faGithub} />
+                                    <TreeFontAwesomeIcon icon={faGitlab} />
                                     <span>GitLab</span>
                                 </div>
                             }
                         >
-                            <TreeItem nodeId="11" label="Material-UI">
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="15" label="src">
-                                    <TreeItem nodeId="16" label="index.js" />
-                                    <TreeItem
-                                        nodeId="17"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
-                                <TreeItem nodeId="12" label="src">
-                                    <TreeItem nodeId="13" label="index.js" />
-                                    <TreeItem
-                                        nodeId="14"
-                                        label="tree-view.js"
-                                    />
-                                </TreeItem>
+                            <TreeItem
+                                nodeId="16"
+                                label={
+                                    <div>
+                                        <TreeFontAwesomeIcon icon={faUser} />
+                                        <span>username1</span>
+                                    </div>
+                                }
+                            >
+                                <TreeItem
+                                    nodeId="17"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="18"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="19"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                            </TreeItem>
+                            <TreeItem
+                                nodeId="20"
+                                label={
+                                    <div>
+                                        <TreeFontAwesomeIcon icon={faUser} />
+                                        <span>username1</span>
+                                    </div>
+                                }
+                            >
+                                <TreeItem
+                                    nodeId="21"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="22"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
+                                <TreeItem
+                                    nodeId="23"
+                                    label={
+                                        <div>
+                                            <TreeFontAwesomeIcon
+                                                icon={faFolder}
+                                            />
+                                            <span>reponame1</span>
+                                        </div>
+                                    }
+                                />
                             </TreeItem>
                         </TreeItem>
                     </TreeView>
