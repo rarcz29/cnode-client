@@ -7,7 +7,6 @@ export const StyledButton = styled(Button)`
         height: ${(props) => props.height};
         background-color: ${(props) => props.backgroundColor};
         color: ${(props) => props.color};
-        font-family: 'Karla', sans-serif !important;
         text-transform: none;
         font-size: 1rem;
         border: ${(props) => (props.outlined ? '1px' : '0')} solid

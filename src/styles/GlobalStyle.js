@@ -9,8 +9,8 @@ const GlobalStyle = createGlobalStyle`
         outline: none;
     }
 
-    html {
-        font-family: 'Karla', sans-serif !important;
+    html, input {
+        font-family: 'Karla', sans-serif;
         font-size: 100%;
     }
 
