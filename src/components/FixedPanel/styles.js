@@ -1,8 +1,9 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import COLORS from 'constants/colors';
 import styled from 'styled-components';
 
 const PANEL_WIDTH = 270;
-const PANEL_HEIGHT = 160;
+const PANEL_HEIGHT = 210;
 const HEADER_HEIGHT = 60;
 
 export const StyledDiv = styled.div`
@@ -57,4 +58,11 @@ export const ContentContainer = styled.div`
             }
         }
     }
+`;
+
+export const StyledIcon = styled(FontAwesomeIcon)`
+    color: ${COLORS.FOREGROUND.MAIN};
+    opacity: ${(props) => (props.checked ? '1' : '0.3')};
+    cursor: pointer;
+    transition: opacity ease-in-out 250ms;
 `;
