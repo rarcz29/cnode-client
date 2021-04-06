@@ -1,11 +1,11 @@
 import React from 'react';
 import { Checkmark, Container, Styledinput } from './styles';
 
-const Checkbox = (props) => {
+const Checkbox = ({ className, label }) => {
     return (
-        <Container>
-            Initialize this repository with a README file
-            <Styledinput type="checkbox" {...props} />
+        <Container className={className}>
+            {label}
+            <Styledinput type="checkbox" />
             <Checkmark></Checkmark>
         </Container>
     );

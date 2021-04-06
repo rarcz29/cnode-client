@@ -1,5 +1,16 @@
-import { faCheck, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBitbucket,
+    faGithub,
+    faGitlab,
+} from '@fortawesome/free-brands-svg-icons';
+import {
+    faCheck,
+    faGlobe,
+    faLock,
+    faTimesCircle,
+} from '@fortawesome/free-solid-svg-icons';
 import Checkbox from 'components/common/Checkbox';
+import Radio from 'components/common/Radio';
 import { TreeFontAwesomeIcon } from 'components/layouts/PanelLayout/styles';
 import COLORS from 'constants/colors';
 import React from 'react';
@@ -85,15 +96,55 @@ const NewRepoView = () => {
                 </ChipsContainer>
             </StyledSection>
             <StyledSection>
+                <h1>Platform</h1>
+                <CheckboxContainer>
+                    <Radio
+                        label="GitHub"
+                        name="platform"
+                        width="130px"
+                        icon={<TreeFontAwesomeIcon icon={faGithub} />}
+                    />
+                    <Radio
+                        label="Bitbucket"
+                        name="platform"
+                        width="130px"
+                        icon={<TreeFontAwesomeIcon icon={faBitbucket} />}
+                    />
+                    <Radio
+                        label="GitLab"
+                        name="platform"
+                        width="130px"
+                        icon={<TreeFontAwesomeIcon icon={faGitlab} />}
+                    />
+                </CheckboxContainer>
+            </StyledSection>
+            <StyledSection>
+                <h1>Access level</h1>
+                <CheckboxContainer>
+                    <Radio
+                        label="private"
+                        name="access"
+                        width="130px"
+                        icon={<TreeFontAwesomeIcon icon={faLock} />}
+                    />
+                    <Radio
+                        label="public"
+                        name="access"
+                        width="130px"
+                        icon={<TreeFontAwesomeIcon icon={faGlobe} />}
+                    />
+                </CheckboxContainer>
+            </StyledSection>
+            <StyledSection>
                 <h1>Initialization</h1>
                 <CheckboxContainer>
-                    <Checkbox />
+                    <Checkbox label="Initialize this repository with a README file" />
                 </CheckboxContainer>
             </StyledSection>
             <StyledSection>
                 <h1>Share with the community</h1>
                 <CheckboxContainer>
-                    <Checkbox />
+                    <Checkbox label="Show your repository on the community page" />
                 </CheckboxContainer>
             </StyledSection>
         </>

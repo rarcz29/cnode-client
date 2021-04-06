@@ -12,6 +12,7 @@ export const StyledHeader = styled.header`
     position: sticky;
     top: 0;
     background-color: ${COLORS.BACKGROUND.MAIN};
+    z-index: 999;
 `;
 
 export const RightSideContainer = styled.div`

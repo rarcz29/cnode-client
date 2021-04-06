@@ -86,4 +86,12 @@ export const StyledChip = styled(Chip)`
 
 export const CheckboxContainer = styled.div`
     margin-top: 1rem;
+
+    & > * {
+        margin-bottom: 0.5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 `;
