@@ -9,6 +9,7 @@ import {
     faLock,
     faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
 import Radio from 'components/common/Radio';
 import { TreeFontAwesomeIcon } from 'components/layouts/PanelLayout/styles';
@@ -122,13 +123,13 @@ const NewRepoView = () => {
                 <h1>Access level</h1>
                 <CheckboxContainer>
                     <Radio
-                        label="private"
+                        label="Private"
                         name="access"
                         width="130px"
                         icon={<TreeFontAwesomeIcon icon={faLock} />}
                     />
                     <Radio
-                        label="public"
+                        label="Public"
                         name="access"
                         width="130px"
                         icon={<TreeFontAwesomeIcon icon={faGlobe} />}
@@ -147,6 +148,15 @@ const NewRepoView = () => {
                     <Checkbox label="Show your repository on the community page" />
                 </CheckboxContainer>
             </StyledSection>
+            <Button
+                backgroundColor={COLORS.BLUE}
+                color={COLORS.FOREGROUND.MAIN}
+                width="250px"
+                height="35px"
+                rounded
+            >
+                Create repository
+            </Button>
         </>
     );
 };

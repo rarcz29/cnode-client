@@ -16,7 +16,7 @@ export const StyledDiv = styled.div`
     background-color: ${(props) =>
         props.show ? COLORS.DARK_GREY : COLORS.BACKGROUND.MAIN};
     z-index: 100;
-    transition: bottom ease-in-out 700ms, background-color ease-in-out 500ms;
+    transition: bottom ease-in-out 500ms, background-color ease-in-out 500ms;
 `;
 
 export const IconsContainer = styled.div`

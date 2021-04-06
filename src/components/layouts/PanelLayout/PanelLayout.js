@@ -18,6 +18,7 @@ import SidePanel from 'components/SidePanel';
 import COLORS from 'constants/colors';
 import React from 'react';
 import { Outlet } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import {
     ButtonsContainer,
     MainContainer,
@@ -50,6 +51,8 @@ const PanelLayout = () => {
                             backgroundColor={COLORS.GREEN}
                             color={COLORS.FOREGROUND.MAIN}
                             rounded
+                            component={NavLink}
+                            to="/new"
                         >
                             New
                         </Button>

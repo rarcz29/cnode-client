@@ -1,7 +1,12 @@
 import { Avatar } from '@material-ui/core';
 import Logo from 'components/Logo';
 import React from 'react';
-import { RightSideContainer, StyledHeader, StyledNav } from './styles';
+import {
+    RightSideContainer,
+    StyledHeader,
+    StyledNav,
+    StyledNavLink,
+} from './styles';
 
 const Header = () => {
     return (
@@ -10,9 +15,17 @@ const Header = () => {
             <RightSideContainer>
                 <StyledNav>
                     <ul>
-                        <li>Home</li>
-                        <li>Community</li>
-                        <li>About</li>
+                        <li>
+                            <StyledNavLink to="/">Home</StyledNavLink>
+                        </li>
+                        <li>
+                            <StyledNavLink to="/community">
+                                Community
+                            </StyledNavLink>
+                        </li>
+                        <li>
+                            <StyledNavLink to="/about">About</StyledNavLink>
+                        </li>
                     </ul>
                 </StyledNav>
                 <Avatar>R</Avatar>

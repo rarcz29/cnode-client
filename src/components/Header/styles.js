@@ -1,5 +1,6 @@
 import COLORS from 'constants/colors';
 import DIMENSIONS from 'constants/dimensions';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
@@ -37,6 +38,19 @@ export const StyledNav = styled.nav`
             &:last-child {
                 margin-right: 4rem;
             }
+        }
+    }
+`;
+
+export const StyledNavLink = styled(NavLink)`
+    && {
+        text-decoration: none;
+
+        &,
+        &:link,
+        &:visited,
+        &:active {
+            color: ${COLORS.FOREGROUND.MAIN};
         }
     }
 `;
