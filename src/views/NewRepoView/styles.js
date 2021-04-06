@@ -83,3 +83,7 @@ export const StyledChip = styled(Chip)`
         color: ${(props) => props.color || 'white'};
     }
 `;
+
+export const CheckboxContainer = styled.div`
+    margin-top: 1rem;
+`;

@@ -1,8 +1,10 @@
 import { faCheck, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import Checkbox from 'components/common/Checkbox';
 import { TreeFontAwesomeIcon } from 'components/layouts/PanelLayout/styles';
 import COLORS from 'constants/colors';
 import React from 'react';
 import {
+    CheckboxContainer,
     ChipsContainer,
     StyledChip,
     StyledPageHeader,
@@ -83,7 +85,16 @@ const NewRepoView = () => {
                 </ChipsContainer>
             </StyledSection>
             <StyledSection>
-                <h1>Platform</h1>
+                <h1>Initialization</h1>
+                <CheckboxContainer>
+                    <Checkbox />
+                </CheckboxContainer>
+            </StyledSection>
+            <StyledSection>
+                <h1>Share with the community</h1>
+                <CheckboxContainer>
+                    <Checkbox />
+                </CheckboxContainer>
             </StyledSection>
         </>
     );
