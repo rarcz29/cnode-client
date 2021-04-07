@@ -44,7 +44,9 @@ const FixedPanel = () => {
         setGitlab(true);
     };
 
-    const handleButtonClick = () => {
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+
         if (github) {
             window.location.assign(PLATFORMS.URL.GITHUB + '&login=' + username);
         } else if (bitbucket) {
@@ -100,24 +102,27 @@ const FixedPanel = () => {
                     </Badge>
                 </IconsContainer>
                 <ContentContainer>
-                    <TextInput
-                        onChange={(event) => setUsername(event.target.value)}
-                        width="100%"
-                        height="40px"
-                        placeholder="username..."
-                        backgroundColor={COLORS.BACKGROUND.MAIN}
-                        color={COLORS.FOREGROUND.MAIN}
-                    />
-                    <Button
-                        onClick={handleButtonClick}
-                        width="100%"
-                        height="35px"
-                        backgroundColor={COLORS.BLUE}
-                        color={COLORS.FOREGROUND.MAIN}
-                        rounded
-                    >
-                        Connect
-                    </Button>
+                    <form onSubmit={handleFormSubmit}>
+                        <TextInput
+                            onChange={(event) =>
+                                setUsername(event.target.value)
+                            }
+                            width="100%"
+                            height="40px"
+                            placeholder="username..."
+                            backgroundColor={COLORS.BACKGROUND.MAIN}
+                            color={COLORS.FOREGROUND.MAIN}
+                        />
+                        <Button
+                            width="100%"
+                            height="35px"
+                            backgroundColor={COLORS.BLUE}
+                            color={COLORS.FOREGROUND.MAIN}
+                            rounded
+                        >
+                            Connect
+                        </Button>
+                    </form>
                     <div>
                         <FontAwesomeIcon
                             icon={faChevronDown}

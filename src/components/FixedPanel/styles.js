@@ -39,6 +39,14 @@ export const ContentContainer = styled.div`
     height: calc(100% - 2rem - ${HEADER_HEIGHT + 'px'});
     margin: 1rem;
 
+    & > form > * {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
     & > * {
         margin-bottom: 1rem;
 

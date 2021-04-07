@@ -16,7 +16,7 @@ const HomeView = () => {
                 <Warning>
                     <TreeFontAwesomeIcon icon={faExclamation} />
                     <span>
-                        Remember that you’re enabled to have only one free
+                        Remember that you’re allowed to have only one free
                         account of each platform.
                     </span>
                 </Warning>
