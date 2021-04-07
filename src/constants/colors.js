@@ -13,6 +13,7 @@ const BLUE = '#498BC9';
 const THE_STRANGE_ONE = '#DE6363';
 const GREY = '#747474';
 const DARK_GREY = '#212124';
+const YELLOW = '#DBC658';
 
 const COLORS = {
     BACKGROUND,
@@ -23,6 +24,7 @@ const COLORS = {
     THE_STRANGE_ONE,
     GREY,
     DARK_GREY,
+    YELLOW,
 };
 
 export default COLORS;

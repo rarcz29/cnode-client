@@ -1,5 +1,6 @@
 import MainLayout from 'components/layouts/MainLayout';
 import PanelLayout from 'components/layouts/PanelLayout';
+import HomeView from 'views/HomeView';
 import NewRepoView from 'views/NewRepoView';
 
 const routes = (isLoggedIn) => [
@@ -10,7 +11,14 @@ const routes = (isLoggedIn) => [
             {
                 path: '/',
                 element: <PanelLayout />,
-                children: [{ path: 'new', element: <NewRepoView /> }],
+                children: [
+                    { path: '/', element: <HomeView /> },
+                    { path: 'home', element: <HomeView /> },
+                    { path: 'new', element: <NewRepoView /> },
+                ],
+            },
+            {
+                path: 'page',
             },
         ],
     },

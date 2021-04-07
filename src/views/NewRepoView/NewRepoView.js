@@ -15,12 +15,11 @@ import Radio from 'components/common/Radio';
 import { TreeFontAwesomeIcon } from 'components/layouts/PanelLayout/styles';
 import COLORS from 'constants/colors';
 import React from 'react';
+import { StyledPageHeader, StyledSection } from 'styles/commonStyles';
 import {
     CheckboxContainer,
     ChipsContainer,
     StyledChip,
-    StyledPageHeader,
-    StyledSection,
     StyledTextInput,
 } from './styles';
 
