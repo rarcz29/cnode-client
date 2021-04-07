@@ -4,9 +4,9 @@ import {
     faGitlab,
 } from '@fortawesome/free-brands-svg-icons';
 import {
-    faCheck,
     faGlobe,
     faLock,
+    faPlus,
     faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from 'components/common/Button';
@@ -14,7 +14,7 @@ import Checkbox from 'components/common/Checkbox';
 import Radio from 'components/common/Radio';
 import { TreeFontAwesomeIcon } from 'components/layouts/PanelLayout/styles';
 import COLORS from 'constants/colors';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledPageHeader, StyledSection } from 'styles/commonStyles';
 import {
     CheckboxContainer,
@@ -23,25 +23,25 @@ import {
     StyledTextInput,
 } from './styles';
 
-const technologies = [
-    'JavaScript',
-    'TypeScript',
-    'Python',
-    'Javascript',
-    'Javascript',
-    'TypeScript',
-    'Python',
-    'Javascript',
-    'TypeScript',
-    'Python',
-    'TypeScript',
-    'Python',
-    'Javascript',
-    'TypeScript',
-    'Python',
+const savedTechnologies = [
+    { id: 1, name: 'JavaScript' },
+    { id: 2, name: 'TypeScript' },
+    { id: 3, name: 'Python' },
+    { id: 4, name: 'C#' },
+    { id: 5, name: 'PHP' },
 ];
 
 const NewRepoView = () => {
+    const [technologies, setTechologies] = useState([]);
+
+    const pushTechnology = (technology) =>
+        setTechologies((oldArray) => [...oldArray, technology]);
+
+    const removeTechnology = (id) =>
+        setTechologies((oldArray) =>
+            oldArray.filter((value) => value.id !== id)
+        );
+
     return (
         <>
             <StyledPageHeader>
@@ -69,11 +69,12 @@ const NewRepoView = () => {
                 </p>
                 <StyledTextInput placeholder="search..." />
                 <ChipsContainer>
-                    {technologies.map((technology, index) => (
+                    {savedTechnologies.map((technology, index) => (
                         <StyledChip
+                            onClick={() => pushTechnology(technology)}
                             key={index}
-                            icon={<TreeFontAwesomeIcon icon={faCheck} />}
-                            label={technology}
+                            icon={<TreeFontAwesomeIcon icon={faPlus} />}
+                            label={technology.name}
                             backgroundColor={COLORS.GREEN}
                             color={COLORS.FOREGROUND.MAIN}
                             height="30px"
@@ -84,9 +85,10 @@ const NewRepoView = () => {
                 <ChipsContainer>
                     {technologies.map((technology, index) => (
                         <StyledChip
+                            onClick={() => removeTechnology(technology.id)}
                             key={index}
                             icon={<TreeFontAwesomeIcon icon={faTimesCircle} />}
-                            label={technology}
+                            label={technology.name}
                             backgroundColor={COLORS.RED}
                             color={COLORS.FOREGROUND.MAIN}
                             height="30px"
