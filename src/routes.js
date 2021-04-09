@@ -1,5 +1,6 @@
 import MainLayout from 'components/layouts/MainLayout';
 import PanelLayout from 'components/layouts/PanelLayout';
+import CommunityView from 'views/CommunityView';
 import HomeView from 'views/HomeView';
 import NewRepoView from 'views/NewRepoView';
 
@@ -19,7 +20,7 @@ const routes = (isLoggedIn) => [
             },
             {
                 path: 'community',
-                element: <div>xd</div>,
+                element: <CommunityView />,
             },
         ],
     },
