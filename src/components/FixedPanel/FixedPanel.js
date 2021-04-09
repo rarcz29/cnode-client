@@ -114,6 +114,7 @@ const FixedPanel = () => {
                             color={COLORS.FOREGROUND.MAIN}
                         />
                         <Button
+                            type="submit"
                             width="100%"
                             height="35px"
                             backgroundColor={COLORS.BLUE}

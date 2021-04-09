@@ -33,7 +33,20 @@ const PanelLayout = () => {
         <>
             <FixedPanel />
             <PanelContainer>
-                <SidePanel>
+                <SidePanel
+                    renderThumbVertical={({ style, ...props }) => (
+                        <div
+                            {...props}
+                            style={{
+                                ...style,
+                                backgroundColor: COLORS.FOREGROUND.SECONDARY,
+                                width: '4px',
+                                opacity: '0.5',
+                                borderRadius: '2px',
+                            }}
+                        />
+                    )}
+                >
                     <TextInput
                         width="100%"
                         height="40px"

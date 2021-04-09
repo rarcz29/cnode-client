@@ -18,15 +18,11 @@ const routes = (isLoggedIn) => [
                 ],
             },
             {
-                path: 'page',
+                path: 'community',
+                element: <div>xd</div>,
             },
         ],
     },
-    // { path: 'community', element: <PageLayout /> },
-    // {
-    //     path: 'auth',
-    //     element: <AuthLayout />,
-    // },
 ];
 
 export default routes;

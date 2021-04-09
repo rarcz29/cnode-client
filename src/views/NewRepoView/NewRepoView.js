@@ -13,6 +13,7 @@ import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
 import Radio from 'components/common/Radio';
 import { TreeFontAwesomeIcon } from 'components/layouts/PanelLayout/styles';
+import Select from 'components/Select';
 import COLORS from 'constants/colors';
 import React, { useState } from 'react';
 import { StyledPageHeader, StyledSection } from 'styles/commonStyles';
@@ -119,6 +120,31 @@ const NewRepoView = () => {
                         icon={<TreeFontAwesomeIcon icon={faGitlab} />}
                     />
                 </CheckboxContainer>
+            </StyledSection>
+            <StyledSection>
+                <h1>Account</h1>
+                <Select
+                    height="40px"
+                    width="300px"
+                    backgroundColor={COLORS.DARK_GREY}
+                    color={COLORS.FOREGROUND.MAIN}
+                >
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                    <option>option1</option>
+                </Select>
             </StyledSection>
             <StyledSection>
                 <h1>Access level</h1>

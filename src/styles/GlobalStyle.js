@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
         outline: none;
     }
 
-    html, input {
+    html, input, select {
         font-family: 'Karla', sans-serif;
         font-size: 100%;
     }
@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${COLORS.BACKGROUND.MAIN};
         color: ${COLORS.FOREGROUND.MAIN};
+        overflow-y: scroll;
     }
 `;
 
