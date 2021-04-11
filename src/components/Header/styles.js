@@ -29,15 +29,7 @@ export const StyledNav = styled.nav`
         & > li {
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            margin-left: 3rem;
-
-            &:first-child {
-                margin-left: 0;
-            }
-
-            &:last-child {
-                margin-right: 4rem;
-            }
+            margin-right: 3rem;
         }
     }
 `;
