@@ -108,10 +108,11 @@ const FixedPanel = () => {
                                 setUsername(event.target.value)
                             }
                             width="100%"
-                            height="40px"
+                            height="35px"
                             placeholder="username..."
-                            backgroundColor={COLORS.BACKGROUND.MAIN}
-                            color={COLORS.FOREGROUND.MAIN}
+                            backgroundColor={COLORS.FOREGROUND.MAIN}
+                            color="black"
+                            rounded
                         />
                         <Button
                             type="submit"

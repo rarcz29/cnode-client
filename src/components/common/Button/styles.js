@@ -12,9 +12,5 @@ export const StyledButton = styled(Button)`
         border: ${(props) => (props.outlined ? '1px' : '0')} solid
             ${(props) => props.borderColor || props.color || 'white'};
         border-radius: ${(props) => (props.rounded ? '99999999999px' : 0)};
-
-        &:hover {
-            background-color: ${(props) => props.backgroundColor};
-        }
     }
 `;

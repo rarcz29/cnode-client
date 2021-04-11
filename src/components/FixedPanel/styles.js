@@ -70,7 +70,7 @@ export const ContentContainer = styled.div`
 
 export const StyledIcon = styled(FontAwesomeIcon)`
     color: ${COLORS.FOREGROUND.MAIN};
-    opacity: ${(props) => (props.checked ? '1' : '0.3')};
+    opacity: ${(props) => (props.checked ? '1' : '0.1')};
     cursor: pointer;
     transition: opacity ease-in-out 250ms;
 `;

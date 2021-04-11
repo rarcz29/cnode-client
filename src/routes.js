@@ -2,6 +2,7 @@ import MainLayout from 'components/layouts/MainLayout';
 import PanelLayout from 'components/layouts/PanelLayout';
 import CommunityView from 'views/CommunityView';
 import HomeView from 'views/HomeView';
+import LoginView from 'views/LoginView';
 import NewRepoView from 'views/NewRepoView';
 
 const routes = (isLoggedIn) => [
@@ -21,6 +22,10 @@ const routes = (isLoggedIn) => [
             {
                 path: 'community',
                 element: <CommunityView />,
+            },
+            {
+                path: 'login',
+                element: <LoginView />,
             },
         ],
     },
