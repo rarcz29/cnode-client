@@ -1,12 +1,45 @@
+import {
+    faBitbucket,
+    faGithub,
+    faGitlab,
+} from '@fortawesome/free-brands-svg-icons';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TreeFontAwesomeIcon } from 'components/layouts/PanelLayout/styles';
+import PlatformStats from 'components/PlatformStats';
 import React from 'react';
 import { StyledPageHeader, StyledSection } from 'styles/commonStyles';
-import { Link, OrderedList, UnorderedList, Warning } from './styles';
+import {
+    Link,
+    OrderedList,
+    StatsContainer,
+    UnorderedList,
+    Warning,
+} from './styles';
 
 const HomeView = () => {
     return (
         <>
+            <StatsContainer>
+                <PlatformStats
+                    width="31%"
+                    icon={<FontAwesomeIcon icon={faGithub} />}
+                    iconColor="white"
+                    name="GitHub"
+                />
+                <PlatformStats
+                    width="31%"
+                    icon={<FontAwesomeIcon icon={faBitbucket} />}
+                    iconColor="#2684FF"
+                    name="GitHub"
+                />
+                <PlatformStats
+                    width="31%"
+                    icon={<FontAwesomeIcon icon={faGitlab} />}
+                    iconColor="#E2432A"
+                    name="GitHub"
+                />
+            </StatsContainer>
             <StyledPageHeader>
                 <h1>Get started</h1>
                 <p>

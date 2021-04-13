@@ -24,3 +24,9 @@ export const Link = styled.a`
         color: ${COLORS.BLUE};
     }
 `;
+
+export const StatsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.125rem;
+`;
