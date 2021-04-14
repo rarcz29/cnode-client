@@ -9,7 +9,10 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
+    padding: 0 40px;
+    border-bottom: 1px solid ${COLORS.LAYOUT_SEPARATOR};
+    position: sticky;
+    top: 0;
 `;
 
 export const Right = styled.div`

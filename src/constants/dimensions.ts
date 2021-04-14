@@ -1,7 +1,9 @@
 const HEADER_HEIGHT = 60;
+const SIDE_PANEL_WIDTH = 333;
 
 const DIMENSIONS = {
     HEADER_HEIGHT,
+    SIDE_PANEL_WIDTH,
 };
 
 export default DIMENSIONS;
