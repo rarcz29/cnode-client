@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    html {
+    html, input {
         font-family: 'Karla', sans-serif;
         font-size: 100%;
     }

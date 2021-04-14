@@ -40,4 +40,26 @@ export const NavBarExternal = styled.div`
     width: 100%;
     height: 50px;
     border-bottom: 1px solid ${COLORS.LAYOUT_SEPARATOR};
+    position: sticky;
+    top: ${DIMENSIONS.HEADER_HEIGHT}px;
+`;
+
+export const NavBarInternal = styled.header`
+    width: 100%;
+    height: inherit;
+
+    & > ul {
+        height: inherit;
+        list-style: none;
+        display: flex;
+        align-items: center;
+
+        & > li {
+            margin-right: 3rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
 `;
