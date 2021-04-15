@@ -9,6 +9,7 @@ type Props = {
     backgroundColor?: string;
     highlightColor?: string;
     color?: string;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const StyledButton = styled.button<Props>`

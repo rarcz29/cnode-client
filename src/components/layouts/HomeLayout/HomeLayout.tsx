@@ -5,17 +5,18 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faFilter, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CircleButton } from 'components/common';
+import { Button, CircleButton } from 'components/common';
 import Container from 'components/common/Container';
 import TextInput from 'components/common/TextInput';
 import Contact from 'components/Contact';
 import SideSection from 'components/SideSection';
 import COLORS from 'constants/colors';
 import DIMENSIONS from 'constants/dimensions';
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router';
 import {
     AddBtAndFiltersContainer,
+    AddBtContainer,
     LayoutContainer,
     LayoutContent,
     LSidePanel,
@@ -43,6 +44,11 @@ const CONTACTS = [
 const TEAMS = [{ name: 'Remarkable Bears' }, { name: 'Remarkable Guppies' }];
 
 const HomeLayout = () => {
+    const [showGithub, setShowGithub] = useState(true);
+    const [showBitbucket, setShowBitbucket] = useState(true);
+    const [showGitlab, setShowGitlab] = useState(true);
+    const [showAddButtons, setShowAddButtons] = useState(false);
+
     return (
         <LayoutContainer>
             <LSidePanel>
@@ -51,21 +57,68 @@ const HomeLayout = () => {
                         placeholder="Find a repository..."
                         width="100%"
                     ></TextInput>
-                    <AddBtAndFiltersContainer>
-                        <CircleButton
-                            fontSize="0.875rem"
-                            backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
-                            highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
+                    <AddBtAndFiltersContainer
+                        filtersWidth={showAddButtons ? '200%' : '100%'}
+                    >
+                        <AddBtContainer
+                            width={
+                                showAddButtons
+                                    ? `calc(${DIMENSIONS.SIDE_PANEL_WIDTH}px - 2rem)`
+                                    : '1.75rem'
+                            }
+                            onMouseLeave={() => setShowAddButtons(false)}
                         >
-                            <FontAwesomeIcon icon={faPlus} />
-                        </CircleButton>
-                        <CircleButton>
+                            <div>
+                                <CircleButton
+                                    fontSize="0.875rem"
+                                    backgroundColor={
+                                        showAddButtons
+                                            ? COLORS.MAIN_COLOR
+                                            : COLORS.BUTTONS.GREEN.MAIN
+                                    }
+                                    highlightColor={
+                                        showAddButtons
+                                            ? COLORS.MAIN_COLOR
+                                            : COLORS.BUTTONS.GREEN.HIGHLIGHT
+                                    }
+                                    onClick={() =>
+                                        setShowAddButtons((prev) => !prev)
+                                    }
+                                >
+                                    <FontAwesomeIcon icon={faPlus} />
+                                </CircleButton>
+                                <Button
+                                    color={COLORS.BUTTONS.GREEN.MAIN}
+                                    height="100%"
+                                    width="40%"
+                                >
+                                    Repository
+                                </Button>
+                                <Button
+                                    color={COLORS.BUTTONS.GREEN.MAIN}
+                                    height="100%"
+                                    width="40%"
+                                >
+                                    Account
+                                </Button>
+                            </div>
+                        </AddBtContainer>
+                        <CircleButton
+                            checked={showGithub}
+                            onClick={() => setShowGithub((prev) => !prev)}
+                        >
                             <FontAwesomeIcon icon={faGithub} />
                         </CircleButton>
-                        <CircleButton>
+                        <CircleButton
+                            checked={showBitbucket}
+                            onClick={() => setShowBitbucket((prev) => !prev)}
+                        >
                             <FontAwesomeIcon icon={faBitbucket} />
                         </CircleButton>
-                        <CircleButton>
+                        <CircleButton
+                            checked={showGitlab}
+                            onClick={() => setShowGitlab((prev) => !prev)}
+                        >
                             <FontAwesomeIcon icon={faGitlab} />
                         </CircleButton>
                         <CircleButton
@@ -77,9 +130,11 @@ const HomeLayout = () => {
                         </CircleButton>
                     </AddBtAndFiltersContainer>
                 </SearchAndFilter>
-                <SideSection header="GitHub"></SideSection>
-                <SideSection header="Bitbucket"></SideSection>
-                <SideSection header="GitLab"></SideSection>
+                {showGithub && <SideSection header="GitHub"></SideSection>}
+                {showBitbucket && (
+                    <SideSection header="Bitbucket"></SideSection>
+                )}
+                {showGitlab && <SideSection header="GitLab"></SideSection>}
             </LSidePanel>
             <LayoutContent>
                 <NavBarExternal>
