@@ -13,6 +13,7 @@ export const StyledHeader = styled.header`
     border-bottom: 1px solid ${COLORS.LAYOUT_SEPARATOR};
     position: sticky;
     top: 0;
+    background-color: ${COLORS.BACKGROUND.DARK_2};
 `;
 
 export const Right = styled.div`
