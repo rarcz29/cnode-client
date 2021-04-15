@@ -17,6 +17,8 @@ export const StyledHeader = styled.header`
 
 export const Right = styled.div`
     display: flex;
+    align-items: center;
+    font-size: 1.5rem;
 
     & > * {
         margin-right: 32px;
@@ -34,11 +36,25 @@ export const UserContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 0 13px;
-    background-color: ${COLORS.BACKGROUND.DARK_2};
+    background-color: ${COLORS.BACKGROUND.DARK_3};
     transition: ${TRANSITIONS.FAST}ms;
 
     &:hover {
         cursor: pointer;
-        background-color: ${COLORS.BACKGROUND.DARK_3};
+        background-color: ${COLORS.BACKGROUND.DARK_2};
+    }
+`;
+
+export const MainNav = styled.nav`
+    width: 290px;
+    position: absolute;
+    left: calc(50% - 145px);
+
+    & > ul {
+        width: inherit;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
     }
 `;
