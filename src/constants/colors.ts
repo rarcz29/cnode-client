@@ -9,6 +9,17 @@ const FOREGROUND = {
     DARKER: '#C0C0C0',
 };
 
+const BUTTONS = {
+    GREEN: {
+        MAIN: '#68CB60',
+        HIGHLIGHT: 'blue',
+    },
+    DARK: {
+        MAIN: BACKGROUND.DARK_3,
+        HIGHLIGHT: 'white',
+    },
+};
+
 const MAIN_COLOR = '#A50649';
 const LAYOUT_SEPARATOR = '#293438';
 
@@ -17,6 +28,7 @@ const COLORS = {
     FOREGROUND,
     LAYOUT_SEPARATOR,
     MAIN_COLOR,
+    BUTTONS,
 };
 
 export default COLORS;

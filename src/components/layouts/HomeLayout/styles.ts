@@ -34,6 +34,20 @@ export const LayoutContent = styled.div`
 export const SearchAndFilter = styled.div`
     ${paddings}
     border-bottom: 1px solid ${COLORS.LAYOUT_SEPARATOR};
+
+    & > * {
+        margin-bottom: 1.375rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+`;
+
+export const AddBtAndFiltersContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 `;
 
 export const NavBarExternal = styled.div`
