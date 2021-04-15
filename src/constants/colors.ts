@@ -9,12 +9,14 @@ const FOREGROUND = {
     DARKER: '#C0C0C0',
 };
 
+const MAIN_COLOR = '#A50649';
 const LAYOUT_SEPARATOR = '#293438';
 
 const COLORS = {
     BACKGROUND,
     FOREGROUND,
     LAYOUT_SEPARATOR,
+    MAIN_COLOR,
 };
 
 export default COLORS;

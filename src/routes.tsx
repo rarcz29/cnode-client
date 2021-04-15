@@ -1,5 +1,5 @@
-import HomeLayout from 'components/layouts/HomeLayout';
-import MainLayout from 'components/layouts/MainLayout';
+import { AuthLayout, HomeLayout, MainLayout } from 'components/layouts';
+import { SigninView } from 'views';
 
 const routes = (isLoggedIn: boolean) => [
     {
@@ -9,7 +9,8 @@ const routes = (isLoggedIn: boolean) => [
     },
     {
         path: 'auth',
-        element: <div>auth</div>,
+        element: <AuthLayout />,
+        children: [{ path: 'login', element: <SigninView /> }],
     },
 ];
 
