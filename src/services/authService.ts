@@ -1,33 +1,39 @@
 import axios from 'axios';
 import API_URLS from 'constants/apiUrls';
+import LOCAL_STORAGE from 'constants/localStorage';
 
-class AuthService {
-    login = (username: string, password: string) => {
-        return axios
-            .post(API_URLS.AUTH.LOGIN, { username, password })
-            .then((response) => {
-                if (response.data.token) {
-                    localStorage.setItem(
-                        'token',
-                        JSON.stringify(response.data.token)
-                    );
-                }
+export const login = async (username: string, password: string) => {
+    return await axios
+        .post(API_URLS.AUTH.LOGIN, { username, password })
+        .then((response) => {
+            if (response.data.token) {
+                const userData = {
+                    accessToken: response.data.token,
+                    refreshToken: 'asdfasdf',
+                };
 
-                return response.data;
-            });
-    };
+                localStorage.setItem(
+                    LOCAL_STORAGE.USER_DATA_NAME,
+                    JSON.stringify(response.data.token)
+                );
+            }
 
-    register = (username: string, email: string, password: string) => {
-        return axios.post(API_URLS.AUTH.REGISTER, {
-            username,
-            email,
-            password,
+            return response.data;
         });
-    };
+};
 
-    logout = () => {
-        localStorage.removeItem('user');
-    };
-}
+export const register = async (
+    username: string,
+    email: string,
+    password: string
+) => {
+    return await axios.post(API_URLS.AUTH.REGISTER, {
+        username,
+        email,
+        password,
+    });
+};
 
-export default new AuthService();
+export const logout = () => {
+    localStorage.removeItem(LOCAL_STORAGE.USER_DATA_NAME);
+};
