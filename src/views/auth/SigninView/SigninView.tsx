@@ -14,28 +14,30 @@ const SigninView = () => {
         <>
             <Header>Sign in</Header>
             <MainContainer>
-                <TextInput
-                    width="100%"
-                    height="40px"
-                    placeholder="username..."
-                />
-                <TextInput
-                    width="100%"
-                    height="40px"
-                    placeholder="password..."
-                    type="password"
-                />
-                <BottomContainer>
-                    <Button fontSize="1.125rem" height="inherit">
-                        Sign in
-                    </Button>
-                    <LinksContainer>
-                        <StyledLink to="#">Forgot password?</StyledLink>
-                        <StyledLink to="../register">
-                            Don’t have an account?
-                        </StyledLink>
-                    </LinksContainer>
-                </BottomContainer>
+                <form>
+                    <TextInput
+                        width="100%"
+                        height="40px"
+                        placeholder="username..."
+                    />
+                    <TextInput
+                        width="100%"
+                        height="40px"
+                        placeholder="password..."
+                        type="password"
+                    />
+                    <BottomContainer>
+                        <Button fontSize="1.125rem" height="inherit">
+                            Sign in
+                        </Button>
+                        <LinksContainer>
+                            <StyledLink to="#">Forgot password?</StyledLink>
+                            <StyledLink to="../register">
+                                Don’t have an account?
+                            </StyledLink>
+                        </LinksContainer>
+                    </BottomContainer>
+                </form>
                 <BottomLinkContainer>
                     <StyledLink to="#">Continue without an account</StyledLink>
                 </BottomLinkContainer>
