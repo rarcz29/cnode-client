@@ -2,9 +2,11 @@ import { Dispatch } from 'redux';
 import authService from 'services/authService';
 import { AuthActionTypes, MessageActionTypes } from './actionTypes';
 
-export const register = (username: string, email: string, password: string) => (
-    dispatch: Dispatch
-) => {
+export const registerAction = (
+    username: string,
+    email: string,
+    password: string
+) => (dispatch: Dispatch) => {
     return authService.register(username, email, password).then(
         (response) => {
             dispatch({
@@ -40,7 +42,7 @@ export const register = (username: string, email: string, password: string) => (
     );
 };
 
-export const login = (username: string, password: string) => (
+export const loginAction = (username: string, password: string) => (
     dispatch: Dispatch
 ) => {
     return authService.login(username, password).then(
@@ -74,7 +76,7 @@ export const login = (username: string, password: string) => (
     );
 };
 
-export const logout = () => (dispatch: Dispatch) => {
+export const logoutAction = () => (dispatch: Dispatch) => {
     authService.logout();
 
     dispatch({
