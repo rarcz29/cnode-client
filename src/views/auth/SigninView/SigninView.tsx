@@ -4,9 +4,10 @@ import {
     BottomContainer,
     BottomLinkContainer,
     Header,
-    LinksContainer,
     MainContainer,
-} from './styles';
+    StyledLink,
+} from '../shared/styles';
+import { LinksContainer } from './styles';
 
 const SigninView = () => {
     return (
@@ -29,12 +30,14 @@ const SigninView = () => {
                         Sign in
                     </Button>
                     <LinksContainer>
-                        <p>Forgot password?</p>
-                        <p>Don’t have an account?</p>
+                        <StyledLink to="#">Forgot password?</StyledLink>
+                        <StyledLink to="../register">
+                            Don’t have an account?
+                        </StyledLink>
                     </LinksContainer>
                 </BottomContainer>
                 <BottomLinkContainer>
-                    <p>Continue without an account</p>
+                    <StyledLink to="#">Continue without an account</StyledLink>
                 </BottomLinkContainer>
             </MainContainer>
         </>

@@ -73,16 +73,22 @@ const HomeLayout = () => {
                                     fontSize="0.875rem"
                                     backgroundColor={
                                         showAddButtons
-                                            ? COLORS.MAIN_COLOR
+                                            ? 'transparent'
                                             : COLORS.BUTTONS.GREEN.MAIN
                                     }
                                     highlightColor={
                                         showAddButtons
-                                            ? COLORS.MAIN_COLOR
+                                            ? 'transparent'
                                             : COLORS.BUTTONS.GREEN.HIGHLIGHT
                                     }
                                     onClick={() =>
                                         setShowAddButtons((prev) => !prev)
+                                    }
+                                    rotation={showAddButtons ? 45 : 0}
+                                    color={
+                                        showAddButtons
+                                            ? COLORS.MAIN_COLOR
+                                            : COLORS.FOREGROUND.MAIN
                                     }
                                 >
                                     <FontAwesomeIcon icon={faPlus} />

@@ -1,3 +1,4 @@
-import SigninView from './SigninView';
+import SigninView from './auth/SigninView';
+import SignupView from './auth/SignupView';
 
-export { SigninView };
+export { SigninView, SignupView };

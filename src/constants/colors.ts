@@ -12,7 +12,7 @@ const FOREGROUND = {
 const BUTTONS = {
     GREEN: {
         MAIN: '#68CB60',
-        HIGHLIGHT: 'blue',
+        HIGHLIGHT: '#1DB111',
     },
     DARK: {
         MAIN: BACKGROUND.DARK_3,
