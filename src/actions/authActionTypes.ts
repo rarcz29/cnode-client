@@ -35,11 +35,10 @@ export interface ILogout {
     type: typeof AuthActionTypes.LOGOUT;
 }
 
-export type RegisterDispatchTypes =
+export type AuthDispatchTypes =
     | IAuthLoading
     | IRegisterSuccess
-    | IRegisterFail;
-
-export type LoginDispatchTypes = IAuthLoading | ILoginSuccess | ILoginFail;
-
-export type LogoutDispatchTypes = IAuthLoading | ILogout;
+    | IRegisterFail
+    | ILoginSuccess
+    | ILoginFail
+    | ILogout;

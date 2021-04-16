@@ -2,18 +2,13 @@ import axios from 'axios';
 import API_URLS from 'constants/apiUrls';
 import LOCAL_STORAGE from 'constants/localStorage';
 import { Dispatch } from 'redux';
-import {
-    AuthActionTypes,
-    LoginDispatchTypes,
-    LogoutDispatchTypes,
-    RegisterDispatchTypes,
-} from './authActionTypes';
+import { AuthActionTypes, AuthDispatchTypes } from './authActionTypes';
 
 export const register = (
     username: string,
     email: string,
     password: string
-) => async (dispatch: Dispatch<RegisterDispatchTypes>) => {
+) => async (dispatch: Dispatch<AuthDispatchTypes>) => {
     try {
         dispatch({
             type: AuthActionTypes.LOADING,
@@ -38,7 +33,7 @@ export const register = (
 export const loginAction = (
     usernameOrEmail: string,
     password: string
-) => async (dispatch: Dispatch<LoginDispatchTypes>) => {
+) => async (dispatch: Dispatch<AuthDispatchTypes>) => {
     try {
         dispatch({
             type: AuthActionTypes.LOADING,
@@ -76,7 +71,7 @@ export const loginAction = (
     }
 };
 
-export const logoutAction = () => (dispatch: Dispatch<LogoutDispatchTypes>) => {
+export const logoutAction = () => (dispatch: Dispatch<AuthDispatchTypes>) => {
     dispatch({
         type: AuthActionTypes.LOADING,
     });
