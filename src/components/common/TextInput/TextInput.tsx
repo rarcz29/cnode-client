@@ -9,6 +9,7 @@ type Props = {
     type?: string;
     backgroundColor?: string;
     color?: string;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 const StyledInput = styled.input<Props>`

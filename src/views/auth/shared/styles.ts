@@ -13,7 +13,7 @@ export const Header = styled.header`
 export const MainContainer = styled.div`
     max-width: 367px;
 
-    & > * {
+    & > form > * {
         margin-bottom: 1rem;
 
         &:last-child {
