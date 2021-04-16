@@ -8,13 +8,13 @@ export const login = async (username: string, password: string) => {
         .then((response) => {
             if (response.data.token) {
                 const userData = {
-                    accessToken: response.data.token,
+                    token: response.data.token,
                     refreshToken: 'asdfasdf',
                 };
 
                 localStorage.setItem(
                     LOCAL_STORAGE.USER_DATA_NAME,
-                    JSON.stringify(response.data.token)
+                    JSON.stringify(userData)
                 );
             }
 

@@ -1,74 +1,87 @@
+import axios from 'axios';
+import API_URLS from 'constants/apiUrls';
+import LOCAL_STORAGE from 'constants/localStorage';
 import { Dispatch } from 'redux';
-import { logout } from 'services/authService';
-import { AuthActionTypes } from './actionTypes';
+import {
+    AuthActionTypes,
+    LoginDispatchTypes,
+    LogoutDispatchTypes,
+    RegisterDispatchTypes,
+} from './authActionTypes';
 
-export const registerAction = (
+export const register = (
     username: string,
     email: string,
     password: string
-) => async (dispatch: Dispatch) => {
-    // return authService.register(username, email, password).then(
-    //     (response) => {
-    //         dispatch({
-    //             type: AuthActionTypes.REGISTER_SUCCESS,
-    //         });
-    //         dispatch({
-    //             type: MessageActionTypes.SET_MESSAGE,
-    //             payload: response.data.message,
-    //         });
-    //         return Promise.resolve();
-    //     },
-    //     (error) => {
-    //         const message =
-    //             (error.response &&
-    //                 error.response.data &&
-    //                 error.response.data.message) ||
-    //             error.message ||
-    //             error.toString();
-    //         dispatch({
-    //             type: AuthActionTypes.REGISTER_FAIL,
-    //         });
-    //         dispatch({
-    //             type: MessageActionTypes.SET_MESSAGE,
-    //             payload: message,
-    //         });
-    //         return Promise.reject();
-    //     }
-    // );
+) => async (dispatch: Dispatch<RegisterDispatchTypes>) => {
+    try {
+        dispatch({
+            type: AuthActionTypes.LOADING,
+        });
+
+        await axios.post(API_URLS.AUTH.REGISTER, {
+            username,
+            email,
+            password,
+        });
+
+        dispatch({
+            type: AuthActionTypes.REGISTER_SUCCESS,
+        });
+    } catch (e) {
+        dispatch({
+            type: AuthActionTypes.REGISTER_FAIL,
+        });
+    }
 };
 
-export const loginAction = (username: string, password: string) => (
-    dispatch: Dispatch
-) => {
-    // return authService.login(username, password).then(
-    //     (data) => {
-    //         dispatch({
-    //             type: AuthActionTypes.LOGIN_SUCCESS,
-    //             payload: { user: data },
-    //         });
-    //         return Promise.resolve();
-    //     },
-    //     (error) => {
-    //         const message =
-    //             (error.response &&
-    //                 error.response.data &&
-    //                 error.response.data.message) ||
-    //             error.message ||
-    //             error.toString();
-    //         dispatch({
-    //             type: AuthActionTypes.LOGIN_FAIL,
-    //         });
-    //         dispatch({
-    //             type: MessageActionTypes.SET_MESSAGE,
-    //             payload: message,
-    //         });
-    //         return Promise.reject();
-    //     }
-    // );
+export const loginAction = (
+    usernameOrEmail: string,
+    password: string
+) => async (dispatch: Dispatch<LoginDispatchTypes>) => {
+    try {
+        dispatch({
+            type: AuthActionTypes.LOADING,
+        });
+
+        const res = await axios
+            .post(API_URLS.AUTH.LOGIN, { usernameOrEmail, password })
+            .then((response) => {
+                if (response.data.token) {
+                    const userData = {
+                        token: response.data.token,
+                        refreshToken: 'asdfasdf',
+                    };
+
+                    localStorage.setItem(
+                        LOCAL_STORAGE.USER_DATA_NAME,
+                        JSON.stringify(userData)
+                    );
+                }
+
+                return response.data;
+            });
+
+        dispatch({
+            type: AuthActionTypes.LOGIN_SUCCESS,
+            payload: {
+                token: res.token,
+                refreshToken: res.refreshToken,
+            },
+        });
+    } catch (e) {
+        dispatch({
+            type: AuthActionTypes.LOGIN_FAIL,
+        });
+    }
 };
 
-export const logoutAction = () => (dispatch: Dispatch) => {
-    logout();
+export const logoutAction = () => (dispatch: Dispatch<LogoutDispatchTypes>) => {
+    dispatch({
+        type: AuthActionTypes.LOADING,
+    });
+
+    localStorage.removeItem(LOCAL_STORAGE.USER_DATA_NAME);
 
     dispatch({
         type: AuthActionTypes.LOGOUT,
