@@ -1,7 +1,4 @@
-export enum MessageActionTypes {
-    SET_MESSAGE = 'SET_MESSAGE',
-    CLEAR_MESSAGE = 'CLEAR_MESSAGE',
-}
+import { MessageActionTypes } from './actionTypes';
 
 export const setMessage = (message: string) => ({
     type: MessageActionTypes.SET_MESSAGE,
