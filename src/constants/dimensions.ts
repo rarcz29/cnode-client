@@ -1,0 +1,11 @@
+const HEADER_HEIGHT = 60;
+const SIDE_PANEL_WIDTH = 333;
+const HOME_PAGE_WIDTH = 650;
+
+const DIMENSIONS = {
+    HEADER_HEIGHT,
+    SIDE_PANEL_WIDTH,
+    HOME_PAGE_WIDTH,
+};
+
+export default DIMENSIONS;

@@ -1,9 +1,0 @@
-const HEADER_HIGHT = 70;
-const SIDE_PANEL_WIDTH = 337;
-
-const DIMENSIONS = {
-    HEADER_HIGHT,
-    SIDE_PANEL_WIDTH,
-};
-
-export default DIMENSIONS;
