@@ -1,5 +1,9 @@
+import { login } from 'actions/authActions';
 import { Button, TextInput } from 'components/common';
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { RootStore } from 'store';
 import {
     BottomContainer,
     BottomLinkContainer,
@@ -10,21 +14,38 @@ import {
 import { LinksContainer } from './styles';
 
 const SigninView = () => {
+    const dispatch = useDispatch();
+    const authState = useSelector((state: RootStore) => state.auth);
+    const navigate = useNavigate();
+    const [usernameOrEmail, setUsernameOrEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        // TODO: form valudation
+        await dispatch(login(usernameOrEmail, password));
+        authState.isLoggedIn ? navigate('/') : alert('Ups');
+    };
+
     return (
         <>
             <Header>Sign in</Header>
             <MainContainer>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <TextInput
                         width="100%"
                         height="40px"
                         placeholder="username..."
+                        onChange={(event) =>
+                            setUsernameOrEmail(event.target.value)
+                        }
                     />
                     <TextInput
                         width="100%"
                         height="40px"
                         placeholder="password..."
                         type="password"
+                        onChange={(event) => setPassword(event.target.value)}
                     />
                     <BottomContainer>
                         <Button fontSize="1.125rem" height="inherit">

@@ -8,6 +8,7 @@ type Props = {
     width?: string;
     height?: string;
     color?: string;
+    form?: any;
 };
 
 const StyledButton = styled.button<Props>`

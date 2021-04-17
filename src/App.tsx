@@ -7,7 +7,7 @@ import GlobalStyle from 'styles/GlobalStyle';
 
 const App = () => {
     const authState = useSelector((state: RootStore) => state.auth);
-    const routing = useRoutes(routes(authState.refreshToken !== undefined));
+    const routing = useRoutes(routes(authState.isLoggedIn));
 
     return (
         <>

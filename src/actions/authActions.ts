@@ -30,10 +30,9 @@ export const register = (
     }
 };
 
-export const loginAction = (
-    usernameOrEmail: string,
-    password: string
-) => async (dispatch: Dispatch<AuthDispatchTypes>) => {
+export const login = (usernameOrEmail: string, password: string) => async (
+    dispatch: Dispatch<AuthDispatchTypes>
+) => {
     try {
         dispatch({
             type: AuthActionTypes.LOADING,
@@ -66,7 +65,7 @@ export const loginAction = (
                 username: 'username',
                 email: 'email',
                 token: res.token,
-                refreshToken: res.refreshToken,
+                refreshToken: 'refreshToken',
             },
         });
     } catch (e) {
@@ -76,7 +75,7 @@ export const loginAction = (
     }
 };
 
-export const logoutAction = () => (dispatch: Dispatch<AuthDispatchTypes>) => {
+export const logout = () => (dispatch: Dispatch<AuthDispatchTypes>) => {
     dispatch({
         type: AuthActionTypes.LOADING,
     });

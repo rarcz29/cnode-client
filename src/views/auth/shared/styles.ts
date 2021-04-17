@@ -15,10 +15,6 @@ export const MainContainer = styled.div`
 
     & > form > * {
         margin-bottom: 1rem;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
     }
 `;
 
