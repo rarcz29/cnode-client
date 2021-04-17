@@ -57,9 +57,14 @@ export const loginAction = (
                 return response.data;
             });
 
+        const userData = JSON.parse(atob(res.token.split('.')[1]));
+
         dispatch({
             type: AuthActionTypes.LOGIN_SUCCESS,
             payload: {
+                userId: 1, // TODO; user data
+                username: 'username',
+                email: 'email',
                 token: res.token,
                 refreshToken: res.refreshToken,
             },

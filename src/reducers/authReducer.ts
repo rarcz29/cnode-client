@@ -19,20 +19,35 @@ const authReducer = (
 ): IDefaultState => {
     switch (action.type) {
         case AuthActionTypes.LOADING:
-            return state;
+            return {
+                ...state,
+                loading: true,
+            };
         case AuthActionTypes.REGISTER_SUCCESS:
-            return state;
+            return {
+                ...state,
+                loading: false,
+            };
         case AuthActionTypes.REGISTER_FAIL:
-            return state;
+            return {
+                ...state,
+                loading: false,
+            };
         case AuthActionTypes.LOGIN_SUCCESS:
-            return state;
+            return {
+                ...action.payload,
+                loading: false,
+            };
         case AuthActionTypes.LOGIN_FAIL:
-            return state;
+            return {
+                ...state,
+                loading: false,
+            };
         case AuthActionTypes.LOGOUT:
+            return initialState;
+        default:
             return state;
     }
-
-    return state;
 };
 
 export default authReducer;
