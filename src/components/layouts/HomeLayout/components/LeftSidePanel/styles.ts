@@ -1,17 +1,16 @@
 import COLORS from 'constants/colors';
-import DIMENSIONS from 'constants/dimensions';
 import TRANSITIONS from 'constants/transitions';
 import styled from 'styled-components';
 import SidePanel from '../SidePanel';
 
-type AddBtAndFiltersContainerProps = {
-    filtersWidth: string;
-};
+// type AddBtAndFiltersContainerProps = {
+//     filtersWidth: string;
+// };
 
-type AddBtContainerProps = {
-    onMouseLeave: React.DOMAttributes<HTMLDivElement>;
-    width: string;
-};
+// type AddBtContainerProps = {
+//     onMouseLeave: React.DOMAttributes<HTMLDivElement>;
+//     width: string;
+// };
 
 export const LSidePanel = styled(SidePanel)`
     border-right: 1px solid ${COLORS.LAYOUT_SEPARATOR};
@@ -32,24 +31,9 @@ export const SearchAndFilter = styled.div`
     }
 `;
 
-export const AddBtAndFiltersContainer = styled.div<AddBtAndFiltersContainerProps>`
+export const AddBtAndFiltersContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    width: ${(props: AddBtAndFiltersContainerProps) => props.filtersWidth};
+    width: 100%;
     transition: width ease-in-out ${TRANSITIONS.SLOW}ms;
-`;
-
-export const AddBtContainer = styled.div<AddBtContainerProps>`
-    width: ${(props: AddBtContainerProps) => props.width};
-    border-radius: 100vh;
-    overflow: hidden;
-    transition: width ease-in-out ${TRANSITIONS.SLOW}ms;
-
-    & > div {
-        height: 100%;
-        width: calc(${DIMENSIONS.SIDE_PANEL_WIDTH}px - 2rem);
-        display: flex;
-        justify-content: space-between;
-        border-radius: inherit;
-    }
 `;
