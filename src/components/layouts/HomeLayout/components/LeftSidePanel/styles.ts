@@ -3,17 +3,9 @@ import TRANSITIONS from 'constants/transitions';
 import styled from 'styled-components';
 import SidePanel from '../SidePanel';
 
-// type AddBtAndFiltersContainerProps = {
-//     filtersWidth: string;
-// };
-
-// type AddBtContainerProps = {
-//     onMouseLeave: React.DOMAttributes<HTMLDivElement>;
-//     width: string;
-// };
-
 export const LSidePanel = styled(SidePanel)`
     border-right: 1px solid ${COLORS.LAYOUT_SEPARATOR};
+    overflow: hidden;
 `;
 
 export const SearchAndFilter = styled.div`

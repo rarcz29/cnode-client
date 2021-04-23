@@ -9,6 +9,9 @@ const FOREGROUND = {
     DARKER: '#C0C0C0',
 };
 
+const MAIN_COLOR = '#A50649';
+const LAYOUT_SEPARATOR = '#293438';
+
 const BUTTONS = {
     GREEN: {
         MAIN: '#68CB60',
@@ -19,9 +22,6 @@ const BUTTONS = {
         HIGHLIGHT: '#C0C0C0',
     },
 };
-
-const MAIN_COLOR = '#A50649';
-const LAYOUT_SEPARATOR = '#293438';
 
 const COLORS = {
     BACKGROUND,

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircleButton, TextInput } from 'components/common';
 import COLORS from 'constants/colors';
 import React, { useState } from 'react';
+import AddAccountPanel from '../AddAccountPanel';
 import SideSection from '../SideSection';
 import {
     AddBtAndFiltersContainer,
@@ -19,6 +20,7 @@ const LeftSidePanel = () => {
     const [showGithub, setShowGithub] = useState(true);
     const [showBitbucket, setShowBitbucket] = useState(true);
     const [showGitlab, setShowGitlab] = useState(true);
+    const [showAddAccountPanel, setShowAddAccountPanel] = useState(true);
 
     return (
         <LSidePanel>
@@ -28,39 +30,15 @@ const LeftSidePanel = () => {
                     width="100%"
                 ></TextInput>
                 <AddBtAndFiltersContainer>
-                    {/* <AddBtContainer
-                        width={
-                            showAddButtons
-                                ? `calc(${DIMENSIONS.SIDE_PANEL_WIDTH}px - 2rem)`
-                                : '1.75rem'
-                        }
-                        onMouseLeave={() => setShowAddButtons(false)}
-                    > */}
-                    {/* <div> */}
                     <CircleButton
                         fontSize="0.875rem"
                         backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
                         highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
                         color={COLORS.FOREGROUND.MAIN}
+                        onClick={() => setShowAddAccountPanel(false)}
                     >
                         <FontAwesomeIcon icon={faPlus} />
                     </CircleButton>
-                    {/* <Button
-                            color={COLORS.BUTTONS.GREEN.MAIN}
-                            height="100%"
-                            width="40%"
-                        >
-                            Repository
-                        </Button>
-                        <Button
-                            color={COLORS.BUTTONS.GREEN.MAIN}
-                            height="100%"
-                            width="40%"
-                        >
-                            Account
-                        </Button> */}
-                    {/* </div> */}
-                    {/* </AddBtContainer> */}
                     <CircleButton
                         checked={showGithub}
                         onClick={() => setShowGithub((prev) => !prev)}
@@ -91,6 +69,7 @@ const LeftSidePanel = () => {
             {showGithub && <SideSection header="GitHub"></SideSection>}
             {showBitbucket && <SideSection header="Bitbucket"></SideSection>}
             {showGitlab && <SideSection header="GitLab"></SideSection>}
+            <AddAccountPanel show={showAddAccountPanel}>asdf</AddAccountPanel>
         </LSidePanel>
     );
 };
