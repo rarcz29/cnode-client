@@ -44,7 +44,7 @@ export const login = (usernameOrEmail: string, password: string) => async (
                 if (response.data.token) {
                     const userData = {
                         token: response.data.token,
-                        refreshToken: 'asdfasdf',
+                        refreshToken: response.data.refreshToken,
                     };
 
                     localStorage.setItem(
@@ -61,11 +61,10 @@ export const login = (usernameOrEmail: string, password: string) => async (
         dispatch({
             type: AuthActionTypes.LOGIN_SUCCESS,
             payload: {
-                userId: 1, // TODO; user data
-                username: 'username',
-                email: 'email',
+                username: userData.token.username,
+                email: userData.token.email,
                 token: res.token,
-                refreshToken: 'refreshToken',
+                refreshToken: res.refreshToken,
             },
         });
     } catch (e) {
