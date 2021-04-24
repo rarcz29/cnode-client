@@ -39,7 +39,7 @@ const LeftSidePanel = () => {
                         backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
                         highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
                         color={COLORS.FOREGROUND.MAIN}
-                        onClick={() => setShowAddAccountPanel(false)}
+                        onClick={() => setShowAddAccountPanel(true)}
                     >
                         <FontAwesomeIcon icon={faPlus} />
                     </CircleButton>
@@ -83,7 +83,12 @@ const LeftSidePanel = () => {
             )}
             {showBitbucket && <SideSection header="Bitbucket"></SideSection>}
             {showGitlab && <SideSection header="GitLab"></SideSection>}
-            <AddAccountPanel show={showAddAccountPanel}>asdf</AddAccountPanel>
+            <AddAccountPanel
+                show={showAddAccountPanel}
+                setShow={setShowAddAccountPanel}
+            >
+                asdf
+            </AddAccountPanel>
         </LSidePanel>
     );
 };
