@@ -1,6 +1,6 @@
 import { login } from 'actions/authActions';
 import { Button, TextInput } from 'components/common';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootStore } from 'store';
@@ -20,11 +20,14 @@ const SigninView = () => {
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    useEffect(() => {
+        authState.isLoggedIn && navigate('/');
+    }, [authState]);
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         // TODO: form valudation
         await dispatch(login(usernameOrEmail, password));
-        authState.isLoggedIn ? navigate('/') : alert('Ups');
     };
     // TODO: form submit button
     return (
@@ -39,6 +42,7 @@ const SigninView = () => {
                         onChange={(event) =>
                             setUsernameOrEmail(event.target.value)
                         }
+                        rounded
                     />
                     <TextInput
                         width="100%"
@@ -46,9 +50,12 @@ const SigninView = () => {
                         placeholder="password..."
                         type="password"
                         onChange={(event) => setPassword(event.target.value)}
+                        rounded
                     />
                     <BottomContainer>
-                        <Button size="big">Sign in</Button>
+                        <Button size="big" disabled={authState.loading}>
+                            Sign in
+                        </Button>
                         <LinksContainer>
                             <StyledLink to="#">Forgot password?</StyledLink>
                             <StyledLink to="../register">

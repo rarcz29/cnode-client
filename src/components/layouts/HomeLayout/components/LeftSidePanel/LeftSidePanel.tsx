@@ -11,7 +11,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircleButton, TextInput } from 'components/common';
 import COLORS from 'constants/colors';
-import React, { useState } from 'react';
+import { useQueryString } from 'hooks';
+import React, { useEffect, useState } from 'react';
 import AddAccountPanel from '../AddAccountPanel';
 import SideSection from '../SideSection';
 import {
@@ -21,10 +22,15 @@ import {
 } from './styles';
 
 const LeftSidePanel = () => {
+    const queryString = useQueryString();
     const [showGithub, setShowGithub] = useState(true);
     const [showBitbucket, setShowBitbucket] = useState(true);
     const [showGitlab, setShowGitlab] = useState(true);
-    const [showAddAccountPanel, setShowAddAccountPanel] = useState(true);
+    const [showAddAccountPanel, setShowAddAccountPanel] = useState(false);
+
+    useEffect(() => {
+        console.log(queryString.get('error'));
+    }, []);
 
     return (
         <LSidePanel>
@@ -32,6 +38,7 @@ const LeftSidePanel = () => {
                 <TextInput
                     placeholder="Find a repository..."
                     width="100%"
+                    rounded
                 ></TextInput>
                 <AddBtAndFiltersContainer>
                     <CircleButton

@@ -1,10 +1,11 @@
 import { AuthLayout, HomeLayout, MainLayout } from 'components/layouts';
+import { Navigate } from 'react-router-dom';
 import { NewRepoView, SigninView, SignupView } from 'views';
 
 const routes = (isLoggedIn: boolean) => [
     {
         path: '/',
-        element: <MainLayout />,
+        element: isLoggedIn ? <MainLayout /> : <Navigate to="auth/login" />,
         children: [
             {
                 path: '/',

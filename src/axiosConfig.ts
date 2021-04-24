@@ -7,7 +7,7 @@ const instance = axios.create({
 
     headers: {
         'Content-Type': 'application/json',
-        'Accept-Charset': 'application/json',
+        Accept: 'application/json',
         Authorization: `Bearer ${
             JSON.parse(
                 localStorage.getItem(LOCAL_STORAGE.USER_DATA_NAME) ?? '{}'

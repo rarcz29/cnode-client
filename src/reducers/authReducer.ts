@@ -1,9 +1,9 @@
 import { AuthActionTypes, AuthDispatchTypes } from 'actions/authActionTypes';
+import LOCAL_STORAGE from 'constants/localStorage';
 
 interface IDefaultState {
     loading: boolean;
     isLoggedIn: boolean;
-    userId?: number;
     username?: string;
     email?: string;
     token?: string;
@@ -15,8 +15,25 @@ const initialState: IDefaultState = {
     isLoggedIn: false,
 };
 
+const loadStateFromLocalStorage = (): IDefaultState => {
+    const dataStr = localStorage.getItem(LOCAL_STORAGE.USER_DATA_NAME);
+    const data = dataStr ? JSON.parse(dataStr) : undefined;
+
+    if (data) {
+        const userData = JSON.parse(atob(data.token.split('.')[1]));
+        return {
+            ...data,
+            ...userData,
+            loading: false,
+            isLoggedIn: true,
+        };
+    }
+
+    return initialState;
+};
+
 const authReducer = (
-    state: IDefaultState = initialState,
+    state: IDefaultState = loadStateFromLocalStorage(),
     action: AuthDispatchTypes
 ): IDefaultState => {
     switch (action.type) {

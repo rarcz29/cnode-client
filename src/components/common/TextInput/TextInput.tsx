@@ -7,20 +7,29 @@ type Props = {
     height?: string;
     placeholder?: string;
     type?: string;
-    backgroundColor?: string;
-    color?: string;
+    color?: 'primary' | 'secondary';
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    rounded?: boolean;
+};
+
+const handleColor = (color?: string) => {
+    switch (color) {
+        case 'secondary':
+            return COLORS.BACKGROUND.DARK_2;
+        case 'primary':
+        default:
+            return COLORS.BACKGROUND.DARK_3;
+    }
 };
 
 const StyledInput = styled.input<Props>`
     width: ${(props: Props) => props.width || '300px'};
     height: ${(props: Props) => props.height || '40px'};
-    border-radius: 100vh;
+    border-radius: ${(props: Props) => (props.rounded ? '100vh' : '0')};
     padding: 0 2rem;
     font-size: 0.875rem;
-    background-color: ${(props: Props) =>
-        props.backgroundColor || COLORS.BACKGROUND.DARK_3};
-    color: ${(props: Props) => props.color || COLORS.FOREGROUND.MAIN};
+    background-color: ${(props: Props) => handleColor(props.color)};
+    color: ${COLORS.FOREGROUND.MAIN};
     border-width: 0;
 `;
 

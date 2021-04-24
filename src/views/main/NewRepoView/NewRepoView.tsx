@@ -1,3 +1,4 @@
+import { TextInput } from 'components/common';
 import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
 import React from 'react';
@@ -6,7 +7,6 @@ import {
     ChipsContainer,
     StyledPageHeader,
     StyledSection,
-    StyledTextInput,
 } from './styles';
 
 const NewRepoView = () => {
@@ -21,13 +21,17 @@ const NewRepoView = () => {
             </StyledPageHeader>
             <StyledSection>
                 <h1>Repository name</h1>
-                <StyledTextInput placeholder="name..." />
+                <TextInput placeholder="name..." color="secondary" />
             </StyledSection>
             <StyledSection>
                 <h1>
                     Repository description <span>(optional)</span>
                 </h1>
-                <StyledTextInput placeholder="description..." width="100%" />
+                <TextInput
+                    placeholder="description..."
+                    width="100%"
+                    color="secondary"
+                />
             </StyledSection>
             <StyledSection>
                 <h1>Technologies</h1>
@@ -35,20 +39,28 @@ const NewRepoView = () => {
                     Make it easier for other users to find your repository.
                     Select technologies you will be using.
                 </p>
-                <StyledTextInput placeholder="search..." />
+                <TextInput placeholder="search..." color="secondary" />
                 <ChipsContainer></ChipsContainer>
                 <ChipsContainer></ChipsContainer>
             </StyledSection>
             <StyledSection>
                 <h1>Platform</h1>
-                <CheckboxContainer></CheckboxContainer>
+                <CheckboxContainer>
+                    <Checkbox label="GitHub" />
+                    <Checkbox label="Bitbucket" />
+                    <Checkbox label="GitLab" />
+                </CheckboxContainer>
             </StyledSection>
             <StyledSection>
                 <h1>Account</h1>
+                <TextInput placeholder="account..." color="secondary" />
             </StyledSection>
             <StyledSection>
                 <h1>Access level</h1>
-                <CheckboxContainer></CheckboxContainer>
+                <CheckboxContainer>
+                    <Checkbox label="Public" />
+                    <Checkbox label="Private" />
+                </CheckboxContainer>
             </StyledSection>
             <StyledSection>
                 <h1>Initialization</h1>

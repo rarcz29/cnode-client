@@ -1,4 +1,3 @@
-import TextInput from 'components/common/TextInput';
 import COLORS from 'constants/colors';
 import styled, { css } from 'styled-components';
 
@@ -18,11 +17,6 @@ const commonParagraphStyle = css`
     color: ${COLORS.FOREGROUND.DARKER};
 `;
 
-export const StyledTextInput = styled(TextInput)`
-    background-color: ${COLORS.BACKGROUND.DARK_3};
-    color: ${COLORS.FOREGROUND.MAIN};
-`;
-
 export const ChipsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -31,6 +25,8 @@ export const ChipsContainer = styled.div`
 
 export const CheckboxContainer = styled.div`
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
 
     & > * {
         margin-bottom: 0.5rem;
@@ -46,7 +42,9 @@ export const StyledPageHeader = styled.header`
 
     & > h1 {
         font-size: 1.5rem;
-        ${commonH1Style}
+        color: ${COLORS.MAIN_COLOR};
+        font-weight: bold;
+        margin-bottom: 0.5rem;
     }
 
     & > p {

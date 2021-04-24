@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axiosConfig';
 import API_URLS from 'constants/apiUrls';
 import LOCAL_STORAGE from 'constants/localStorage';
 import { Dispatch } from 'redux';
@@ -38,35 +38,34 @@ export const login = (usernameOrEmail: string, password: string) => async (
             type: AuthActionTypes.LOADING,
         });
 
-        const res = await axios
-            .post(API_URLS.LOGIN, { usernameOrEmail, password })
-            .then((response) => {
-                if (response.data.token) {
-                    const userData = {
-                        token: response.data.token,
-                        refreshToken: response.data.refreshToken,
-                    };
+        const res = await axios.post(API_URLS.LOGIN, {
+            usernameOrEmail,
+            password,
+        });
 
-                    localStorage.setItem(
-                        LOCAL_STORAGE.USER_DATA_NAME,
-                        JSON.stringify(userData)
-                    );
-                }
+        const tokens = {
+            token: res.data.token,
+            refreshToken: res.data.refreshToken,
+        };
 
-                return response.data;
-            });
+        localStorage.setItem(
+            LOCAL_STORAGE.USER_DATA_NAME,
+            JSON.stringify(tokens)
+        );
 
-        const userData = JSON.parse(atob(res.token.split('.')[1]));
+        const userData = JSON.parse(atob(res.data.token.split('.')[1]));
 
         dispatch({
             type: AuthActionTypes.LOGIN_SUCCESS,
             payload: {
-                username: userData.token.username,
-                email: userData.token.email,
-                token: res.token,
-                refreshToken: res.refreshToken,
+                username: userData.username,
+                email: userData.email,
+                token: res.data.token,
+                refreshToken: res.data.refreshToken,
             },
         });
+
+        console.log('action');
     } catch (e) {
         dispatch({
             type: AuthActionTypes.LOGIN_FAIL,

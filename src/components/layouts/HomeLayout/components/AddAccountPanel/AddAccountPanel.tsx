@@ -92,6 +92,7 @@ const AddAccountPanel: React.FC<FullProps> = ({ show, setShow }) => {
                     onChange={(event) => setUsername(event.target.value)}
                     placeholder="username..."
                     width="100%"
+                    rounded
                 ></TextInput>
             </form>
             <Center>

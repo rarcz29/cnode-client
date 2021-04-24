@@ -64,6 +64,7 @@ const SignupView = () => {
                             onChange={(event) =>
                                 item.setFunc(event.target.value)
                             }
+                            rounded
                         />
                     ))}
                 </form>

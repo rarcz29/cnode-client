@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${COLORS.BACKGROUND.DARK_1};
         color: ${COLORS.FOREGROUND.MAIN};
+        overflow-y: scroll;
     }
 `;
 
