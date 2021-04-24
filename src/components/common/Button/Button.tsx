@@ -1,12 +1,15 @@
 import COLORS from 'constants/colors';
 import TRANSITIONS from 'constants/transitions';
 import React from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 type Props = {
     size?: 'medium' | 'big';
     color?: 'primary' | 'secondary';
     form?: any;
+    to?: string;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const handleFontSize = (size?: string): string => {
@@ -64,8 +67,16 @@ const StyledButton = styled.button<Props>`
     }
 `;
 
-const Button: React.FC<Props> = (props) => {
-    return <StyledButton {...props} />;
+const Button: React.FC<Props> = ({ to, onClick, ...others }) => {
+    const navigate = useNavigate();
+
+    const handleRedirection = () => {
+        to && navigate(to);
+    };
+
+    return (
+        <StyledButton {...others} onClick={to ? handleRedirection : onClick} />
+    );
 };
 
 export default Button;
