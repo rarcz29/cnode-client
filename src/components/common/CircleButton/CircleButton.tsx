@@ -1,5 +1,6 @@
 import TRANSITIONS from 'constants/transitions';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
     highlightColor?: string;
     color?: string;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    to?: string;
 };
 
 const StyledButton = styled.button<Props>`
@@ -39,9 +41,21 @@ const Content = styled.div<Props>`
     transition: opacity ease-in-out ${TRANSITIONS.FAST}ms;
 `;
 
-const CircleButton: React.FC<Props> = ({ children, checked, ...other }) => {
+const CircleButton: React.FC<Props> = ({
+    children,
+    checked,
+    to,
+    onClick,
+    ...other
+}) => {
+    const navigate = useNavigate();
+
+    const handleRedirection = () => {
+        to && navigate(to);
+    };
+
     return (
-        <StyledButton {...other}>
+        <StyledButton {...other} onClick={to ? handleRedirection : onClick}>
             <Content checked={checked}>{children}</Content>
         </StyledButton>
     );

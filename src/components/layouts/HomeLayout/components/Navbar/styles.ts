@@ -8,6 +8,7 @@ export const NavBarExternal = styled.div`
     border-bottom: 1px solid ${COLORS.LAYOUT_SEPARATOR};
     position: sticky;
     top: ${DIMENSIONS.HEADER_HEIGHT}px;
+    background-color: ${COLORS.BACKGROUND.DARK_1};
 `;
 
 export const NavBarInternal = styled.header`

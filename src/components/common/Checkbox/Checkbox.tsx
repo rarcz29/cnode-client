@@ -1,12 +1,12 @@
 import React from 'react';
 import { Checkmark, Container, StyledInput } from './styles';
 
-type Props = {};
+type Props = { label: string };
 
-const Checkbox: React.FC<Props> = ({ children }) => {
+const Checkbox: React.FC<Props> = ({ label }) => {
     return (
         <Container>
-            {children}
+            {label}
             <StyledInput type="checkbox" />
             <Checkmark />
         </Container>

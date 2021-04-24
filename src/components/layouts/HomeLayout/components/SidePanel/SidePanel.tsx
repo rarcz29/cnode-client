@@ -7,10 +7,10 @@ type Props = {
 };
 
 const Panel = styled.aside`
+    position: sticky;
+    top: ${DIMENSIONS.HEADER_HEIGHT}px;
     width: ${DIMENSIONS.SIDE_PANEL_WIDTH}px;
     height: calc(100vh - ${DIMENSIONS.HEADER_HEIGHT}px);
-    position: sticky;
-    top: ${DIMENSIONS.SIDE_PANEL_WIDTH}px;
 `;
 
 const SidePanel: React.FC<Props> = (props) => {

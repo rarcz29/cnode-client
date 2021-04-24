@@ -1,9 +1,11 @@
+import { Container } from 'components/common';
+import DIMENSIONS from 'constants/dimensions';
 import React from 'react';
 import { Outlet } from 'react-router';
 import LeftSidePanel from './components/LeftSidePanel';
 import Navbar from './components/Navbar';
 import RightSidePanel from './components/RightSidePanel';
-import { LayoutContainer, LayoutContent } from './styles';
+import { LayoutContainer, LayoutContent, PageContent } from './styles';
 
 const HomeLayout = () => {
     return (
@@ -11,7 +13,11 @@ const HomeLayout = () => {
             <LeftSidePanel />
             <LayoutContent>
                 <Navbar />
-                <Outlet />
+                <PageContent>
+                    <Container width={DIMENSIONS.HOME_PAGE_WIDTH + 'px'}>
+                        <Outlet />
+                    </Container>
+                </PageContent>
             </LayoutContent>
             <RightSidePanel />
         </LayoutContainer>

@@ -5,6 +5,7 @@ type Props = {
     width: string;
     height?: string;
     sidePadding?: string;
+    className?: string;
 };
 
 const StyledDiv = styled.div<Props>`

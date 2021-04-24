@@ -39,7 +39,7 @@ const LeftSidePanel = () => {
                         backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
                         highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
                         color={COLORS.FOREGROUND.MAIN}
-                        onClick={() => setShowAddAccountPanel(true)}
+                        to="new"
                     >
                         <FontAwesomeIcon icon={faPlus} />
                     </CircleButton>
