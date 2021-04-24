@@ -26,7 +26,7 @@ const SigninView = () => {
         await dispatch(login(usernameOrEmail, password));
         authState.isLoggedIn ? navigate('/') : alert('Ups');
     };
-
+    // TODO: form submit button
     return (
         <>
             <Header>Sign in</Header>
@@ -48,9 +48,7 @@ const SigninView = () => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                     <BottomContainer>
-                        <Button fontSize="1.125rem" height="inherit">
-                            Sign in
-                        </Button>
+                        <Button size="big">Sign in</Button>
                         <LinksContainer>
                             <StyledLink to="#">Forgot password?</StyledLink>
                             <StyledLink to="../register">

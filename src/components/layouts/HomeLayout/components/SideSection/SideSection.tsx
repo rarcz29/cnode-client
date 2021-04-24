@@ -1,38 +1,19 @@
-import COLORS from 'constants/colors';
 import React from 'react';
-import styled from 'styled-components';
+import SideSectionProps from './props';
+import { Content, StyledSection } from './styles';
 
-type Props = {
-    header: string;
-    children?: React.ReactNode;
-};
-
-const StyledSection = styled.section`
-    width: calc(100% - 2rem);
-    margin: 1rem;
-    margin-bottom: 1.5rem;
-
-    & > header {
-        font-size: 1.125rem;
-        color: ${COLORS.FOREGROUND.DARKER};
-        margin-bottom: 0.875rem;
-    }
-`;
-
-const Content = styled.div`
-    & > * {
-        margin-bottom: 0.5rem;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-`;
-
-const SideSection: React.FC<Props> = ({ header, children }) => {
+const SideSection: React.FC<SideSectionProps> = ({
+    header,
+    type,
+    children,
+    icons,
+}) => {
     return (
-        <StyledSection>
-            <header>{header}</header>
+        <StyledSection type={type}>
+            <header>
+                <h1>{header}</h1>
+                <div>{icons}</div>
+            </header>
             <Content>{children}</Content>
         </StyledSection>
     );

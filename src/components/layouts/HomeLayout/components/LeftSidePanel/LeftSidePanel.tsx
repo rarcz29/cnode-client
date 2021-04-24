@@ -3,7 +3,11 @@ import {
     faGithub,
     faGitlab,
 } from '@fortawesome/free-brands-svg-icons';
-import { faFilter, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+    faFilter,
+    faPlus,
+    faUserPlus,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircleButton, TextInput } from 'components/common';
 import COLORS from 'constants/colors';
@@ -66,7 +70,17 @@ const LeftSidePanel = () => {
                     </CircleButton>
                 </AddBtAndFiltersContainer>
             </SearchAndFilter>
-            {showGithub && <SideSection header="GitHub"></SideSection>}
+            {showGithub && (
+                <SideSection
+                    header="GitHub"
+                    icons={
+                        <FontAwesomeIcon
+                            onClick={() => setShowAddAccountPanel(true)}
+                            icon={faUserPlus}
+                        />
+                    }
+                ></SideSection>
+            )}
             {showBitbucket && <SideSection header="Bitbucket"></SideSection>}
             {showGitlab && <SideSection header="GitLab"></SideSection>}
             <AddAccountPanel show={showAddAccountPanel}>asdf</AddAccountPanel>

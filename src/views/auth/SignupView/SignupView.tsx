@@ -68,11 +68,7 @@ const SignupView = () => {
                     ))}
                 </form>
                 <BottomContainer>
-                    <Button
-                        form="auth-form"
-                        fontSize="1.125rem"
-                        height="inherit"
-                    >
+                    <Button form="auth-form" size="big">
                         {authState.loading ? 'loading...' : 'Sign up'}
                     </Button>
                     <LinksContainer>

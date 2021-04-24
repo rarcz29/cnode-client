@@ -20,7 +20,7 @@ export const MainContainer = styled.div`
 
 export const BottomContainer = styled.div`
     width: 100%;
-    height: 42px;
+    height: auto;
     display: flex;
     justify-content: space-between;
 `;

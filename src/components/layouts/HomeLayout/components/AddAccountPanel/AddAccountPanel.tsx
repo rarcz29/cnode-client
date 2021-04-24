@@ -9,7 +9,6 @@ import { Button, TextInput } from 'components/common';
 import COLORS from 'constants/colors';
 import TRANSITIONS from 'constants/transitions';
 import React, { useState } from 'react';
-// import { AddAccountPanelContainer } from './styles';
 import styled from 'styled-components';
 
 type Props = {
@@ -24,11 +23,10 @@ type IconProps = {
 
 export const AddAccountPanelContainer = styled.div<Props>`
     width: 100%;
-    height: 200px;
     position: absolute;
     left: 0;
     bottom: ${(props: Props) => (props.show ? '0' : '-200px')};
-    border: 1px solid ${COLORS.MAIN_COLOR};
+    border-top: 1px solid ${COLORS.LAYOUT_SEPARATOR};
     padding: 1rem;
     transition: bottom ease-in-out ${TRANSITIONS.SLOW}ms;
 
@@ -48,7 +46,7 @@ const IconsContainer = styled.div`
     align-items: center;
 
     & svg {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 `;
 
@@ -57,6 +55,11 @@ export const StyledIcon = styled(FontAwesomeIcon)<IconProps>`
     opacity: ${(props) => (props.checked ? '1' : '0.3')};
     cursor: pointer;
     transition: opacity ease-in-out ${TRANSITIONS.FAST}ms;
+`;
+
+export const Center = styled.div`
+    display: flex;
+    justify-content: center;
 `;
 
 const AddAccountPanel: React.FC<Props> = (props) => {
@@ -102,13 +105,10 @@ const AddAccountPanel: React.FC<Props> = (props) => {
                     checked={gitlab}
                 />
             </IconsContainer>
-            <TextInput
-                placeholder="Find a repository..."
-                width="100%"
-            ></TextInput>
-            <Button fontSize="1.125rem" height="inherit">
-                Sign in
-            </Button>
+            <TextInput placeholder="username..." width="100%"></TextInput>
+            <Center>
+                <Button color="secondary">Connect to an account</Button>
+            </Center>
         </AddAccountPanelContainer>
     );
 };

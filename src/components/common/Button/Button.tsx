@@ -4,23 +4,39 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-    fontSize?: string;
-    width?: string;
-    height?: string;
-    color?: string;
+    size?: 'medium' | 'big';
+    color?: 'primary' | 'secondary';
     form?: any;
 };
 
+const handleFontSize = (size?: string): string => {
+    switch (size) {
+        case 'big':
+            return '1.125rem';
+        case 'medium':
+        default:
+            return '0.875rem';
+    }
+};
+
+const handleColor = (color?: string): string => {
+    switch (color) {
+        case 'secondary':
+            return COLORS.BUTTONS.GREEN.MAIN;
+        case 'primary':
+        default:
+            return COLORS.MAIN_COLOR;
+    }
+};
+
 const StyledButton = styled.button<Props>`
-    width: ${(props: Props) => props.width};
-    height: ${(props: Props) => props.height || '2.1875rem'};
-    padding: ${(props: Props) => (props.width ? '0 0' : '0 2.375rem')};
+    padding: 0.625rem 2.375rem;
     position: relative;
-    font-size: ${(props: Props) => props.fontSize || '0.875rem'};
+    font-size: ${(props: Props) => handleFontSize(props.size)};
     border: none;
     background: none;
     outline: none;
-    color: ${(props: Props) => props.color || COLORS.MAIN_COLOR};
+    color: ${(props: Props) => handleColor(props.color)};
     mix-blend-mode: screen;
     transition: color ease-in-out ${TRANSITIONS.FAST}ms;
 
@@ -29,7 +45,7 @@ const StyledButton = styled.button<Props>`
         cursor: pointer;
 
         &::before {
-            background: ${(props: Props) => props.color || COLORS.MAIN_COLOR};
+            background: ${(props: Props) => handleColor(props.color)};
         }
     }
 
@@ -40,7 +56,7 @@ const StyledButton = styled.button<Props>`
         bottom: 0;
         left: 0;
         border-radius: 100vh;
-        border: 1px solid ${(props: Props) => props.color || COLORS.MAIN_COLOR};
+        border: 1px solid ${(props: Props) => handleColor(props.color)};
         background: transparent;
         content: '';
         mix-blend-mode: color-burn;
