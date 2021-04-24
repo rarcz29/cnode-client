@@ -13,7 +13,7 @@ type Props = {
 };
 
 const StyledInput = styled.input<Props>`
-    width: ${(props: Props) => props.width || '200px'};
+    width: ${(props: Props) => props.width || '300px'};
     height: ${(props: Props) => props.height || '40px'};
     border-radius: 100vh;
     padding: 0 2rem;
