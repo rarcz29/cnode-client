@@ -15,7 +15,7 @@ export const Container = styled.label`
     }
 `;
 
-export const Styledinput = styled.input`
+export const StyledInput = styled.input`
     position: absolute;
     opacity: 0;
     cursor: pointer;
