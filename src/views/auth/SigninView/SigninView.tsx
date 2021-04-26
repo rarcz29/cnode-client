@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { login } from 'actions/authActions';
 import { Button, TextInput } from 'components/common';
 import ValidationErrorMsg from 'components/ValidationErrorMsg';
 import React, { useEffect } from 'react';
@@ -34,7 +35,7 @@ const schema = yup.object().shape({
 
 const inputs: Inputs[] = [
     {
-        placeholder: 'username or password...',
+        placeholder: 'username or email...',
         name: 'userIdentifier',
         type: 'text',
     },
@@ -60,16 +61,9 @@ const SigninView = () => {
         authState.isLoggedIn && navigate('/');
     }, [authState]);
 
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
-    };
+    const onSubmit = async (data: FormInput) =>
+        await dispatch(login(data.userIdentifier, data.password));
 
-    // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-    //     // TODO: form valudation
-    //     await dispatch(login(usernameOrEmail, password));
-    // };
-    // TODO: form submit button
     return (
         <>
             <Header>Sign in</Header>
@@ -114,7 +108,7 @@ const SigninView = () => {
                         disabled={authState.loading}
                         form="auth-form"
                     >
-                        Sign in
+                        {authState.loading ? 'loading...' : 'Sign in'}
                     </Button>
                     <LinksContainer>
                         <StyledLink to="#">Forgot password?</StyledLink>

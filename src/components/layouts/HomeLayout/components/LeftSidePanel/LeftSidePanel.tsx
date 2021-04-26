@@ -75,6 +75,8 @@ const LeftSidePanel = () => {
                     break;
             }
         }
+
+        localStorage.removeItem(LOCAL_STORAGE.PLATFORM_NAME);
     }, []);
 
     return (

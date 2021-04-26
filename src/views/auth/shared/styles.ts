@@ -1,4 +1,5 @@
 import COLORS from 'constants/colors';
+import TRANSITIONS from 'constants/transitions';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -33,10 +34,15 @@ export const BottomLinkContainer = styled.div`
 
 export const StyledLink = styled(Link)`
     font-size: 0.875rem;
+    transition: color ease-in-out ${TRANSITIONS.FAST}ms;
 
     &:link,
     &:visited,
     &:active {
+        color: ${COLORS.FOREGROUND.DARKER};
+    }
+
+    &:hover {
         color: ${COLORS.FOREGROUND.MAIN};
     }
 `;

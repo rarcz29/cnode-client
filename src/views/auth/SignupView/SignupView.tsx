@@ -1,8 +1,12 @@
-import { register } from 'actions/authActions';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { register as registerAction } from 'actions/authActions';
 import { Button, TextInput } from 'components/common';
-import React, { useState } from 'react';
+import ValidationErrorMsg from 'components/ValidationErrorMsg';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from 'store';
+import * as yup from 'yup';
 import {
     BottomContainer,
     BottomLinkContainer,
@@ -12,64 +16,93 @@ import {
 } from '../shared/styles';
 import { LinksContainer } from './styles';
 
+type FormInput = {
+    username: string;
+    email: string;
+    password: string;
+    confirm: string;
+};
+
+type Inputs = {
+    placeholder: string;
+    name: 'username' | 'email' | 'password' | 'confirm';
+    type: string;
+};
+
+const schema = yup.object().shape({
+    username: yup.string().required().min(3).max(100),
+    email: yup.string().required().email().max(65),
+    password: yup.string().required().min(6).max(50),
+    confirm: yup
+        .string()
+        .required()
+        .oneOf([yup.ref('password')], 'Passwords must match'),
+});
+
+const inputs: Inputs[] = [
+    {
+        placeholder: 'username...',
+        name: 'username',
+        type: 'text',
+    },
+    {
+        placeholder: 'email...',
+        name: 'email',
+        type: 'email',
+    },
+    {
+        placeholder: 'password...',
+        name: 'password',
+        type: 'password',
+    },
+    {
+        placeholder: 'confirm...',
+        name: 'confirm',
+        type: 'password',
+    },
+];
+
 const SignupView = () => {
     const dispatch = useDispatch();
     const authState = useSelector((state: RootStore) => state.auth);
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirm, setConfirm] = useState('');
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormInput>({ resolver: yupResolver(schema) });
 
-    const inputs = [
-        {
-            type: 'text',
-            placeholder: 'username...',
-            setFunc: setUsername,
-        },
-        {
-            type: 'email',
-            placeholder: 'email...',
-            setFunc: setEmail,
-        },
-        {
-            type: 'password',
-            placeholder: 'password...',
-            setFunc: setPassword,
-        },
-        {
-            type: 'password',
-            placeholder: 'confirm...',
-            setFunc: setConfirm,
-        },
-    ];
-
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // TODO: form valudation
-        await dispatch(register(username, email, password));
-    };
+    const onSubmit = async (data: FormInput) =>
+        await dispatch(
+            registerAction(data.username, data.email, data.password)
+        );
 
     return (
         <>
             <Header>Sign up</Header>
             <MainContainer>
-                <form id="auth-form" onSubmit={handleSubmit}>
+                <form id="auth-form" onSubmit={handleSubmit(onSubmit)}>
                     {inputs.map((item, index) => (
-                        <TextInput
-                            key={index}
-                            width="100%"
-                            height="40px"
-                            placeholder={item.placeholder}
-                            type={item.type}
-                            onChange={(event) =>
-                                item.setFunc(event.target.value)
-                            }
-                            rounded
-                        />
+                        <>
+                            <TextInput
+                                key={index}
+                                width="100%"
+                                height="40px"
+                                placeholder={item.placeholder}
+                                type={item.type}
+                                {...register(item.name)}
+                            />
+                            <ValidationErrorMsg
+                                message={errors[item.name]?.message}
+                            />
+                        </>
                     ))}
                 </form>
                 <BottomContainer>
-                    <Button form="auth-form" size="big">
+                    <Button
+                        form="auth-form"
+                        size="big"
+                        disabled={authState.loading}
+                    >
                         {authState.loading ? 'loading...' : 'Sign up'}
                     </Button>
                     <LinksContainer>

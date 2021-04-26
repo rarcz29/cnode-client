@@ -19,7 +19,7 @@ const BUTTONS = {
     },
     DARK: {
         MAIN: BACKGROUND.DARK_3,
-        HIGHLIGHT: '#C0C0C0',
+        HIGHLIGHT: BACKGROUND.DARK_2,
     },
 };
 
