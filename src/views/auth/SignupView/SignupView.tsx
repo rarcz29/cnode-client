@@ -20,7 +20,7 @@ const SignupView = () => {
     const [password, setPassword] = useState('');
     const [confirm, setConfirm] = useState('');
 
-    const INPUTS = [
+    const inputs = [
         {
             type: 'text',
             placeholder: 'username...',
@@ -54,7 +54,7 @@ const SignupView = () => {
             <Header>Sign up</Header>
             <MainContainer>
                 <form id="auth-form" onSubmit={handleSubmit}>
-                    {INPUTS.map((item, index) => (
+                    {inputs.map((item, index) => (
                         <TextInput
                             key={index}
                             width="100%"

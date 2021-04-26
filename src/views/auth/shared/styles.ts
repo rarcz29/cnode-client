@@ -11,9 +11,9 @@ export const Header = styled.header`
 `;
 
 export const MainContainer = styled.div`
-    max-width: 367px;
+    width: 367px;
 
-    & > form > * {
+    & > form > p {
         margin-bottom: 1rem;
     }
 `;

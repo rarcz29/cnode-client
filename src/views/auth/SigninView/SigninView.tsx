@@ -1,9 +1,12 @@
-import { login } from 'actions/authActions';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, TextInput } from 'components/common';
-import React, { useEffect, useState } from 'react';
+import ValidationErrorMsg from 'components/ValidationErrorMsg';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootStore } from 'store';
+import * as yup from 'yup';
 import {
     BottomContainer,
     BottomLinkContainer,
@@ -13,29 +16,81 @@ import {
 } from '../shared/styles';
 import { LinksContainer } from './styles';
 
+type FormInput = {
+    userIdentifier: string;
+    password: string;
+};
+
+type Inputs = {
+    placeholder: string;
+    name: 'userIdentifier' | 'password';
+    type: string;
+};
+
+const schema = yup.object().shape({
+    userIdentifier: yup.string().required(),
+    password: yup.string().required(),
+});
+
+const inputs: Inputs[] = [
+    {
+        placeholder: 'username or password...',
+        name: 'userIdentifier',
+        type: 'text',
+    },
+    {
+        placeholder: 'password...',
+        name: 'password',
+        type: 'password',
+    },
+];
+
 const SigninView = () => {
     const dispatch = useDispatch();
     const authState = useSelector((state: RootStore) => state.auth);
     const navigate = useNavigate();
-    const [usernameOrEmail, setUsernameOrEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // TODO: input ref
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormInput>({ resolver: yupResolver(schema) });
 
     useEffect(() => {
         authState.isLoggedIn && navigate('/');
     }, [authState]);
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // TODO: form valudation
-        await dispatch(login(usernameOrEmail, password));
+    const onSubmit = (data: Inputs) => {
+        console.log(data);
     };
+
+    // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault();
+    //     // TODO: form valudation
+    //     await dispatch(login(usernameOrEmail, password));
+    // };
     // TODO: form submit button
     return (
         <>
             <Header>Sign in</Header>
             <MainContainer>
-                <form onSubmit={handleSubmit}>
-                    <TextInput
+                <form id="auth-form" onSubmit={handleSubmit(onSubmit)}>
+                    {inputs.map((item, index) => (
+                        <>
+                            <TextInput
+                                key={index}
+                                width="100%"
+                                height="40px"
+                                placeholder={item.placeholder}
+                                type={item.type}
+                                {...register(item.name)}
+                            />
+                            <ValidationErrorMsg
+                                message={errors[item.name]?.message}
+                            />
+                        </>
+                    ))}
+                    {/* <TextInput
                         width="100%"
                         height="40px"
                         placeholder="username..."
@@ -51,19 +106,24 @@ const SigninView = () => {
                         type="password"
                         onChange={(event) => setPassword(event.target.value)}
                         rounded
-                    />
-                    <BottomContainer>
-                        <Button size="big" disabled={authState.loading}>
-                            Sign in
-                        </Button>
-                        <LinksContainer>
-                            <StyledLink to="#">Forgot password?</StyledLink>
-                            <StyledLink to="../register">
-                                Don’t have an account?
-                            </StyledLink>
-                        </LinksContainer>
-                    </BottomContainer>
+                    /> */}
                 </form>
+                <BottomContainer>
+                    <Button
+                        size="big"
+                        disabled={authState.loading}
+                        form="auth-form"
+                    >
+                        Sign in
+                    </Button>
+                    <LinksContainer>
+                        <StyledLink to="#">Forgot password?</StyledLink>
+                        <StyledLink to="../register">
+                            Don’t have an account?
+                        </StyledLink>
+                    </LinksContainer>
+                </BottomContainer>
+
                 <BottomLinkContainer>
                     <StyledLink to="#">Continue without an account</StyledLink>
                 </BottomLinkContainer>

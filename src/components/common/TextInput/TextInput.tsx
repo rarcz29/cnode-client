@@ -10,6 +10,7 @@ type Props = {
     color?: 'primary' | 'secondary';
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
     rounded?: boolean;
+    name?: string;
 };
 
 const handleColor = (color?: string) => {
