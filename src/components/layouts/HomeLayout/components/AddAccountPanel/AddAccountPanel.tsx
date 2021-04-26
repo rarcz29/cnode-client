@@ -7,6 +7,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, TextInput } from 'components/common';
 import COLORS from 'constants/colors';
+import LOCAL_STORAGE from 'constants/localStorage';
 import PLATFORMS from 'constants/platforms';
 import TRANSITIONS from 'constants/transitions';
 import { useOnClickOutside } from 'hooks';
@@ -60,6 +61,10 @@ const AddAccountPanel: React.FC<FullProps> = ({ show, setShow }) => {
         event.preventDefault();
 
         if (github) {
+            localStorage.setItem(
+                LOCAL_STORAGE.PLATFORM_NAME,
+                LOCAL_STORAGE.GITHUB_VALUE
+            );
             window.location.assign(PLATFORMS.URL.GITHUB + '&login=' + username);
         } else if (bitbucket) {
             alert('not implemented');

@@ -9,8 +9,10 @@ import {
     faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axiosConfig';
 import { CircleButton, TextInput } from 'components/common';
 import COLORS from 'constants/colors';
+import LOCAL_STORAGE from 'constants/localStorage';
 import { useQueryString } from 'hooks';
 import React, { useEffect, useState } from 'react';
 import AddAccountPanel from '../AddAccountPanel';
@@ -21,15 +23,58 @@ import {
     SearchAndFilter,
 } from './styles';
 
+// TODO: refactor
+
+type RepoData = {
+    title: string;
+};
+
+type AccountData = {
+    username: string;
+    repos: RepoData[];
+};
+
 const LeftSidePanel = () => {
     const queryString = useQueryString();
     const [showGithub, setShowGithub] = useState(true);
     const [showBitbucket, setShowBitbucket] = useState(true);
     const [showGitlab, setShowGitlab] = useState(true);
     const [showAddAccountPanel, setShowAddAccountPanel] = useState(false);
+    const [accounts, setAccounts] = useState<AccountData[]>([]);
+
+    const handleGithubConnection = (code: string) => {
+        axios
+            .post('github/auth/account', { code })
+            .then((response) =>
+                setAccounts((prev) => [
+                    ...prev,
+                    { username: response.data.username, repos: [] },
+                ])
+            );
+    };
+
+    const handleBitbucketConnection = (code: string) => {};
+
+    const handleGitlabConnection = (code: string) => {};
 
     useEffect(() => {
-        console.log(queryString.get('error'));
+        const code = queryString.get('code');
+
+        if (code) {
+            const platform = localStorage.getItem(LOCAL_STORAGE.PLATFORM_NAME);
+
+            switch (platform) {
+                case LOCAL_STORAGE.GITHUB_VALUE:
+                    handleGithubConnection(code);
+                    break;
+                case LOCAL_STORAGE.BITBUCKET_VALUE:
+                    handleBitbucketConnection(code);
+                    break;
+                case LOCAL_STORAGE.GITLAB_VALUE:
+                    handleGitlabConnection(code);
+                    break;
+            }
+        }
     }, []);
 
     return (
@@ -86,7 +131,11 @@ const LeftSidePanel = () => {
                             icon={faUserPlus}
                         />
                     }
-                ></SideSection>
+                >
+                    {accounts.map((account, index) => (
+                        <div key={index}>{account.username}</div>
+                    ))}
+                </SideSection>
             )}
             {showBitbucket && <SideSection header="Bitbucket"></SideSection>}
             {showGitlab && <SideSection header="GitLab"></SideSection>}
