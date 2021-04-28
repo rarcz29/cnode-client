@@ -78,29 +78,13 @@ const SigninView = () => {
                                 placeholder={item.placeholder}
                                 type={item.type}
                                 {...register(item.name)}
+                                rounded
                             />
                             <ValidationErrorMsg
                                 message={errors[item.name]?.message}
                             />
                         </>
                     ))}
-                    {/* <TextInput
-                        width="100%"
-                        height="40px"
-                        placeholder="username..."
-                        onChange={(event) =>
-                            setUsernameOrEmail(event.target.value)
-                        }
-                        rounded
-                    />
-                    <TextInput
-                        width="100%"
-                        height="40px"
-                        placeholder="password..."
-                        type="password"
-                        onChange={(event) => setPassword(event.target.value)}
-                        rounded
-                    /> */}
                 </form>
                 <BottomContainer>
                     <Button

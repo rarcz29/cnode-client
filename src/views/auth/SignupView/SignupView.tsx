@@ -90,6 +90,7 @@ const SignupView = () => {
                                 placeholder={item.placeholder}
                                 type={item.type}
                                 {...register(item.name)}
+                                rounded
                             />
                             <ValidationErrorMsg
                                 message={errors[item.name]?.message}
