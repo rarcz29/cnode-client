@@ -9,7 +9,7 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import { MainNav, Right, StyledHeader, UserContainer } from './styles';
 
-const MAIN_NAVBAR_ITEMS = [
+const mainNavbarItems = [
     { icon: faHome, href: '#' },
     { icon: faUsers, href: '#' },
     { icon: faInfoCircle, href: '#' },
@@ -22,9 +22,9 @@ const MainLayout = () => {
                 LOGO
                 <MainNav>
                     <ul>
-                        {MAIN_NAVBAR_ITEMS.map((item, index) => (
+                        {mainNavbarItems.map((item, index) => (
                             <li>
-                                <FontAwesomeIcon icon={item.icon} />
+                                <FontAwesomeIcon key={index} icon={item.icon} />
                             </li>
                         ))}
                     </ul>
