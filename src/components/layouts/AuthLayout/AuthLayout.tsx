@@ -6,13 +6,10 @@ import { AuthContainer, AuthContent, AuthImage } from './styles';
 
 const AuthLayout = () => {
     const isLaptop = useMediaQuery(BREAKPOINTS.laptop);
-    const isTablet = useMediaQuery(BREAKPOINTS.tablet);
-    const isMobile = useMediaQuery(BREAKPOINTS.mobileM);
 
     return (
         <AuthContainer>
             {isLaptop && <AuthImage />}
-
             <AuthContent>
                 <Outlet />
             </AuthContent>
