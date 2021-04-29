@@ -2,6 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { login } from 'actions/authActions';
 import { Button, TextInput } from 'components/common';
 import ValidationErrorMsg from 'components/ValidationErrorMsg';
+import { BREAKPOINTS } from 'constants/breakpoints';
+import { useMediaQuery } from 'hooks';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,6 +49,8 @@ const inputs: Inputs[] = [
 ];
 
 const SigninView = () => {
+    const isLaptop = useMediaQuery(BREAKPOINTS.laptop);
+    const isMobileM = useMediaQuery(BREAKPOINTS.mobileM);
     const dispatch = useDispatch();
     const authState = useSelector((state: RootStore) => state.auth);
     const navigate = useNavigate();
@@ -66,7 +70,7 @@ const SigninView = () => {
 
     return (
         <>
-            <Header>Sign in</Header>
+            {isLaptop && <Header>Sign in</Header>}
             <MainContainer>
                 <form id="auth-form" onSubmit={handleSubmit(onSubmit)}>
                     {inputs.map((item, index) => (
@@ -99,7 +103,7 @@ const SigninView = () => {
                     <LinksContainer>
                         <StyledLink to="#">Forgot password?</StyledLink>
                         <StyledLink to="../register">
-                            Don’t have an account?
+                            {isMobileM ? 'Don’t have an account' : 'Sign up'}
                         </StyledLink>
                     </LinksContainer>
                 </BottomContainer>

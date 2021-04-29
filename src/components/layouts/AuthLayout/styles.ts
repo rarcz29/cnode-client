@@ -1,4 +1,5 @@
 import authImg from 'assets/auth-img.jpg';
+import { BREAKPOINTS_MQ } from 'constants/breakpoints';
 import styled from 'styled-components';
 
 export const AuthContainer = styled.div`
@@ -23,4 +24,8 @@ export const AuthContent = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
+
+    @media ${BREAKPOINTS_MQ.laptop} {
+        width: 100%;
+    }
 `;

@@ -1,6 +1,5 @@
 import { Container } from 'components/common';
 import DIMENSIONS from 'constants/dimensions';
-import { useMediaQuery } from 'hooks';
 import React from 'react';
 import { Outlet } from 'react-router';
 import LeftSidePanel from './components/LeftSidePanel';
@@ -9,8 +8,6 @@ import RightSidePanel from './components/RightSidePanel';
 import { LayoutContainer, LayoutContent, PageContent } from './styles';
 
 const HomeLayout = () => {
-    const isPageWide = useMediaQuery(1300, 'min');
-
     return (
         <LayoutContainer>
             <LeftSidePanel />
@@ -22,7 +19,7 @@ const HomeLayout = () => {
                     </Container>
                 </PageContent>
             </LayoutContent>
-            {isPageWide && <RightSidePanel />}
+            <RightSidePanel />
         </LayoutContainer>
     );
 };

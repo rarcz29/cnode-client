@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 
-const useMediaQuery = (size: number, type: 'min' | 'max'): boolean => {
+const useMediaQuery = (query: string): boolean => {
     const [matches, setMatches] = useState(false);
-
-    const query = `(${type}-width: ${size}px)`;
 
     useEffect(() => {
         const media = window.matchMedia(query);

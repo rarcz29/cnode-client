@@ -1,3 +1,4 @@
+import { BREAKPOINTS_MQ } from 'constants/breakpoints';
 import COLORS from 'constants/colors';
 import TRANSITIONS from 'constants/transitions';
 import { Link } from 'react-router-dom';
@@ -16,6 +17,12 @@ export const MainContainer = styled.div`
 
     & > form > * {
         margin-bottom: 1rem;
+    }
+
+    @media ${BREAKPOINTS_MQ.mobileL} {
+        width: calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
     }
 `;
 
