@@ -4,6 +4,7 @@ import DIMENSIONS from 'constants/dimensions';
 import { useMediaQuery } from 'hooks';
 import React from 'react';
 import { Outlet } from 'react-router';
+import BottomNav from './components/BottomNav';
 import LeftSidePanel from './components/LeftSidePanel';
 import Navbar from './components/Navbar';
 import RightSidePanel from './components/RightSidePanel';
@@ -27,6 +28,7 @@ const HomeLayout = () => {
                 </PageContent>
             </LayoutContent>
             {isLaptopM && <RightSidePanel />}
+            {!isMobileL && <BottomNav />}
         </LayoutContainer>
     );
 };

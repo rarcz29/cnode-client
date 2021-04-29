@@ -17,7 +17,7 @@ export const LayoutContent = styled.div`
     @media ${BREAKPOINTS_MQ.laptop} {
         width: calc(100% - 60px);
         margin-left: 60px;
-        margin-bottom: 100px;
+        margin-bottom: 70px;
     }
 
     @media ${BREAKPOINTS_MQ.mobileL} {
