@@ -14,7 +14,7 @@ export const Header = styled.header`
 export const MainContainer = styled.div`
     width: 367px;
 
-    & > form > p {
+    & > form > * {
         margin-bottom: 1rem;
     }
 `;

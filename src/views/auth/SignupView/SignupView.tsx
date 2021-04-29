@@ -92,9 +92,11 @@ const SignupView = () => {
                                 {...register(item.name)}
                                 rounded
                             />
-                            <ValidationErrorMsg
-                                message={errors[item.name]?.message}
-                            />
+                            {errors[item.name] && (
+                                <ValidationErrorMsg
+                                    message={errors[item.name]?.message}
+                                />
+                            )}
                         </>
                     ))}
                 </form>
