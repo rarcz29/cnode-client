@@ -13,6 +13,11 @@ export const LayoutContent = styled.div`
     @media ${BREAKPOINTS_MQ.laptopM} {
         width: calc(100% - ${DIMENSIONS.SIDE_PANEL_WIDTH}px);
     }
+
+    @media ${BREAKPOINTS_MQ.laptop} {
+        width: calc(100% - 60px);
+        margin-left: 60px;
+    }
 `;
 
 export const PageContent = styled.div`

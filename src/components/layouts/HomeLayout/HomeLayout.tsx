@@ -11,12 +11,15 @@ import { LayoutContainer, LayoutContent, PageContent } from './styles';
 
 const HomeLayout = () => {
     const isLaptopM = useMediaQuery(BREAKPOINTS.laptopM);
+    const isLaptop = useMediaQuery(BREAKPOINTS.laptop);
+    const isTablet = useMediaQuery(BREAKPOINTS.tablet);
+    const isMobileL = useMediaQuery(BREAKPOINTS.mobileL);
 
     return (
         <LayoutContainer>
-            <LeftSidePanel />
+            {isMobileL && <LeftSidePanel laptop={isLaptop} />}
             <LayoutContent>
-                <Navbar />
+                {isTablet && <Navbar />}
                 <PageContent>
                     <Container width={DIMENSIONS.HOME_PAGE_WIDTH + 'px'}>
                         <Outlet />

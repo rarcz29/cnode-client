@@ -23,8 +23,8 @@ const MainLayout = () => {
                 <MainNav>
                     <ul>
                         {mainNavbarItems.map((item, index) => (
-                            <li>
-                                <FontAwesomeIcon key={index} icon={item.icon} />
+                            <li key={index}>
+                                <FontAwesomeIcon icon={item.icon} />
                             </li>
                         ))}
                     </ul>

@@ -13,17 +13,22 @@ import axios from 'axiosConfig';
 import { CircleButton, TextInput } from 'components/common';
 import COLORS from 'constants/colors';
 import LOCAL_STORAGE from 'constants/localStorage';
-import { useQueryString } from 'hooks';
-import React, { useEffect, useState } from 'react';
+import { useOnClickOutside, useQueryString } from 'hooks';
+import React, { useEffect, useRef, useState } from 'react';
 import AddAccountPanel from '../AddAccountPanel';
 import SideSection from '../SideSection';
 import {
     AddBtAndFiltersContainer,
+    HiddenPanel,
     LSidePanel,
     SearchAndFilter,
 } from './styles';
 
 // TODO: refactor
+
+type LeftSidePanelProps = {
+    laptop: boolean;
+};
 
 type RepoData = {
     title: string;
@@ -34,13 +39,16 @@ type AccountData = {
     repos: RepoData[];
 };
 
-const LeftSidePanel = () => {
+const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
+    const refa = useRef(null);
     const queryString = useQueryString();
+    const [isLeftPanelHidden, setIsLeftPanelHidden] = useState(true);
     const [showGithub, setShowGithub] = useState(true);
     const [showBitbucket, setShowBitbucket] = useState(true);
     const [showGitlab, setShowGitlab] = useState(true);
     const [showAddAccountPanel, setShowAddAccountPanel] = useState(false);
     const [accounts, setAccounts] = useState<AccountData[]>([]);
+    useOnClickOutside(refa, () => setIsLeftPanelHidden(true));
 
     const handleGithubConnection = (code: string) => {
         axios
@@ -80,73 +88,91 @@ const LeftSidePanel = () => {
     }, []);
 
     return (
-        <LSidePanel>
-            <SearchAndFilter>
-                <TextInput
-                    placeholder="Find a repository..."
-                    width="100%"
-                    rounded
-                ></TextInput>
-                <AddBtAndFiltersContainer>
+        <LSidePanel isHidden={isLeftPanelHidden} ref={refa}>
+            {!props.laptop && isLeftPanelHidden ? (
+                <HiddenPanel>
                     <CircleButton
-                        fontSize="0.875rem"
+                        onClick={() => setIsLeftPanelHidden(false)}
                         backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
                         highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
-                        color={COLORS.FOREGROUND.MAIN}
-                        to="new"
                     >
-                        <FontAwesomeIcon icon={faPlus} />
+                        x
                     </CircleButton>
-                    <CircleButton
-                        checked={showGithub}
-                        onClick={() => setShowGithub((prev) => !prev)}
+                </HiddenPanel>
+            ) : (
+                <>
+                    <SearchAndFilter>
+                        <TextInput
+                            placeholder="Find a repository..."
+                            width="100%"
+                            rounded
+                        ></TextInput>
+                        <AddBtAndFiltersContainer>
+                            <CircleButton
+                                fontSize="0.875rem"
+                                backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
+                                highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
+                                color={COLORS.FOREGROUND.MAIN}
+                                to="new"
+                            >
+                                <FontAwesomeIcon icon={faPlus} />
+                            </CircleButton>
+                            <CircleButton
+                                checked={showGithub}
+                                onClick={() => setShowGithub((prev) => !prev)}
+                            >
+                                <FontAwesomeIcon icon={faGithub} />
+                            </CircleButton>
+                            <CircleButton
+                                checked={showBitbucket}
+                                onClick={() =>
+                                    setShowBitbucket((prev) => !prev)
+                                }
+                            >
+                                <FontAwesomeIcon icon={faBitbucket} />
+                            </CircleButton>
+                            <CircleButton
+                                checked={showGitlab}
+                                onClick={() => setShowGitlab((prev) => !prev)}
+                            >
+                                <FontAwesomeIcon icon={faGitlab} />
+                            </CircleButton>
+                            <CircleButton
+                                fontSize="0.875rem"
+                                backgroundColor={COLORS.BUTTONS.DARK.MAIN}
+                                highlightColor={COLORS.BUTTONS.DARK.HIGHLIGHT}
+                            >
+                                <FontAwesomeIcon icon={faFilter} />
+                            </CircleButton>
+                        </AddBtAndFiltersContainer>
+                    </SearchAndFilter>
+                    {showGithub && (
+                        <SideSection
+                            header="GitHub"
+                            icons={
+                                <FontAwesomeIcon
+                                    onClick={() => setShowAddAccountPanel(true)}
+                                    icon={faUserPlus}
+                                />
+                            }
+                        >
+                            {accounts.map((account, index) => (
+                                <div key={index}>{account.username}</div>
+                            ))}
+                        </SideSection>
+                    )}
+                    {showBitbucket && (
+                        <SideSection header="Bitbucket"></SideSection>
+                    )}
+                    {showGitlab && <SideSection header="GitLab"></SideSection>}
+                    <AddAccountPanel
+                        show={showAddAccountPanel}
+                        setShow={setShowAddAccountPanel}
                     >
-                        <FontAwesomeIcon icon={faGithub} />
-                    </CircleButton>
-                    <CircleButton
-                        checked={showBitbucket}
-                        onClick={() => setShowBitbucket((prev) => !prev)}
-                    >
-                        <FontAwesomeIcon icon={faBitbucket} />
-                    </CircleButton>
-                    <CircleButton
-                        checked={showGitlab}
-                        onClick={() => setShowGitlab((prev) => !prev)}
-                    >
-                        <FontAwesomeIcon icon={faGitlab} />
-                    </CircleButton>
-                    <CircleButton
-                        fontSize="0.875rem"
-                        backgroundColor={COLORS.BUTTONS.DARK.MAIN}
-                        highlightColor={COLORS.BUTTONS.DARK.HIGHLIGHT}
-                    >
-                        <FontAwesomeIcon icon={faFilter} />
-                    </CircleButton>
-                </AddBtAndFiltersContainer>
-            </SearchAndFilter>
-            {showGithub && (
-                <SideSection
-                    header="GitHub"
-                    icons={
-                        <FontAwesomeIcon
-                            onClick={() => setShowAddAccountPanel(true)}
-                            icon={faUserPlus}
-                        />
-                    }
-                >
-                    {accounts.map((account, index) => (
-                        <div key={index}>{account.username}</div>
-                    ))}
-                </SideSection>
+                        asdf
+                    </AddAccountPanel>
+                </>
             )}
-            {showBitbucket && <SideSection header="Bitbucket"></SideSection>}
-            {showGitlab && <SideSection header="GitLab"></SideSection>}
-            <AddAccountPanel
-                show={showAddAccountPanel}
-                setShow={setShowAddAccountPanel}
-            >
-                asdf
-            </AddAccountPanel>
         </LSidePanel>
     );
 };
