@@ -1,6 +1,6 @@
 import { AuthLayout, HomeLayout, MainLayout } from 'components/layouts';
 import { Navigate } from 'react-router-dom';
-import { NewRepoView, SigninView, SignupView } from 'views';
+import { InfoView, NewRepoView, SigninView, SignupView } from 'views';
 
 const routes = (isLoggedIn: boolean) => [
     {
@@ -10,7 +10,10 @@ const routes = (isLoggedIn: boolean) => [
             {
                 path: '/',
                 element: <HomeLayout />,
-                children: [{ path: 'new', element: <NewRepoView /> }],
+                children: [
+                    { path: '/', element: <InfoView /> },
+                    { path: 'new', element: <NewRepoView /> },
+                ],
             },
         ],
     },

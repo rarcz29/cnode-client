@@ -6,7 +6,7 @@ const InfoWrapper = styled.section`
     width: 100%;
     border-radius: 1rem;
     padding: 1rem;
-    border-color: red;
+    border: 1px solid red;
 `;
 
 const Header = styled.header`
@@ -21,7 +21,7 @@ const StyledParagraph = styled.p`
 const Info = () => {
     return (
         <InfoWrapper>
-            <header>You don’t have any connected accounts.</header>
+            <Header>You don’t have any connected accounts.</Header>
             <StyledParagraph>
                 Use the panel from the bottom right corner to add an account
                 from: GitHub, Bitbucket or GitLab
