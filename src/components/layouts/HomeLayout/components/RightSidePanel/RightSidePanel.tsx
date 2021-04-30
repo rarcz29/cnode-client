@@ -14,14 +14,14 @@ const RSidePanel = styled.aside`
     border-left: 1px solid ${COLORS.LAYOUT_SEPARATOR};
 `;
 
-const CONTACTS = [
+const contacts = [
     { name: 'Carter Aminoff' },
     { name: 'Kaiya Rhiel Madsen' },
     { name: 'Jaydon Geidt' },
     { name: 'Miracle George' },
 ];
 
-const TEAMS = [{ name: 'Remarkable Bears' }, { name: 'Remarkable Guppies' }];
+const teams = [{ name: 'Remarkable Bears' }, { name: 'Remarkable Guppies' }];
 
 const RightSidePanel = () => {
     return (
@@ -29,14 +29,14 @@ const RightSidePanel = () => {
             <SideSection
                 headerItem={<SidePanelItem text="Contacts" fontSize="bigger" />}
             >
-                {CONTACTS.map((item, index) => (
+                {contacts.map((item, index) => (
                     <Contact key={index} name={item.name} />
                 ))}
             </SideSection>
             <SideSection
                 headerItem={<SidePanelItem text="Teams" fontSize="bigger" />}
             >
-                {TEAMS.map((item, index) => (
+                {teams.map((item, index) => (
                     <Contact key={index} name={item.name} />
                 ))}
             </SideSection>

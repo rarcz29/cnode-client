@@ -1,19 +1,32 @@
-import { AuthLayout, HomeLayout, MainLayout } from 'components/layouts';
+import {
+    AuthLayout,
+    CommunityLayout,
+    HomeLayout,
+    MainLayout,
+} from 'components/layouts';
 import { Navigate } from 'react-router-dom';
 import { InfoView, NewRepoView, SigninView, SignupView } from 'views';
 
 const routes = (isLoggedIn: boolean) => [
     {
         path: '/',
-        element: isLoggedIn ? <MainLayout /> : <Navigate to="auth/login" />,
+        element: <MainLayout />,
         children: [
             {
                 path: '/',
-                element: <HomeLayout />,
+                element: isLoggedIn ? (
+                    <HomeLayout />
+                ) : (
+                    <Navigate to="auth/login" />
+                ),
                 children: [
                     { path: '/', element: <InfoView /> },
                     { path: 'new', element: <NewRepoView /> },
                 ],
+            },
+            {
+                path: 'community',
+                element: <CommunityLayout />,
             },
         ],
     },
