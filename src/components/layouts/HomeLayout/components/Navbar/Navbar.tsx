@@ -1,6 +1,7 @@
 import { Container } from 'components/common';
 import DIMENSIONS from 'constants/dimensions';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { NavBarExternal, NavBarInternal } from './styles';
 
 const NAVBAR_ITEMS = [
@@ -21,7 +22,9 @@ const Navbar = () => {
                 <NavBarInternal>
                     <ul>
                         {NAVBAR_ITEMS.map((item, index) => (
-                            <li key={index}>{item.text}</li>
+                            <li key={index}>
+                                <Link to="#">{item.text}</Link>
+                            </li>
                         ))}
                     </ul>
                 </NavBarInternal>

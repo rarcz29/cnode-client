@@ -24,6 +24,7 @@ export const LSidePanel = styled.aside<LSidePanelProps>`
         width: ${(props: LSidePanelProps) =>
             props.isHidden ? '60px' : DIMENSIONS.SIDE_PANEL_WIDTH + 'px'};
         position: fixed;
+        background-color: ${COLORS.BACKGROUND.DARK_2};
     }
 `;
 

@@ -1,5 +1,6 @@
 import COLORS from 'constants/colors';
 import DIMENSIONS from 'constants/dimensions';
+import TRANSITIONS from 'constants/transitions';
 import styled from 'styled-components';
 
 export const NavBarExternal = styled.div`
@@ -26,6 +27,21 @@ export const NavBarInternal = styled.header`
 
             &:last-child {
                 margin-right: 0;
+            }
+
+            & > a {
+                transition: color ease-in-out ${TRANSITIONS.FAST}ms;
+
+                &:link,
+                &:visited,
+                &:active {
+                    text-decoration: none;
+                    color: ${COLORS.FOREGROUND.DARKER};
+                }
+
+                &:hover {
+                    color: ${COLORS.FOREGROUND.MAIN};
+                }
             }
         }
     }
