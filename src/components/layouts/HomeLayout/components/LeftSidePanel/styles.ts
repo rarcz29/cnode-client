@@ -51,6 +51,10 @@ export const SearchAndFilter = styled.div`
     }
 `;
 
+export const AccountContainer = styled.div`
+    margin: 0 1rem;
+`;
+
 export const AddBtAndFiltersContainer = styled.div`
     display: flex;
     justify-content: space-between;

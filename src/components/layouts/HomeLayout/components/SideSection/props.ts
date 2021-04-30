@@ -1,9 +1,5 @@
-export interface ContainerProps {
-    type?: 'first' | 'second';
-}
+import React from 'react';
 
-export default interface SideSectionProps extends ContainerProps {
-    header: string;
-    children?: React.ReactNode;
-    icons?: React.ReactNode;
-}
+export type SideSectionProps = {
+    headerItem?: React.ReactNode;
+};

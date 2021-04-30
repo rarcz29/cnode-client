@@ -5,12 +5,17 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {
     faFilter,
+    faGlobe,
+    faLink,
+    faLock,
     faPlus,
+    faStar,
     faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axiosConfig';
 import { CircleButton, TextInput } from 'components/common';
+import SidePanelItem from 'components/SidePanelItem';
 import COLORS from 'constants/colors';
 import LOCAL_STORAGE from 'constants/localStorage';
 import { useOnClickOutside, useQueryString } from 'hooks';
@@ -18,6 +23,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AddAccountPanel from '../AddAccountPanel';
 import SideSection from '../SideSection';
 import {
+    AccountContainer,
     AddBtAndFiltersContainer,
     HiddenPanel,
     LSidePanel,
@@ -146,25 +152,92 @@ const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
                             </CircleButton>
                         </AddBtAndFiltersContainer>
                     </SearchAndFilter>
-                    {showGithub && (
-                        <SideSection
-                            header="GitHub"
-                            icons={
-                                <FontAwesomeIcon
-                                    onClick={() => setShowAddAccountPanel(true)}
-                                    icon={faUserPlus}
-                                />
-                            }
-                        >
-                            {accounts.map((account, index) => (
-                                <div key={index}>{account.username}</div>
-                            ))}
-                        </SideSection>
-                    )}
-                    {showBitbucket && (
-                        <SideSection header="Bitbucket"></SideSection>
-                    )}
-                    {showGitlab && <SideSection header="GitLab"></SideSection>}
+                    <AccountContainer>
+                        {showGithub && (
+                            <SideSection
+                                headerItem={
+                                    <SidePanelItem
+                                        text="GitHub"
+                                        fontSize="bigger"
+                                        buttons={[
+                                            <FontAwesomeIcon
+                                                icon={faUserPlus}
+                                            />,
+                                        ]}
+                                    />
+                                }
+                            >
+                                {accounts.map((account, index) => (
+                                    <div key={index}>{account.username}</div>
+                                ))}
+                            </SideSection>
+                        )}
+                        {showBitbucket && (
+                            <SideSection
+                                headerItem={
+                                    <SidePanelItem
+                                        text="Bitbucket"
+                                        fontSize="bigger"
+                                        buttons={[
+                                            <FontAwesomeIcon
+                                                icon={faUserPlus}
+                                            />,
+                                        ]}
+                                    />
+                                }
+                            >
+                                <SideSection
+                                    headerItem={
+                                        <SidePanelItem
+                                            text="username"
+                                            textColor="secondary"
+                                            buttons={[
+                                                <FontAwesomeIcon
+                                                    icon={faLink}
+                                                />,
+                                            ]}
+                                        />
+                                    }
+                                >
+                                    <SidePanelItem
+                                        icon={
+                                            <FontAwesomeIcon icon={faGlobe} />
+                                        }
+                                        text="reponame"
+                                        textColor="primary"
+                                        buttons={[
+                                            <FontAwesomeIcon icon={faLink} />,
+                                            <FontAwesomeIcon icon={faStar} />,
+                                        ]}
+                                    />
+                                    <SidePanelItem
+                                        icon={<FontAwesomeIcon icon={faLock} />}
+                                        text="reponame"
+                                        textColor="primary"
+                                        buttons={[
+                                            <FontAwesomeIcon icon={faLink} />,
+                                            <FontAwesomeIcon icon={faStar} />,
+                                        ]}
+                                    />
+                                </SideSection>
+                            </SideSection>
+                        )}
+                        {showGitlab && (
+                            <SideSection
+                                headerItem={
+                                    <SidePanelItem
+                                        text="GitLab"
+                                        fontSize="bigger"
+                                        buttons={[
+                                            <FontAwesomeIcon
+                                                icon={faUserPlus}
+                                            />,
+                                        ]}
+                                    />
+                                }
+                            ></SideSection>
+                        )}
+                    </AccountContainer>
                     <AddAccountPanel
                         show={showAddAccountPanel}
                         setShow={setShowAddAccountPanel}

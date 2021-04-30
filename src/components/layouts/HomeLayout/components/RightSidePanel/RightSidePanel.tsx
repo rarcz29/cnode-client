@@ -1,4 +1,5 @@
 import Contact from 'components/Contact';
+import SidePanelItem from 'components/SidePanelItem';
 import COLORS from 'constants/colors';
 import DIMENSIONS from 'constants/dimensions';
 import React from 'react';
@@ -25,12 +26,16 @@ const TEAMS = [{ name: 'Remarkable Bears' }, { name: 'Remarkable Guppies' }];
 const RightSidePanel = () => {
     return (
         <RSidePanel>
-            <SideSection header="Contacts">
+            <SideSection
+                headerItem={<SidePanelItem text="Contacts" fontSize="bigger" />}
+            >
                 {CONTACTS.map((item, index) => (
                     <Contact key={index} name={item.name} />
                 ))}
             </SideSection>
-            <SideSection header="Teams">
+            <SideSection
+                headerItem={<SidePanelItem text="Teams" fontSize="bigger" />}
+            >
                 {TEAMS.map((item, index) => (
                     <Contact key={index} name={item.name} />
                 ))}

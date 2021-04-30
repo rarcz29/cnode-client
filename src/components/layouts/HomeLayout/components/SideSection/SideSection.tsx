@@ -1,19 +1,11 @@
 import React from 'react';
-import SideSectionProps from './props';
+import { SideSectionProps } from './props';
 import { Content, StyledSection } from './styles';
 
-const SideSection: React.FC<SideSectionProps> = ({
-    header,
-    type,
-    children,
-    icons,
-}) => {
+const SideSection: React.FC<SideSectionProps> = ({ children, headerItem }) => {
     return (
-        <StyledSection type={type}>
-            <header>
-                <h1>{header}</h1>
-                <div>{icons}</div>
-            </header>
+        <StyledSection>
+            {headerItem}
             <Content>{children}</Content>
         </StyledSection>
     );
