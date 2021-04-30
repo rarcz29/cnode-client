@@ -57,5 +57,14 @@ export const MainNav = styled.nav`
         display: flex;
         justify-content: space-between;
         font-size: 1.5rem;
+
+        & > li > * {
+            transition: color ease-in-out ${TRANSITIONS.FAST}ms;
+
+            &:hover {
+                color: ${COLORS.MAIN_COLOR};
+                cursor: pointer;
+            }
+        }
     }
 `;
