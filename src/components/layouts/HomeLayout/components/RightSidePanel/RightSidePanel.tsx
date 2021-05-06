@@ -12,6 +12,10 @@ const RSidePanel = styled.aside`
     width: ${DIMENSIONS.SIDE_PANEL_WIDTH}px;
     height: calc(100vh - ${DIMENSIONS.HEADER_HEIGHT}px);
     border-left: 1px solid ${COLORS.LAYOUT_SEPARATOR};
+
+    & > div {
+        margin: 1rem;
+    }
 `;
 
 const contacts = [
@@ -26,20 +30,26 @@ const teams = [{ name: 'Remarkable Bears' }, { name: 'Remarkable Guppies' }];
 const RightSidePanel = () => {
     return (
         <RSidePanel>
-            <SideSection
-                headerItem={<SidePanelItem text="Contacts" fontSize="bigger" />}
-            >
-                {contacts.map((item, index) => (
-                    <Contact key={index} name={item.name} />
-                ))}
-            </SideSection>
-            <SideSection
-                headerItem={<SidePanelItem text="Teams" fontSize="bigger" />}
-            >
-                {teams.map((item, index) => (
-                    <Contact key={index} name={item.name} />
-                ))}
-            </SideSection>
+            <div>
+                <SideSection
+                    headerItem={
+                        <SidePanelItem text="Contacts" fontSize="bigger" />
+                    }
+                >
+                    {contacts.map((item, index) => (
+                        <Contact key={index} name={item.name} />
+                    ))}
+                </SideSection>
+                <SideSection
+                    headerItem={
+                        <SidePanelItem text="Teams" fontSize="bigger" />
+                    }
+                >
+                    {teams.map((item, index) => (
+                        <Contact key={index} name={item.name} />
+                    ))}
+                </SideSection>
+            </div>
         </RSidePanel>
     );
 };
