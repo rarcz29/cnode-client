@@ -50,13 +50,13 @@ const NewRepoView = () => {
             </StyledPageHeader>
             <StyledSection>
                 <h1>Repository name</h1>
-                <TextInput placeholder="name..." rounded />
+                <TextInput placeholder="name..." />
             </StyledSection>
             <StyledSection>
                 <h1>
                     Repository description <span>(optional)</span>
                 </h1>
-                <TextInput placeholder="description..." width="100%" rounded />
+                <TextInput placeholder="description..." width="100%" />
             </StyledSection>
             <StyledSection>
                 <h1>Technologies</h1>
@@ -64,11 +64,7 @@ const NewRepoView = () => {
                     Make it easier for other users to find your repository.
                     Select technologies you will be using.
                 </p>
-                <TextInput
-                    innerRef={technologyInput}
-                    placeholder="search..."
-                    rounded
-                />
+                <TextInput innerRef={technologyInput} placeholder="search..." />
                 <ChipsContainer></ChipsContainer>
                 <ChipsContainer></ChipsContainer>
             </StyledSection>
@@ -82,7 +78,7 @@ const NewRepoView = () => {
             </StyledSection>
             <StyledSection>
                 <h1>Account</h1>
-                <TextInput placeholder="account..." rounded />
+                <TextInput placeholder="account..." />
             </StyledSection>
             <StyledSection>
                 <h1>Access level</h1>
