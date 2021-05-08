@@ -3,12 +3,13 @@ interface ILinkable {
 }
 
 export interface IRepository extends ILinkable {
-    repoName: string;
+    name: string;
     description: string;
+    originurl: string;
     private: boolean;
 }
 
 export interface IAccount extends ILinkable {
-    accountName: string;
-    repositories: IRepository[];
+    login: string;
+    repos: IRepository[];
 }

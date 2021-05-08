@@ -32,18 +32,12 @@ const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
     const [showBitbucket, setShowBitbucket] = useState(true);
     const [showGitlab, setShowGitlab] = useState(true);
     const [showAddAccountPanel, setShowAddAccountPanel] = useState(false);
-    const [accounts, setAccounts] = useState<AccountData[]>([]);
     useOnClickOutside(ref, () => setIsLeftPanelHidden(true));
 
     const handleGithubConnection = (code: string) => {
-        axios
-            .post('github/auth/account', { code })
-            .then((response) =>
-                setAccounts((prev) => [
-                    ...prev,
-                    { username: response.data.username, repos: [] },
-                ])
-            );
+        axios.post('github/account', { code }).then((response) => {
+            console.log(response.data);
+        });
     };
 
     const handleBitbucketConnection = (code: string) => {};
@@ -98,6 +92,7 @@ const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
                         showGithub={showGithub}
                         showBitbucket={showBitbucket}
                         showGitlab={showGitlab}
+                        setAddAccountPanel={setShowAddAccountPanel}
                     />
                     <AddAccountPanel
                         show={showAddAccountPanel}
