@@ -3,7 +3,7 @@ const REGISTER = '/auth/register';
 const REFRESH = '/auth/refresh';
 
 // TODO: urls
-const LOAD_GITHUB = '';
+const LOAD_GITHUB = '/github';
 const LOAD_BITBUCKET = '';
 const LOAD_GITLAB = '';
 

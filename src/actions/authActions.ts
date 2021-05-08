@@ -71,6 +71,8 @@ export const login = (usernameOrEmail: string, password: string) => async (
     }
 };
 
+interface IState {}
+
 export const refresh = () => async (dispatch: Dispatch<AuthDispatchTypes>) => {
     try {
         dispatch({
@@ -104,6 +106,8 @@ export const refresh = () => async (dispatch: Dispatch<AuthDispatchTypes>) => {
                     ...newTokens,
                 },
             });
+
+            console.log(2); // TODO: remove
         } else {
             // TODO: refactor
             dispatch({

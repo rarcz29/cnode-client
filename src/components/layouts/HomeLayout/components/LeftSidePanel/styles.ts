@@ -35,29 +35,3 @@ export const HiddenPanel = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
-export const SearchAndFilter = styled.div`
-    padding: 1rem;
-    border-bottom: 1px solid ${COLORS.LAYOUT_SEPARATOR};
-    overflow: hidden;
-    transition: height ease-in-out ${TRANSITIONS.FAST}ms;
-
-    & > * {
-        margin-bottom: 1.375rem;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-`;
-
-export const AccountContainer = styled.div`
-    margin: 0 1rem;
-`;
-
-export const AddBtAndFiltersContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    transition: width ease-in-out ${TRANSITIONS.SLOW}ms;
-`;

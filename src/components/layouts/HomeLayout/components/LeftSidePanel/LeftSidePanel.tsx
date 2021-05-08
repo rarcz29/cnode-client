@@ -1,34 +1,13 @@
-import {
-    faBitbucket,
-    faGithub,
-    faGitlab,
-} from '@fortawesome/free-brands-svg-icons';
-import {
-    faFilter,
-    faGlobe,
-    faLink,
-    faLock,
-    faPlus,
-    faStar,
-    faUserPlus,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axiosConfig';
-import { CircleButton, TextInput } from 'components/common';
-import SidePanelItem from 'components/SidePanelItem';
+import { CircleButton } from 'components/common';
 import COLORS from 'constants/colors';
 import LOCAL_STORAGE from 'constants/localStorage';
 import { useOnClickOutside, useQueryString } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
+import Accounts from '../Accounts';
 import AddAccountPanel from '../AddAccountPanel';
-import SideSection from '../SideSection';
-import {
-    AccountContainer,
-    AddBtAndFiltersContainer,
-    HiddenPanel,
-    LSidePanel,
-    SearchAndFilter,
-} from './styles';
+import SearchAndFilters from '../SearchAndFilters';
+import { HiddenPanel, LSidePanel } from './styles';
 
 // TODO: refactor
 
@@ -46,7 +25,7 @@ type AccountData = {
 };
 
 const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
-    const refa = useRef(null);
+    const ref = useRef(null);
     const queryString = useQueryString();
     const [isLeftPanelHidden, setIsLeftPanelHidden] = useState(true);
     const [showGithub, setShowGithub] = useState(true);
@@ -54,7 +33,7 @@ const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
     const [showGitlab, setShowGitlab] = useState(true);
     const [showAddAccountPanel, setShowAddAccountPanel] = useState(false);
     const [accounts, setAccounts] = useState<AccountData[]>([]);
-    useOnClickOutside(refa, () => setIsLeftPanelHidden(true));
+    useOnClickOutside(ref, () => setIsLeftPanelHidden(true));
 
     const handleGithubConnection = (code: string) => {
         axios
@@ -94,7 +73,7 @@ const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
     }, []);
 
     return (
-        <LSidePanel isHidden={isLeftPanelHidden} ref={refa}>
+        <LSidePanel isHidden={isLeftPanelHidden} ref={ref}>
             {!props.laptop && isLeftPanelHidden ? (
                 <HiddenPanel>
                     <CircleButton
@@ -107,143 +86,23 @@ const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
                 </HiddenPanel>
             ) : (
                 <>
-                    <SearchAndFilter>
-                        <TextInput
-                            placeholder="Find a repository..."
-                            width="100%"
-                            rounded
-                        ></TextInput>
-                        <AddBtAndFiltersContainer>
-                            <CircleButton
-                                fontSize="0.875rem"
-                                backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
-                                highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
-                                color={COLORS.FOREGROUND.MAIN}
-                                to="new"
-                            >
-                                <FontAwesomeIcon icon={faPlus} />
-                            </CircleButton>
-                            <CircleButton
-                                checked={showGithub}
-                                onClick={() => setShowGithub((prev) => !prev)}
-                            >
-                                <FontAwesomeIcon icon={faGithub} />
-                            </CircleButton>
-                            <CircleButton
-                                checked={showBitbucket}
-                                onClick={() =>
-                                    setShowBitbucket((prev) => !prev)
-                                }
-                            >
-                                <FontAwesomeIcon icon={faBitbucket} />
-                            </CircleButton>
-                            <CircleButton
-                                checked={showGitlab}
-                                onClick={() => setShowGitlab((prev) => !prev)}
-                            >
-                                <FontAwesomeIcon icon={faGitlab} />
-                            </CircleButton>
-                            <CircleButton
-                                fontSize="0.875rem"
-                                backgroundColor={COLORS.BUTTONS.DARK.MAIN}
-                                highlightColor={COLORS.BUTTONS.DARK.HIGHLIGHT}
-                            >
-                                <FontAwesomeIcon icon={faFilter} />
-                            </CircleButton>
-                        </AddBtAndFiltersContainer>
-                    </SearchAndFilter>
-                    <AccountContainer>
-                        {showGithub && (
-                            <SideSection
-                                headerItem={
-                                    <SidePanelItem
-                                        text="GitHub"
-                                        fontSize="bigger"
-                                        buttons={[
-                                            <FontAwesomeIcon
-                                                icon={faUserPlus}
-                                            />,
-                                        ]}
-                                    />
-                                }
-                            >
-                                {accounts.map((account, index) => (
-                                    <div key={index}>{account.username}</div>
-                                ))}
-                            </SideSection>
-                        )}
-                        {showBitbucket && (
-                            <SideSection
-                                headerItem={
-                                    <SidePanelItem
-                                        text="Bitbucket"
-                                        fontSize="bigger"
-                                        buttons={[
-                                            <FontAwesomeIcon
-                                                icon={faUserPlus}
-                                            />,
-                                        ]}
-                                    />
-                                }
-                            >
-                                <SideSection
-                                    headerItem={
-                                        <SidePanelItem
-                                            text="username"
-                                            textColor="secondary"
-                                            buttons={[
-                                                <FontAwesomeIcon
-                                                    icon={faLink}
-                                                />,
-                                            ]}
-                                        />
-                                    }
-                                >
-                                    <SidePanelItem
-                                        icon={
-                                            <FontAwesomeIcon icon={faGlobe} />
-                                        }
-                                        text="reponame"
-                                        textColor="primary"
-                                        buttons={[
-                                            <FontAwesomeIcon icon={faLink} />,
-                                            <FontAwesomeIcon icon={faStar} />,
-                                        ]}
-                                    />
-                                    <SidePanelItem
-                                        icon={<FontAwesomeIcon icon={faLock} />}
-                                        text="reponame"
-                                        textColor="primary"
-                                        buttons={[
-                                            <FontAwesomeIcon icon={faLink} />,
-                                            <FontAwesomeIcon icon={faStar} />,
-                                        ]}
-                                    />
-                                </SideSection>
-                            </SideSection>
-                        )}
-                        {showGitlab && (
-                            <SideSection
-                                headerItem={
-                                    <SidePanelItem
-                                        text="GitLab"
-                                        fontSize="bigger"
-                                        buttons={[
-                                            <FontAwesomeIcon
-                                                icon={faUserPlus}
-                                            />,
-                                        ]}
-                                    />
-                                }
-                            ></SideSection>
-                        )}
-                    </AccountContainer>
+                    <SearchAndFilters
+                        showGithub={showGithub}
+                        showBitbucket={showBitbucket}
+                        showGitlab={showGitlab}
+                        setShowGithub={setShowGithub}
+                        setShowBitbucket={setShowBitbucket}
+                        setShowGitlab={setShowGitlab}
+                    />
+                    <Accounts
+                        showGithub={showGithub}
+                        showBitbucket={showBitbucket}
+                        showGitlab={showGitlab}
+                    />
                     <AddAccountPanel
                         show={showAddAccountPanel}
                         setShow={setShowAddAccountPanel}
-                    >
-                        asdf
-                    </AddAccountPanel>
+                    />
                 </>
             )}
         </LSidePanel>

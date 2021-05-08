@@ -20,8 +20,7 @@ const HomeLayout = () => {
     const isMobileL = useMediaQuery(BREAKPOINTS.mobileL);
 
     useEffect(() => {
-        // TODO:
-        // (async () => await dispatch(loadGithub()))();
+        (async () => await dispatch(loadGithub()))();
 
         return () => {
             dispatch(removeGithub());
