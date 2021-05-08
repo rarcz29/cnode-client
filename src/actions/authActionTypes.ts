@@ -1,10 +1,12 @@
 export enum AuthActionTypes {
-    LOADING = 'AUTH_LOADING',
-    REGISTER_SUCCESS = 'REGISTER_SUCCESS',
-    REGISTER_FAIL = 'REGISTER_FAIL',
-    LOGIN_SUCCESS = 'LOGIN_SUCCESS',
-    LOGIN_FAIL = 'LOGIN_FAIL',
-    LOGOUT = 'LOGOUT',
+    LOADING,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL,
+    REFRESH_SUCCESS,
+    REFRESH_FAIL,
+    LOGOUT,
 }
 
 export interface IAuthLoading {
@@ -31,6 +33,18 @@ export interface ILoginFail {
     type: typeof AuthActionTypes.LOGIN_FAIL;
 }
 
+export interface IRefreshSuccess {
+    type: typeof AuthActionTypes.REFRESH_SUCCESS;
+    payload: {
+        token: string;
+        refreshToken: string;
+    };
+}
+
+export interface IRefreshFail {
+    type: typeof AuthActionTypes.REFRESH_FAIL;
+}
+
 export interface ILogout {
     type: typeof AuthActionTypes.LOGOUT;
 }
@@ -41,4 +55,6 @@ export type AuthDispatchTypes =
     | IRegisterFail
     | ILoginSuccess
     | ILoginFail
+    | IRefreshSuccess
+    | IRefreshFail
     | ILogout;

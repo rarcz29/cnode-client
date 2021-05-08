@@ -38,22 +38,10 @@ const authReducer = (
 ): IDefaultState => {
     switch (action.type) {
         case AuthActionTypes.LOADING:
-            return {
-                ...state,
-                loading: true,
-                isLoggedIn: false,
-            };
         case AuthActionTypes.REGISTER_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                isLoggedIn: false,
-            };
-        case AuthActionTypes.REGISTER_FAIL:
-            return {
-                ...state,
-                loading: false,
-                isLoggedIn: false,
             };
         case AuthActionTypes.LOGIN_SUCCESS:
             return {
@@ -61,12 +49,15 @@ const authReducer = (
                 loading: false,
                 isLoggedIn: true,
             };
-        case AuthActionTypes.LOGIN_FAIL:
+        case AuthActionTypes.REFRESH_SUCCESS:
             return {
                 ...state,
+                ...action.payload,
                 loading: false,
-                isLoggedIn: false,
             };
+        case AuthActionTypes.REFRESH_FAIL:
+        case AuthActionTypes.REGISTER_FAIL:
+        case AuthActionTypes.LOGIN_FAIL:
         case AuthActionTypes.LOGOUT:
             return initialState;
         default:

@@ -71,6 +71,52 @@ export const login = (usernameOrEmail: string, password: string) => async (
     }
 };
 
+export const refresh = () => async (dispatch: Dispatch<AuthDispatchTypes>) => {
+    try {
+        dispatch({
+            type: AuthActionTypes.LOADING,
+        });
+
+        const dataStr = localStorage.getItem(LOCAL_STORAGE.USER_DATA_NAME);
+        const { token, refreshToken } = dataStr
+            ? JSON.parse(dataStr)
+            : undefined;
+
+        if (token && refreshToken) {
+            const res = await axios.post(API_URLS.REFRESH, {
+                token,
+                refreshToken,
+            });
+
+            const newTokens = {
+                token: res.data.token,
+                refreshToken: res.data.refreshToken,
+            };
+
+            localStorage.setItem(
+                LOCAL_STORAGE.USER_DATA_NAME,
+                JSON.stringify(newTokens)
+            );
+
+            dispatch({
+                type: AuthActionTypes.REFRESH_SUCCESS,
+                payload: {
+                    ...newTokens,
+                },
+            });
+        } else {
+            // TODO: refactor
+            dispatch({
+                type: AuthActionTypes.REFRESH_FAIL,
+            });
+        }
+    } catch (e) {
+        dispatch({
+            type: AuthActionTypes.LOGIN_FAIL,
+        });
+    }
+};
+
 export const logout = () => (dispatch: Dispatch<AuthDispatchTypes>) => {
     dispatch({
         type: AuthActionTypes.LOADING,
