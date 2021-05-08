@@ -1,7 +1,8 @@
+import axios from 'axiosConfig';
 import { TextInput } from 'components/common';
 import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
     CheckboxContainer,
     ChipsContainer,
@@ -10,6 +11,34 @@ import {
 } from './styles';
 
 const NewRepoView = () => {
+    const technologyInput = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        let timeout: NodeJS.Timeout;
+        const input = technologyInput?.current;
+
+        function fetchData() {
+            // TODO: url as const
+            axios
+                .get(`/technologies?Pattern=${input?.value}`)
+                .then((response) => console.log(response.data));
+        }
+
+        function eventHandler() {
+            clearTimeout(timeout);
+
+            if (input?.value) {
+                timeout = setTimeout(fetchData, 500);
+            }
+        }
+
+        input?.addEventListener('keyup', eventHandler, false);
+
+        return () => {
+            input?.removeEventListener('keyup', eventHandler, false);
+        };
+    }, []);
+
     return (
         <>
             <StyledPageHeader>
@@ -35,7 +64,11 @@ const NewRepoView = () => {
                     Make it easier for other users to find your repository.
                     Select technologies you will be using.
                 </p>
-                <TextInput placeholder="search..." rounded />
+                <TextInput
+                    innerRef={technologyInput}
+                    placeholder="search..."
+                    rounded
+                />
                 <ChipsContainer></ChipsContainer>
                 <ChipsContainer></ChipsContainer>
             </StyledSection>

@@ -11,6 +11,7 @@ type Props = {
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
     rounded?: boolean;
     name?: string;
+    innerRef?: React.RefObject<HTMLInputElement>;
 };
 
 const handleColor = (color?: string) => {
@@ -35,7 +36,8 @@ const StyledInput = styled.input<Props>`
 `;
 
 const TextInput: React.FC<Props> = (props) => {
-    return <StyledInput {...props} />;
+    const { innerRef, ...other } = props;
+    return <StyledInput ref={innerRef} {...props} />;
 };
 
 export default TextInput;

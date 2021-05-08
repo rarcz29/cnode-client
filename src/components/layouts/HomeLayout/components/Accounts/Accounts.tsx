@@ -53,9 +53,6 @@ const Accounts: React.FC<AccountsProps> = (props) => {
                         />
                     }
                 >
-                    {/* {accounts.map((account, index) => (
-                        <div key={index}>{account.username}</div>
-                    ))} */}
                     {githubState.accounts.map((account, index) => (
                         <SideSection
                             key={index}
