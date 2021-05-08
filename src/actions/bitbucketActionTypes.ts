@@ -1,10 +1,10 @@
 import { IAccount } from './common';
 
 export enum BitbucketActionTypes {
-    LOADING = 'LOADING',
-    LOAD_SUCCESS = 'LOAD_SUCCESS',
-    LOAD_FAIL = 'LOAD_FAIL',
-    REMOVE = 'REMOVE',
+    LOADING = 'BITBUCKET_LOADING',
+    LOAD_SUCCESS = 'BITBUCKET_LOAD_SUCCESS',
+    LOAD_FAIL = 'BITBUCKET_LOAD_FAIL',
+    REMOVE = 'BITBUCKET_REMOVE',
 }
 
 export interface IBitbucketLoading {

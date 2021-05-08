@@ -1,10 +1,10 @@
 import { IAccount } from './common';
 
 export enum GitlabActionTypes {
-    LOADING = 'LOADING',
-    LOAD_SUCCESS = 'LOAD_SUCCESS',
-    LOAD_FAIL = 'LOAD_FAIL',
-    REMOVE = 'REMOVE',
+    LOADING = 'GITLAB_LOADING',
+    LOAD_SUCCESS = 'GITLAB_LOAD_SUCCESS',
+    LOAD_FAIL = 'GITLAB_LOAD_FAIL',
+    REMOVE = 'GITLAB_REMOVE',
 }
 
 export interface IGitlabLoading {

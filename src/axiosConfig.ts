@@ -16,26 +16,26 @@ const instance = axios.create({
     },
 });
 
-instance.interceptors.response.use(
-    (response) => {
-        return response;
-    },
-    async (error) => {
-        const originalRequest = error.config;
-        if (
-            (error.response.status === 401 || error.response.status === 403) &&
-            !originalRequest._retry
-        ) {
-            originalRequest._retry = true;
-            // TODO: refresh method
-            //const access_token = await () => { };
-            const access_token = ''; // TODO:
-            axios.defaults.headers.common['Authorization'] =
-                'Bearer ' + access_token;
-            return axios(originalRequest);
-        }
-        return Promise.reject(error);
-    }
-);
+// instance.interceptors.response.use(
+//     (response) => {
+//         return response;
+//     },
+//     async (error) => {
+//         const originalRequest = error.config;
+//         if (
+//             (error.response.status === 401 || error.response.status === 403) &&
+//             !originalRequest._retry
+//         ) {
+//             originalRequest._retry = true;
+//             // TODO: refresh method
+//             //const access_token = await () => { };
+//             const access_token = ''; // TODO:
+//             axios.defaults.headers.common['Authorization'] =
+//                 'Bearer ' + access_token;
+//             return axios(originalRequest);
+//         }
+//         return Promise.reject(error);
+//     }
+// );
 
 export default instance;

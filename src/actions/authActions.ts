@@ -64,8 +64,6 @@ export const login = (usernameOrEmail: string, password: string) => async (
                 refreshToken: res.data.refreshToken,
             },
         });
-
-        console.log('action');
     } catch (e) {
         dispatch({
             type: AuthActionTypes.LOGIN_FAIL,

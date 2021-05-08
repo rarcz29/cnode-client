@@ -1,10 +1,10 @@
 import { IAccount } from './common';
 
 export enum GithubActionTypes {
-    LOADING = 'LOADING',
-    LOAD_SUCCESS = 'LOAD_SUCCESS',
-    LOAD_FAIL = 'LOAD_FAIL',
-    REMOVE = 'REMOVE',
+    LOADING = 'GITHUB_LOADING',
+    LOAD_SUCCESS = 'GITHUB_LOAD_SUCCESS',
+    LOAD_FAIL = 'GITHUB_LOAD_FAIL',
+    REMOVE = 'GITHUB_REMOVE',
 }
 
 export interface IGithubLoading {
