@@ -21,6 +21,11 @@ export const ChipsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     margin-top: 0.5rem;
+
+    & > span {
+        margin-top: 0.4rem;
+        margin-right: 0.4rem;
+    }
 `;
 
 export const CheckboxContainer = styled.div`

@@ -2,7 +2,8 @@ import axios from 'axiosConfig';
 import { TextInput } from 'components/common';
 import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
-import React, { useEffect, useRef } from 'react';
+import Chip from 'components/common/Chip';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     CheckboxContainer,
     ChipsContainer,
@@ -12,6 +13,8 @@ import {
 
 const NewRepoView = () => {
     const technologyInput = useRef<HTMLInputElement>(null);
+    const [toAddTechnologies, setToAddTechnologies] = useState<string[]>([]);
+    const [addedTechnologies, setAddedTechnologies] = useState<string[]>([]);
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
@@ -21,15 +24,19 @@ const NewRepoView = () => {
             // TODO: url as const
             axios
                 .get(`/technologies?Pattern=${input?.value}`)
-                .then((response) => console.log(response.data));
+                .then((response) =>
+                    setToAddTechnologies(
+                        response.data.map((item: { name: string }) => item.name)
+                    )
+                );
         }
 
         function eventHandler() {
             clearTimeout(timeout);
 
-            if (input?.value) {
-                timeout = setTimeout(fetchData, 500);
-            }
+            input?.value
+                ? (timeout = setTimeout(fetchData, 500))
+                : setToAddTechnologies([]);
         }
 
         input?.addEventListener('keyup', eventHandler, false);
@@ -38,6 +45,15 @@ const NewRepoView = () => {
             input?.removeEventListener('keyup', eventHandler, false);
         };
     }, []);
+
+    const chipAddClickHandler = (index: number, name: string) => {
+        setToAddTechnologies((prev) => prev.filter((item, i) => i !== index));
+        setAddedTechnologies((prev) => [...prev, name]);
+    };
+
+    const chipRemoveClickHandler = (index: number) => {
+        setAddedTechnologies((prev) => prev.filter((item, i) => i !== index));
+    };
 
     return (
         <>
@@ -65,8 +81,30 @@ const NewRepoView = () => {
                     Select technologies you will be using.
                 </p>
                 <TextInput innerRef={technologyInput} placeholder="search..." />
-                <ChipsContainer></ChipsContainer>
-                <ChipsContainer></ChipsContainer>
+                {console.log(toAddTechnologies)}
+                {toAddTechnologies.length > 0 && (
+                    <ChipsContainer>
+                        {toAddTechnologies.map((item, index) => (
+                            <Chip
+                                key={index}
+                                text={item}
+                                onClick={() => chipAddClickHandler(index, item)}
+                            />
+                        ))}
+                    </ChipsContainer>
+                )}
+                {addedTechnologies.length > 0 && (
+                    <ChipsContainer>
+                        {addedTechnologies.map((item, index) => (
+                            <Chip
+                                key={index}
+                                text={item}
+                                type="remove"
+                                onClick={() => chipRemoveClickHandler(index)}
+                            />
+                        ))}
+                    </ChipsContainer>
+                )}
             </StyledSection>
             <StyledSection>
                 <h1>Platform</h1>
