@@ -11,6 +11,7 @@ type Props = {
     to?: string;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
+    type?: 'button' | 'submit' | 'reset';
 };
 
 const handleFontSize = (size?: string): string => {

@@ -11,7 +11,7 @@ type Props = {
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
     rounded?: boolean;
     name?: string;
-    innerRef?: React.RefObject<HTMLInputElement>;
+    innerRef?: React.RefObject<HTMLInputElement>; // TODO: forwardref
 };
 
 const handleColor = (color?: string) => {

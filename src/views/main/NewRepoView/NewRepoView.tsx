@@ -1,9 +1,12 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axiosConfig';
 import { TextInput } from 'components/common';
 import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
 import Chip from 'components/common/Chip';
 import React, { useEffect, useRef, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import {
     CheckboxContainer,
     ChipsContainer,
@@ -11,10 +14,38 @@ import {
     StyledSection,
 } from './styles';
 
+// TODO: errors
+
+type FormInput = {
+    name: string;
+    description?: string;
+    account: string;
+    github: boolean;
+    bitbucket: boolean;
+    gitlab: boolean;
+    public: boolean;
+    private: boolean;
+    initialize: boolean;
+    expose: boolean;
+};
+
+const schema = yup.object().shape({
+    name: yup.string().required(),
+    description: yup.string(),
+    account: yup.string().required(),
+});
+
 const NewRepoView = () => {
     const technologyInput = useRef<HTMLInputElement>(null);
     const [toAddTechnologies, setToAddTechnologies] = useState<string[]>([]);
     const [addedTechnologies, setAddedTechnologies] = useState<string[]>([]);
+
+    const {
+        register,
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm<FormInput>({ resolver: yupResolver(schema) });
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
@@ -55,8 +86,13 @@ const NewRepoView = () => {
         setAddedTechnologies((prev) => prev.filter((item, i) => i !== index));
     };
 
+    const onSubmit = async (data: FormInput) => {
+        console.log(data);
+    };
+
     return (
-        <>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <p>{errors?.name}</p>
             <StyledPageHeader>
                 <h1>Create a new repository</h1>
                 <p>
@@ -66,13 +102,22 @@ const NewRepoView = () => {
             </StyledPageHeader>
             <StyledSection>
                 <h1>Repository name</h1>
-                <TextInput placeholder="name..." />
+                <TextInput
+                    type="text"
+                    placeholder="name..."
+                    {...register('name')}
+                />
             </StyledSection>
             <StyledSection>
                 <h1>
                     Repository description <span>(optional)</span>
                 </h1>
-                <TextInput placeholder="description..." width="100%" />
+                <TextInput
+                    type="text"
+                    placeholder="description..."
+                    width="100%"
+                    {...register('description')}
+                />
             </StyledSection>
             <StyledSection>
                 <h1>Technologies</h1>
@@ -81,7 +126,6 @@ const NewRepoView = () => {
                     Select technologies you will be using.
                 </p>
                 <TextInput innerRef={technologyInput} placeholder="search..." />
-                {console.log(toAddTechnologies)}
                 {toAddTechnologies.length > 0 && (
                     <ChipsContainer>
                         {toAddTechnologies.map((item, index) => (
@@ -109,36 +153,53 @@ const NewRepoView = () => {
             <StyledSection>
                 <h1>Platform</h1>
                 <CheckboxContainer>
-                    <Checkbox label="GitHub" />
-                    <Checkbox label="Bitbucket" />
-                    <Checkbox label="GitLab" />
+                    <Controller
+                        name="github"
+                        control={control}
+                        defaultValue={false}
+                        render={({ field }) => <Checkbox label="GitHub" />}
+                    />
+                    <Checkbox {...register('bitbucket')} label="Bitbucket" />
+                    <Checkbox {...register('gitlab')} label="GitLab" />
                 </CheckboxContainer>
             </StyledSection>
             <StyledSection>
                 <h1>Account</h1>
-                <TextInput placeholder="account..." />
+                <TextInput
+                    type="text"
+                    {...register('account')}
+                    placeholder="account..."
+                />
             </StyledSection>
             <StyledSection>
                 <h1>Access level</h1>
                 <CheckboxContainer>
-                    <Checkbox label="Public" />
-                    <Checkbox label="Private" />
+                    <Checkbox {...register('public')} label="Public" />
+                    <Checkbox {...register('private')} label="Private" />
                 </CheckboxContainer>
             </StyledSection>
             <StyledSection>
                 <h1>Initialization</h1>
                 <CheckboxContainer>
-                    <Checkbox label="Initialize this repository with a README file" />
+                    <Checkbox
+                        {...register('initialize')}
+                        label="Initialize this repository with a README file"
+                    />
                 </CheckboxContainer>
             </StyledSection>
             <StyledSection>
                 <h1>Share with the community</h1>
                 <CheckboxContainer>
-                    <Checkbox label="Show your repository on the community page" />
+                    <Checkbox
+                        {...register('expose')}
+                        label="Show your repository on the community page"
+                    />
                 </CheckboxContainer>
             </StyledSection>
-            <Button size="big">Create repository</Button>
-        </>
+            <Button size="big" type="submit">
+                Create repository
+            </Button>
+        </form>
     );
 };
 

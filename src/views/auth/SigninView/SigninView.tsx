@@ -66,7 +66,7 @@ const SigninView = () => {
     }, [authState.isLoggedIn]);
 
     const onSubmit = async (data: FormInput) =>
-        await dispatch(login(data.userIdentifier, data.password));
+        dispatch(login(data.userIdentifier, data.password));
 
     return (
         <>
