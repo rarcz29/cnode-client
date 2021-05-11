@@ -5,7 +5,7 @@ import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
 import Chip from 'components/common/Chip';
 import React, { useEffect, useRef, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import {
     CheckboxContainer,
@@ -20,19 +20,21 @@ type FormInput = {
     name: string;
     description?: string;
     account: string;
-    github: boolean;
-    bitbucket: boolean;
-    gitlab: boolean;
-    public: boolean;
-    private: boolean;
-    initialize: boolean;
-    expose: boolean;
+    platform: any;
+    public: string;
+    private: string;
+    initialize: string;
+    expose: string;
 };
 
 const schema = yup.object().shape({
     name: yup.string().required(),
     description: yup.string(),
     account: yup.string().required(),
+    public: yup.string(),
+    private: yup.string(),
+    initialize: yup.string(),
+    expose: yup.string(),
 });
 
 const NewRepoView = () => {
@@ -43,7 +45,6 @@ const NewRepoView = () => {
     const {
         register,
         handleSubmit,
-        control,
         formState: { errors },
     } = useForm<FormInput>({ resolver: yupResolver(schema) });
 
@@ -92,7 +93,6 @@ const NewRepoView = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <p>{errors?.name}</p>
             <StyledPageHeader>
                 <h1>Create a new repository</h1>
                 <p>
@@ -153,14 +153,21 @@ const NewRepoView = () => {
             <StyledSection>
                 <h1>Platform</h1>
                 <CheckboxContainer>
-                    <Controller
-                        name="github"
-                        control={control}
-                        defaultValue={false}
-                        render={({ field }) => <Checkbox label="GitHub" />}
+                    <Checkbox
+                        {...register('platform')}
+                        value="github"
+                        label="GitHub"
                     />
-                    <Checkbox {...register('bitbucket')} label="Bitbucket" />
-                    <Checkbox {...register('gitlab')} label="GitLab" />
+                    <Checkbox
+                        {...register('platform')}
+                        value="bitbucket"
+                        label="Bitbucket"
+                    />
+                    <Checkbox
+                        {...register('platform')}
+                        value="gitlab"
+                        label="GitLab"
+                    />
                 </CheckboxContainer>
             </StyledSection>
             <StyledSection>
