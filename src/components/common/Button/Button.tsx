@@ -3,6 +3,7 @@ import TRANSITIONS from 'constants/transitions';
 import React from 'react';
 import { useNavigate } from 'react-router';
 import styled, { css } from 'styled-components';
+import './Button.css';
 
 type Props = {
     size?: 'medium' | 'big';
@@ -37,6 +38,8 @@ const handleColor = (color?: string): string => {
 const StyledButton = styled.button<Props>`
     padding: 0.625rem 2.375rem;
     position: relative;
+    overflow: hidden;
+    border-radius: 100vh;
     font-size: ${(props: Props) => handleFontSize(props.size)};
     border: none;
     background: none;
@@ -73,6 +76,27 @@ const StyledButton = styled.button<Props>`
     }
 `;
 
+const handleClickEffect = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+) => {
+    const button = event.currentTarget;
+    const pos = button.getBoundingClientRect();
+
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - (pos.left + radius)}px`;
+    circle.style.top = `${event.clientY - (pos.top + radius)}px`;
+    circle.classList.add('ripple');
+
+    const ripple = button.getElementsByClassName('ripple')[0];
+    ripple && ripple.remove();
+
+    button.appendChild(circle);
+};
+
 const Button: React.FC<Props> = ({ to, onClick, ...others }) => {
     const navigate = useNavigate();
 
@@ -80,9 +104,14 @@ const Button: React.FC<Props> = ({ to, onClick, ...others }) => {
         to && navigate(to);
     };
 
-    return (
-        <StyledButton {...others} onClick={to ? handleRedirection : onClick} />
-    );
+    const handleClick = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+        handleClickEffect(event);
+        to ? handleRedirection() : onClick && onClick(event);
+    };
+
+    return <StyledButton {...others} onClick={handleClick} />;
 };
 
 export default Button;
