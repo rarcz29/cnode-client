@@ -1,4 +1,6 @@
+import { login } from 'actions/authActions';
 import { Button, TextInput } from 'components/common';
+import ValidationErrorMsg from 'components/ValidationErrorMsg';
 import { BREAKPOINTS } from 'constants/breakpoints';
 import { useFormik } from 'formik';
 import { useMediaQuery } from 'hooks';
@@ -16,10 +18,10 @@ import {
 } from '../shared/styles';
 import { LinksContainer } from './styles';
 
-// type FormInput = {
-//     userIdentifier: string;
-//     password: string;
-// };
+type FormInput = {
+  userIdentifier: string;
+  password: string;
+};
 
 type Inputs = {
   placeholder: string;
@@ -57,17 +59,17 @@ const SigninView = () => {
   const authState = useSelector((state: RootStore) => state.auth);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    authState.isLoggedIn && navigate('/');
-  }, [authState.isLoggedIn]);
-
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: (values: FormInput) => {
+      dispatch(login(values.userIdentifier, values.password));
     },
   });
+
+  useEffect(() => {
+    authState.isLoggedIn && navigate('/');
+  }, [authState.isLoggedIn]);
 
   return (
     <>
@@ -75,22 +77,24 @@ const SigninView = () => {
       <MainContainer>
         <form id="auth-form" onSubmit={formik.handleSubmit}>
           {inputs.map((item, index) => (
-            <>
+            <React.Fragment key={index}>
               <TextInput
-                key={index}
                 name={item.name}
                 placeholder={item.placeholder}
                 type={item.type}
                 value={formik.values[item.name]}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched[item.name] &&
+                  formik.errors[item.name] !== undefined
+                }
                 rounded
               />
-              {/* {errors[item.name] && (
-                                <ValidationErrorMsg
-                                    message={errors[item.name]?.message}
-                                />
-                            )} */}
-            </>
+              {formik.touched[item.name] && formik.errors[item.name] && (
+                <ValidationErrorMsg message={formik.errors[item.name]} />
+              )}
+            </React.Fragment>
           ))}
         </form>
         <BottomContainer>

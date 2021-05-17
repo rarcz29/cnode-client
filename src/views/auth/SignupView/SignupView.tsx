@@ -1,11 +1,10 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { register as registerAction } from 'actions/authActions';
+import { register } from 'actions/authActions';
 import { Button, TextInput } from 'components/common';
 import ValidationErrorMsg from 'components/ValidationErrorMsg';
 import { BREAKPOINTS } from 'constants/breakpoints';
+import { useFormik } from 'formik';
 import { useMediaQuery } from 'hooks';
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from 'store';
 import * as yup from 'yup';
@@ -31,16 +30,6 @@ type Inputs = {
   type: string;
 };
 
-const schema = yup.object().shape({
-  username: yup.string().required().min(3).max(100),
-  email: yup.string().required().email().max(65),
-  password: yup.string().required().min(6).max(50),
-  confirm: yup
-    .string()
-    .required()
-    .oneOf([yup.ref('password')], 'Passwords must match'),
-});
-
 const inputs: Inputs[] = [
   {
     placeholder: 'username...',
@@ -64,43 +53,70 @@ const inputs: Inputs[] = [
   },
 ];
 
+const validationSchema = yup.object().shape({
+  username: yup.string().required().min(3).max(100),
+  email: yup.string().required().email().max(65),
+  password: yup.string().required().min(6).max(50),
+  confirm: yup
+    .string()
+    .required()
+    .oneOf([yup.ref('password')], 'Passwords must match'),
+});
+
+const initialValues = {
+  username: '',
+  email: '',
+  password: '',
+  confirm: '',
+};
+
 const SignupView = () => {
   const isLaptop = useMediaQuery(BREAKPOINTS.laptop);
   const isMobileM = useMediaQuery(BREAKPOINTS.mobileM);
   const dispatch = useDispatch();
   const authState = useSelector((state: RootStore) => state.auth);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormInput>({ resolver: yupResolver(schema) });
 
-  const onSubmit = async (data: FormInput) =>
-    await dispatch(registerAction(data.username, data.email, data.password));
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values: FormInput) => {
+      dispatch(register(values.username, values.email, values.password));
+    },
+  });
 
   return (
     <>
       {isLaptop && <Header>Sign up</Header>}
       <MainContainer>
-        <form id="auth-form" onSubmit={handleSubmit(onSubmit)}>
+        <form id="auth-form" onSubmit={formik.handleSubmit}>
           {inputs.map((item, index) => (
-            <>
+            <React.Fragment key={index}>
               <TextInput
-                key={index}
-                height="40px"
+                name={item.name}
                 placeholder={item.placeholder}
                 type={item.type}
-                {...register(item.name)}
+                value={formik.values[item.name]}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched[item.name] &&
+                  formik.errors[item.name] !== undefined
+                }
                 rounded
               />
-              {errors[item.name] && (
-                <ValidationErrorMsg message={errors[item.name]?.message} />
+              {formik.touched[item.name] && formik.errors[item.name] && (
+                <ValidationErrorMsg message={formik.errors[item.name]} />
               )}
-            </>
+            </React.Fragment>
           ))}
         </form>
         <BottomContainer>
-          <Button form="auth-form" size="big" disabled={authState.loading}>
+          <Button
+            form="auth-form"
+            size="big"
+            type="submit"
+            disabled={authState.loading}
+          >
             {authState.loading ? 'loading...' : 'Sign up'}
           </Button>
           <LinksContainer>

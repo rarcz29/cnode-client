@@ -1,6 +1,7 @@
 import COLORS from 'constants/colors';
+import TRANSITIONS from 'constants/transitions';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   forwardRef?: React.RefObject<HTMLInputElement>;
@@ -38,8 +39,13 @@ const StyledInput = styled.input<TextInputProps>`
   font-size: 0.875rem;
   background-color: ${(props: TextInputProps) => handleColor(props.color)};
   color: ${COLORS.FOREGROUND.MAIN};
-  border: 1px solid ${COLORS.MAIN_COLOR};
-  border-width: ${(props: TextInputProps) => (props.error ? '1px' : '0')};
+  border-width: 0;
+  ${(props: TextInputProps) =>
+    props.error &&
+    css`
+      box-shadow: 0px 0px 6px 1px ${COLORS.MAIN_COLOR};
+    `};
+  transition: box-shadow ease-in-out ${TRANSITIONS.FAST}ms;
 `;
 
 const TextInput: React.FC<TextInputProps> = (props) => {
