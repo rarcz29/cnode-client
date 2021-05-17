@@ -1,12 +1,18 @@
-import { yupResolver } from '@hookform/resolvers/yup';
+import {
+  faBitbucket,
+  faGithub,
+  faGitlab,
+} from '@fortawesome/free-brands-svg-icons';
+import { faGlobe, faLock } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axiosConfig';
 import { TextInput } from 'components/common';
 import Button from 'components/common/Button';
 import Checkbox from 'components/common/Checkbox';
 import Chip from 'components/common/Chip';
+import { useFormik } from 'formik';
 import React, { useEffect, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import RadioButton from './RadioButton';
 import {
   CheckboxContainer,
   ChipsContainer,
@@ -20,33 +26,40 @@ type FormInput = {
   name: string;
   description?: string;
   account: string;
-  platform: any;
-  public: string;
-  private: string;
-  initialize: string;
-  expose: string;
+  platform?: string;
+  visibility?: string;
+  initialize?: string;
+  expose?: string;
 };
 
-const schema = yup.object().shape({
+const validationSchema = yup.object().shape({
   name: yup.string().required(),
   description: yup.string(),
   account: yup.string().required(),
-  public: yup.string(),
-  private: yup.string(),
-  initialize: yup.string(),
-  expose: yup.string(),
+  platform: yup.string().required(),
+  visibility: yup.string().required(),
+  initialize: yup.boolean(),
+  expose: yup.boolean(),
 });
+
+const initialValues = {
+  name: '',
+  description: '',
+  account: '',
+};
 
 const NewRepoView = () => {
   const technologyInput = useRef<HTMLInputElement>(null);
   const [toAddTechnologies, setToAddTechnologies] = useState<string[]>([]);
   const [addedTechnologies, setAddedTechnologies] = useState<string[]>([]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormInput>({ resolver: yupResolver(schema) });
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values: FormInput) => {
+      console.log(values);
+    },
+  });
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -87,12 +100,8 @@ const NewRepoView = () => {
     setAddedTechnologies((prev) => prev.filter((item, i) => i !== index));
   };
 
-  const onSubmit = async (data: FormInput) => {
-    console.log(data);
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={formik.handleSubmit}>
       <StyledPageHeader>
         <h1>Create a new repository</h1>
         <p>
@@ -102,16 +111,34 @@ const NewRepoView = () => {
       </StyledPageHeader>
       <StyledSection>
         <h1>Repository name</h1>
-        <TextInput type="text" placeholder="name..." {...register('name')} />
+        <TextInput
+          name="name"
+          type="text"
+          placeholder="name..."
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.name && formik.errors.name !== undefined}
+          width="short"
+          rounded
+        />
       </StyledSection>
       <StyledSection>
         <h1>
           Repository description <span>(optional)</span>
         </h1>
         <TextInput
-          type="text"
+          name="description"
           placeholder="description..."
-          {...register('description')}
+          type="text"
+          value={formik.values.description}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.description &&
+            formik.errors.description !== undefined
+          }
+          rounded
         />
       </StyledSection>
       <StyledSection>
@@ -120,7 +147,12 @@ const NewRepoView = () => {
           Make it easier for other users to find your repository. Select
           technologies you will be using.
         </p>
-        <TextInput forwardRef={technologyInput} placeholder="search..." />
+        <TextInput
+          forwardRef={technologyInput}
+          placeholder="search..."
+          width="short"
+          rounded
+        />
         {toAddTechnologies.length > 0 && (
           <ChipsContainer>
             {toAddTechnologies.map((item, index) => (
@@ -148,36 +180,76 @@ const NewRepoView = () => {
       <StyledSection>
         <h1>Platform</h1>
         <CheckboxContainer>
-          <Checkbox {...register('platform')} value="github" label="GitHub" />
-          <Checkbox
-            {...register('platform')}
-            value="bitbucket"
-            label="Bitbucket"
+          <RadioButton
+            icon={faGithub}
+            label="GitHub"
+            name="platform"
+            value="github"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
-          <Checkbox {...register('platform')} value="gitlab" label="GitLab" />
+          <RadioButton
+            icon={faBitbucket}
+            label="Bitbucket"
+            name="platform"
+            value="bitbucket"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <RadioButton
+            icon={faGitlab}
+            label="GitLab"
+            name="platform"
+            value="gitlab"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
         </CheckboxContainer>
       </StyledSection>
       <StyledSection>
         <h1>Account</h1>
         <TextInput
-          type="text"
-          {...register('account')}
+          name="account"
           placeholder="account..."
+          type="text"
+          value={formik.values.account}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.account && formik.errors.account !== undefined}
+          width="short"
+          rounded
         />
       </StyledSection>
       <StyledSection>
         <h1>Access level</h1>
         <CheckboxContainer>
-          <Checkbox {...register('public')} label="Public" />
-          <Checkbox {...register('private')} label="Private" />
+          <RadioButton
+            icon={faLock}
+            label="Private"
+            name="visibility"
+            value="private"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <RadioButton
+            icon={faGlobe}
+            label="Public"
+            name="visibility"
+            value="public"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
         </CheckboxContainer>
       </StyledSection>
       <StyledSection>
         <h1>Initialization</h1>
         <CheckboxContainer>
           <Checkbox
-            {...register('initialize')}
             label="Initialize this repository with a README file"
+            name="initialize"
+            value={formik.values.initialize}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
         </CheckboxContainer>
       </StyledSection>
@@ -185,8 +257,11 @@ const NewRepoView = () => {
         <h1>Share with the community</h1>
         <CheckboxContainer>
           <Checkbox
-            {...register('expose')}
             label="Show your repository on the community page"
+            name="expose"
+            value={formik.values.expose}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
         </CheckboxContainer>
       </StyledSection>
