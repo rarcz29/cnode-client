@@ -12,96 +12,83 @@ import { HiddenPanel, LSidePanel } from './styles';
 // TODO: refactor
 
 type LeftSidePanelProps = {
-    laptop: boolean;
+  laptop: boolean;
 };
 
 type RepoData = {
-    title: string;
+  title: string;
 };
 
 type AccountData = {
-    username: string;
-    repos: RepoData[];
+  username: string;
+  repos: RepoData[];
 };
 
 const LeftSidePanel: React.FC<LeftSidePanelProps> = (props) => {
-    const ref = useRef(null);
-    const queryString = useQueryString();
-    const [isLeftPanelHidden, setIsLeftPanelHidden] = useState(true);
-    const [showGithub, setShowGithub] = useState(true);
-    const [showBitbucket, setShowBitbucket] = useState(true);
-    const [showGitlab, setShowGitlab] = useState(true);
-    const [showAddAccountPanel, setShowAddAccountPanel] = useState(false);
-    useOnClickOutside(ref, () => setIsLeftPanelHidden(true));
+  const ref = useRef(null);
+  const queryString = useQueryString();
+  const [isLeftPanelHidden, setIsLeftPanelHidden] = useState(true);
+  const [showAddAccountPanel, setShowAddAccountPanel] = useState(false);
+  useOnClickOutside(ref, () => setIsLeftPanelHidden(true));
 
-    const handleGithubConnection = (code: string) => {
-        axios.post('github/account', { code }).then((response) => {
-            console.log(response.data);
-        });
-    };
+  const handleGithubConnection = (code: string) => {
+    axios.post('github/account', { code }).then((response) => {
+      console.log(response.data);
+    });
+  };
 
-    const handleBitbucketConnection = (code: string) => {};
+  const handleBitbucketConnection = (code: string) => {};
 
-    const handleGitlabConnection = (code: string) => {};
+  const handleGitlabConnection = (code: string) => {};
 
-    useEffect(() => {
-        const code = queryString.get('code');
+  useEffect(() => {
+    const code = queryString.get('code');
 
-        if (code) {
-            const platform = localStorage.getItem(LOCAL_STORAGE.PLATFORM_NAME);
+    if (code) {
+      const platform = localStorage.getItem(LOCAL_STORAGE.PLATFORM_NAME);
 
-            switch (platform) {
-                case LOCAL_STORAGE.GITHUB_VALUE:
-                    handleGithubConnection(code);
-                    break;
-                case LOCAL_STORAGE.BITBUCKET_VALUE:
-                    handleBitbucketConnection(code);
-                    break;
-                case LOCAL_STORAGE.GITLAB_VALUE:
-                    handleGitlabConnection(code);
-                    break;
-            }
-        }
+      switch (platform) {
+        case LOCAL_STORAGE.GITHUB_VALUE:
+          handleGithubConnection(code);
+          break;
+        case LOCAL_STORAGE.BITBUCKET_VALUE:
+          handleBitbucketConnection(code);
+          break;
+        case LOCAL_STORAGE.GITLAB_VALUE:
+          handleGitlabConnection(code);
+          break;
+      }
+    }
 
-        localStorage.removeItem(LOCAL_STORAGE.PLATFORM_NAME);
-    }, []);
+    localStorage.removeItem(LOCAL_STORAGE.PLATFORM_NAME);
+  }, []);
 
-    return (
-        <LSidePanel isHidden={isLeftPanelHidden} ref={ref}>
-            {!props.laptop && isLeftPanelHidden ? (
-                <HiddenPanel>
-                    <CircleButton
-                        onClick={() => setIsLeftPanelHidden(false)}
-                        backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
-                        highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
-                    >
-                        x
-                    </CircleButton>
-                </HiddenPanel>
-            ) : (
-                <>
-                    <SearchAndFilters
-                        showGithub={showGithub}
-                        showBitbucket={showBitbucket}
-                        showGitlab={showGitlab}
-                        setShowGithub={setShowGithub}
-                        setShowBitbucket={setShowBitbucket}
-                        setShowGitlab={setShowGitlab}
-                    />
-                    <Accounts
-                        showGithub={showGithub}
-                        showBitbucket={showBitbucket}
-                        showGitlab={showGitlab}
-                        setAddAccountPanel={setShowAddAccountPanel}
-                    />
-                    <AddAccountPanel
-                        show={showAddAccountPanel}
-                        setShow={setShowAddAccountPanel}
-                    />
-                </>
-            )}
-        </LSidePanel>
-    );
+  return (
+    <LSidePanel isHidden={isLeftPanelHidden} ref={ref}>
+      {!props.laptop && isLeftPanelHidden ? (
+        <HiddenPanel>
+          <CircleButton
+            onClick={() => setIsLeftPanelHidden(false)}
+            backgroundColor={COLORS.BUTTONS.GREEN.MAIN}
+            highlightColor={COLORS.BUTTONS.GREEN.HIGHLIGHT}
+          >
+            x
+          </CircleButton>
+        </HiddenPanel>
+      ) : (
+        <>
+          <SearchAndFilters
+            showNewAccountPanel={() => setShowAddAccountPanel(true)}
+          />
+          <Accounts setAddAccountPanel={setShowAddAccountPanel} />
+          <AddAccountPanel
+            show={showAddAccountPanel}
+            setShow={setShowAddAccountPanel}
+          />
+        </>
+      )}
+    </LSidePanel>
+  );
 };
 
 export default LeftSidePanel;

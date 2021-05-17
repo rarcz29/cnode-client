@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import styled, { css } from 'styled-components';
 
 type Props = {
-  size?: 'medium' | 'big';
+  size?: 'medium' | 'big' | 'max';
   color?: 'primary' | 'secondary';
   form?: any;
   to?: string;
@@ -19,6 +19,7 @@ const handleFontSize = (size?: string): string => {
     case 'big':
       return '1.125rem';
     case 'medium':
+    case 'max':
     default:
       return '0.875rem';
   }
@@ -35,6 +36,7 @@ const handleColor = (color?: string): string => {
 };
 
 const StyledButton = styled.button<Props>`
+  width: ${(props: Props) => (props.size === 'max' ? '100%' : 'auto')};
   padding: 0.625rem 2.375rem;
   position: relative;
   overflow: hidden;

@@ -6,16 +6,16 @@ import { RootStore } from 'store';
 import GlobalStyle from 'styles/GlobalStyle';
 
 const App = () => {
-    const authState = useSelector((state: RootStore) => state.auth);
-    const routing = useRoutes(routes(authState.isLoggedIn));
-    //const routing = useRoutes(routes(true));
+  const authState = useSelector((state: RootStore) => state.auth);
+  // const routing = useRoutes(routes(authState.isLoggedIn));
+  const routing = useRoutes(routes(true));
 
-    return (
-        <>
-            <GlobalStyle />
-            {routing}
-        </>
-    );
+  return (
+    <>
+      <GlobalStyle />
+      {routing}
+    </>
+  );
 };
 
 export default App;
