@@ -30,35 +30,39 @@ type IconProps = {
 
 const AddAccountPanel: React.FC<FullProps> = ({ show, setShow }) => {
   const ref = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [github, setGithub] = useState(true);
   const [bitbucket, setBitbucket] = useState(false);
   const [gitlab, setGitlab] = useState(false);
   const [username, setUsername] = useState('');
 
-  const handleClickOutside = () => setShow(false);
-
   useOnClickOutside(ref, handleClickOutside);
 
-  const handleGithubClick = () => {
+  function handleGithubClick() {
     setGithub(true);
     setBitbucket(false);
     setGitlab(false);
-  };
+  }
 
-  const handleBitbucketClick = () => {
+  function handleBitbucketClick() {
     setGithub(false);
     setBitbucket(true);
     setGitlab(false);
-  };
+  }
 
-  const handleGitlabClick = () => {
+  function handleGitlabClick() {
     setGithub(false);
     setBitbucket(false);
     setGitlab(true);
-  };
+  }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  function handleClickOutside() {
+    setShow(false);
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setLoading(true);
 
     if (github) {
       localStorage.setItem(
@@ -71,7 +75,9 @@ const AddAccountPanel: React.FC<FullProps> = ({ show, setShow }) => {
     } else if (gitlab) {
       alert('not implemented');
     }
-  };
+
+    setLoading(false);
+  }
 
   return (
     <AddAccountPanelContainer show={show} ref={ref}>
@@ -101,7 +107,7 @@ const AddAccountPanel: React.FC<FullProps> = ({ show, setShow }) => {
       </form>
       <Center>
         <Button color="secondary" form="add-account-form">
-          Connect
+          {loading ? 'Loading...' : 'Connect to an account'}
         </Button>
       </Center>
     </AddAccountPanelContainer>

@@ -1,10 +1,4 @@
-import {
-  faGlobe,
-  faLink,
-  faLock,
-  faStar,
-  faUserPlus,
-} from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SidePanelItem from 'components/SidePanelItem';
 import React from 'react';
@@ -12,6 +6,8 @@ import { useSelector } from 'react-redux';
 import { RootStore } from 'store';
 import SideSection from '../SideSection';
 import { AccountContainer } from './styles';
+
+// TODO: DRY
 
 type AccountsProps = {
   setAddAccountPanel: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,81 +29,53 @@ const Accounts: React.FC<AccountsProps> = (props) => {
     props.setAddAccountPanel(true);
   };
 
+  const handleLinkClick = (to: string) => {
+    window.open(to, '_blank')?.focus();
+  };
+
   return (
     <AccountContainer>
       <SideSection
-        headerItem={
-          <SidePanelItem
-            text="GitHub"
-            fontSize="bigger"
-            buttons={[
-              <FontAwesomeIcon
-                icon={faUserPlus}
-                onClick={handleAddGithubAccount}
-              />,
-            ]}
-          />
-        }
+        headerItem={<SidePanelItem text="GitHub" fontSize="bigger" />}
       >
-        {githubState.accounts.map((account, index) => (
+        {githubState.accounts?.map((account, index) => (
           <SideSection
             key={index}
             headerItem={
               <SidePanelItem
-                text={account.login}
+                text={account?.login}
                 textColor="secondary"
-                buttons={[<FontAwesomeIcon icon={faLink} />]}
+                buttons={[
+                  <FontAwesomeIcon
+                    icon={faLink}
+                    onClick={() => handleLinkClick(account?.originUrl)}
+                  />,
+                ]}
               />
             }
-          ></SideSection>
+          >
+            {account.repos?.map((repo, index) => (
+              <SidePanelItem
+                key={index}
+                icon={<FontAwesomeIcon icon={faGlobe} />}
+                text={account?.login + '/' + repo?.name}
+                textColor="primary"
+                buttons={[
+                  <FontAwesomeIcon
+                    icon={faLink}
+                    onClick={() => handleLinkClick(repo?.originUrl)}
+                  />,
+                ]}
+              />
+            ))}
+          </SideSection>
         ))}
       </SideSection>
       <SideSection
-        headerItem={
-          <SidePanelItem
-            text="Bitbucket"
-            fontSize="bigger"
-            buttons={[<FontAwesomeIcon icon={faUserPlus} />]}
-          />
-        }
-      >
-        <SideSection
-          headerItem={
-            <SidePanelItem
-              text="username"
-              textColor="secondary"
-              buttons={[<FontAwesomeIcon icon={faLink} />]}
-            />
-          }
-        >
-          <SidePanelItem
-            icon={<FontAwesomeIcon icon={faGlobe} />}
-            text="reponame"
-            textColor="primary"
-            buttons={[
-              <FontAwesomeIcon icon={faLink} />,
-              <FontAwesomeIcon icon={faStar} />,
-            ]}
-          />
-          <SidePanelItem
-            icon={<FontAwesomeIcon icon={faLock} />}
-            text="reponame"
-            textColor="primary"
-            buttons={[
-              <FontAwesomeIcon icon={faLink} />,
-              <FontAwesomeIcon icon={faStar} />,
-            ]}
-          />
-        </SideSection>
-      </SideSection>
+        headerItem={<SidePanelItem text="Bitbucket" fontSize="bigger" />}
+      ></SideSection>
       <SideSection
-        headerItem={
-          <SidePanelItem
-            text="GitLab"
-            fontSize="bigger"
-            buttons={[<FontAwesomeIcon icon={faUserPlus} />]}
-          />
-        }
+        headerItem={<SidePanelItem text="GitLab" fontSize="bigger" />}
       ></SideSection>
     </AccountContainer>
   );

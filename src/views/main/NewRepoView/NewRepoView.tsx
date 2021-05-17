@@ -4,6 +4,7 @@ import {
   faGitlab,
 } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe, faLock } from '@fortawesome/free-solid-svg-icons';
+import { newRepoGithub } from 'actions/githubActions';
 import axios from 'axiosConfig';
 import { TextInput } from 'components/common';
 import Button from 'components/common/Button';
@@ -11,6 +12,7 @@ import Checkbox from 'components/common/Checkbox';
 import Chip from 'components/common/Chip';
 import { useFormik } from 'formik';
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import RadioButton from './RadioButton';
 import {
@@ -49,6 +51,7 @@ const initialValues = {
 };
 
 const NewRepoView = () => {
+  const dispatch = useDispatch();
   const technologyInput = useRef<HTMLInputElement>(null);
   const [toAddTechnologies, setToAddTechnologies] = useState<string[]>([]);
   const [addedTechnologies, setAddedTechnologies] = useState<string[]>([]);
@@ -57,7 +60,14 @@ const NewRepoView = () => {
     initialValues,
     validationSchema,
     onSubmit: (values: FormInput) => {
-      console.log(values);
+      dispatch(
+        newRepoGithub(
+          values.account,
+          values.name,
+          addedTechnologies,
+          values.description
+        )
+      );
     },
   });
 

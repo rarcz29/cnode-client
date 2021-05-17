@@ -68,8 +68,8 @@ const SigninView = () => {
   });
 
   useEffect(() => {
-    authState.isLoggedIn && navigate('/');
-  }, [authState.isLoggedIn]);
+    authState.isLoggedIn && authState.token && navigate('/');
+  }, [authState.isLoggedIn, authState.token]);
 
   return (
     <>

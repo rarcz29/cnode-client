@@ -1,5 +1,4 @@
 import COLORS from 'constants/colors';
-import TRANSITIONS from 'constants/transitions';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -45,7 +44,6 @@ const StyledInput = styled.input<TextInputProps>`
     css`
       box-shadow: 0px 0px 6px 1px ${COLORS.MAIN_COLOR};
     `};
-  transition: box-shadow ease-in-out ${TRANSITIONS.FAST}ms;
 `;
 
 const TextInput: React.FC<TextInputProps> = (props) => {

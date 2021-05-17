@@ -1,4 +1,4 @@
-import { Button, TextInput } from 'components/common';
+import { Button } from 'components/common';
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { AddButtons, ButtonContainer, SearchAndFilter } from './styles';
@@ -20,7 +20,7 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = (props) => {
 
   return (
     <SearchAndFilter>
-      <TextInput placeholder="Find a repository..." rounded></TextInput>
+      {/* <TextInput placeholder="Find a repository..." rounded></TextInput> */}
       <AddButtons>
         <ButtonContainer>
           <Button size="max" color="secondary" onClick={handleRepositoryClick}>

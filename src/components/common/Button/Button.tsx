@@ -48,12 +48,12 @@ const StyledButton = styled.button<Props>`
   color: ${(props: Props) => handleColor(props.color)};
   mix-blend-mode: screen;
   transition: color ease-in-out ${TRANSITIONS.FAST}ms;
+  cursor: pointer;
   ${(props: Props) =>
     props.disabled !== true &&
     css`
       &:hover {
         color: black;
-        cursor: pointer;
 
         &::before {
           background: ${(props: Props) => handleColor(props.color)};
@@ -114,7 +114,7 @@ const handleClickEffect = (
   button.appendChild(circle);
 };
 
-const Button: React.FC<Props> = ({ to, onClick, ...others }) => {
+const Button: React.FC<Props> = ({ to, onClick, children, ...others }) => {
   const navigate = useNavigate();
 
   const handleRedirection = () => {
@@ -128,7 +128,11 @@ const Button: React.FC<Props> = ({ to, onClick, ...others }) => {
     to ? handleRedirection() : onClick && onClick(event);
   };
 
-  return <StyledButton {...others} onClick={handleClick} />;
+  return (
+    <StyledButton {...others} onClick={handleClick}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export default Button;

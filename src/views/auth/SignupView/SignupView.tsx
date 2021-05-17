@@ -4,8 +4,9 @@ import ValidationErrorMsg from 'components/ValidationErrorMsg';
 import { BREAKPOINTS } from 'constants/breakpoints';
 import { useFormik } from 'formik';
 import { useMediaQuery } from 'hooks';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { RootStore } from 'store';
 import * as yup from 'yup';
 import {
@@ -71,6 +72,8 @@ const initialValues = {
 };
 
 const SignupView = () => {
+  const isInitialMount = useRef(true);
+  let navigate = useNavigate();
   const isLaptop = useMediaQuery(BREAKPOINTS.laptop);
   const isMobileM = useMediaQuery(BREAKPOINTS.mobileM);
   const dispatch = useDispatch();
@@ -83,6 +86,15 @@ const SignupView = () => {
       dispatch(register(values.username, values.email, values.password));
     },
   });
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else if (!authState.loading) {
+      // TODO: error message
+      authState.success ? navigate('../login') : alert('Ups');
+    }
+  }, [authState.loading]);
 
   return (
     <>

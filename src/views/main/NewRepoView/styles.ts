@@ -35,7 +35,6 @@ export const CheckboxContainer = styled.div`
 
   & > * {
     margin-top: 0.5rem;
-    padding-top: 0.1px;
 
     &:last-child {
       margin-bottom: 0;
