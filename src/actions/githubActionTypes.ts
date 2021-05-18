@@ -1,4 +1,4 @@
-import { IAccount } from './common';
+import { IAccount, IAccountRepository } from './common';
 
 export enum GithubActionTypes {
   LOADING = 'GITHUB_LOADING',
@@ -26,6 +26,7 @@ export interface IGithubFail {
 
 export interface IGithubNewRepoSuccess {
   type: typeof GithubActionTypes.NEW_REPO_SUCCESS;
+  payload: IAccountRepository;
 }
 
 export interface IGithubNewRepoFail {

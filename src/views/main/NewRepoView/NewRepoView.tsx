@@ -12,7 +12,8 @@ import Checkbox from 'components/common/Checkbox';
 import Chip from 'components/common/Chip';
 import { useFormik } from 'formik';
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootStore } from 'store';
 import * as yup from 'yup';
 import RadioButton from './RadioButton';
 import {
@@ -52,6 +53,7 @@ const initialValues = {
 
 const NewRepoView = () => {
   const dispatch = useDispatch();
+  const githubState = useSelector((state: RootStore) => state.github);
   const technologyInput = useRef<HTMLInputElement>(null);
   const [toAddTechnologies, setToAddTechnologies] = useState<string[]>([]);
   const [addedTechnologies, setAddedTechnologies] = useState<string[]>([]);
@@ -276,7 +278,8 @@ const NewRepoView = () => {
         </CheckboxContainer>
       </StyledSection>
       <Button size="big" type="submit">
-        Create repository
+        {/* TODO: bitbucket, gitlab */}
+        {githubState.loading ? 'Loading...' : 'Create repository'}
       </Button>
     </form>
   );

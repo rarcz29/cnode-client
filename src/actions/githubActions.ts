@@ -49,6 +49,10 @@ export const newRepoGithub =
 
       dispatch({
         type: GithubActionTypes.NEW_REPO_SUCCESS,
+        payload: {
+          login: username,
+          repo: resp.data,
+        },
       });
     } catch (e) {
       dispatch({

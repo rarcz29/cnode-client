@@ -44,7 +44,6 @@ instance.interceptors.response.use(
 //             );
 //             // TODO: it's not working
 //             await boundActions.refresh();
-//             console.log(1); // TODO: remove
 //             instance.defaults.headers.common['Authorization'] =
 //                 'Bearer ' + store.getState().auth.token;
 //             return axios(originalRequest);

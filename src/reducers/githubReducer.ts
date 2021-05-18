@@ -1,8 +1,18 @@
+import { IAccount, IAccountRepository } from 'actions/common';
 import {
   GithubActionTypes,
   GithubDispatchTypes,
 } from 'actions/githubActionTypes';
 import { IDefaultPlatformState, initialPlatformState } from './common';
+
+// TODO: improve
+const insertRepo = (accounts: IAccount[], repo: IAccountRepository) => {
+  console.log('dziala');
+  const index = accounts.findIndex((account) => account.login === repo.login);
+  accounts[index].repos = [...accounts[index].repos, repo.repo];
+  console.log(accounts);
+  return accounts;
+};
 
 const githubReducer = (
   state: IDefaultPlatformState = initialPlatformState,
@@ -20,12 +30,20 @@ const githubReducer = (
         loading: false,
         accounts: action.payload,
       };
+    case GithubActionTypes.NEW_REPO_SUCCESS:
+      const newAccounts = insertRepo(state.accounts, action.payload);
+      return {
+        ...state,
+        loading: false,
+        accounts: newAccounts,
+      };
     case GithubActionTypes.CONNECT_ACCOUNT_SUCCESS:
       return {
         ...state,
         loading: false,
         accounts: [...state.accounts, action.payload],
       };
+    case GithubActionTypes.NEW_REPO_FAIL:
     case GithubActionTypes.CONNECT_ACCOUNT_FAIL:
       return {
         ...state,

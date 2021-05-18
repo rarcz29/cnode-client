@@ -12,3 +12,8 @@ export interface IAccount extends ILinkable {
   login: string;
   repos: IRepository[];
 }
+
+export interface IAccountRepository {
+  login: string;
+  repo: IRepository;
+}
