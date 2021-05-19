@@ -23,6 +23,37 @@ import {
   StyledSection,
 } from './styles';
 
+const platformRadioInputs = [
+  {
+    icon: faGithub,
+    label: 'GitHub',
+    value: 'github',
+  },
+  {
+    icon: faBitbucket,
+    label: 'Bitbucket',
+    value: 'bitbucket',
+  },
+  {
+    icon: faGitlab,
+    label: 'Gitlab',
+    value: 'gitlab',
+  },
+];
+
+const accessRadioInputs = [
+  {
+    icon: faLock,
+    label: 'Private',
+    value: 'private',
+  },
+  {
+    icon: faGlobe,
+    label: 'Public',
+    value: 'public',
+  },
+];
+
 // TODO: errors
 
 type FormInput = {
@@ -66,6 +97,7 @@ const NewRepoView = () => {
         newRepoGithub(
           values.account,
           values.name,
+          values.visibility !== 'public',
           addedTechnologies,
           values.description
         )
@@ -192,30 +224,17 @@ const NewRepoView = () => {
       <StyledSection>
         <h1>Platform</h1>
         <CheckboxContainer>
-          <RadioButton
-            icon={faGithub}
-            label="GitHub"
-            name="platform"
-            value="github"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <RadioButton
-            icon={faBitbucket}
-            label="Bitbucket"
-            name="platform"
-            value="bitbucket"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <RadioButton
-            icon={faGitlab}
-            label="GitLab"
-            name="platform"
-            value="gitlab"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
+          {platformRadioInputs.map((item, index) => (
+            <RadioButton
+              key={index}
+              icon={item.icon}
+              label={item.label}
+              name="platform"
+              value={item.value}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+          ))}
         </CheckboxContainer>
       </StyledSection>
       <StyledSection>
@@ -235,22 +254,17 @@ const NewRepoView = () => {
       <StyledSection>
         <h1>Access level</h1>
         <CheckboxContainer>
-          <RadioButton
-            icon={faLock}
-            label="Private"
-            name="visibility"
-            value="private"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <RadioButton
-            icon={faGlobe}
-            label="Public"
-            name="visibility"
-            value="public"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
+          {accessRadioInputs.map((item, index) => (
+            <RadioButton
+              key={index}
+              icon={item.icon}
+              label={item.label}
+              name="visibility"
+              value={item.value}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+          ))}
         </CheckboxContainer>
       </StyledSection>
       <StyledSection>

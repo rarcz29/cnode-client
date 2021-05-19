@@ -31,6 +31,7 @@ export const newRepoGithub =
   (
     username: string,
     repoName: string,
+    isPrivate: boolean,
     technologies: string[],
     description?: string
   ) =>
@@ -45,6 +46,7 @@ export const newRepoGithub =
         repoName,
         description,
         technologies,
+        private: isPrivate,
       });
 
       dispatch({

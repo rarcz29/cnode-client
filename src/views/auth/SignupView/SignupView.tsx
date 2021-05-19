@@ -139,7 +139,7 @@ const SignupView = () => {
         </BottomContainer>
 
         <BottomLinkContainer>
-          <StyledLink to="#">Continue without an account</StyledLink>
+          <StyledLink to="/community">Continue without an account</StyledLink>
         </BottomLinkContainer>
       </MainContainer>
     </>

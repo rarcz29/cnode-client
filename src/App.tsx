@@ -8,6 +8,7 @@ import GlobalStyle from 'styles/GlobalStyle';
 const App = () => {
   const authState = useSelector((state: RootStore) => state.auth);
   const routing = useRoutes(routes(authState.isLoggedIn));
+  // TODO: remove
   // const routing = useRoutes(routes(true));
 
   return (

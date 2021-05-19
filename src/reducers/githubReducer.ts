@@ -7,10 +7,10 @@ import { IDefaultPlatformState, initialPlatformState } from './common';
 
 // TODO: improve
 const insertRepo = (accounts: IAccount[], repo: IAccountRepository) => {
-  console.log('dziala');
   const index = accounts.findIndex((account) => account.login === repo.login);
-  accounts[index].repos = [...accounts[index].repos, repo.repo];
-  console.log(accounts);
+  accounts[index].repos = accounts[index].repos
+    ? [...accounts[index].repos, repo.repo]
+    : [repo.repo];
   return accounts;
 };
 

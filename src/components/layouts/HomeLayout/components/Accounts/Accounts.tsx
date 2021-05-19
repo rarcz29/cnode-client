@@ -1,4 +1,4 @@
-import { faGlobe, faLink } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faLink, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SidePanelItem from 'components/SidePanelItem';
 import React from 'react';
@@ -57,7 +57,9 @@ const Accounts: React.FC<AccountsProps> = (props) => {
             {account.repos?.map((repo, index) => (
               <SidePanelItem
                 key={index}
-                icon={<FontAwesomeIcon icon={faGlobe} />}
+                icon={
+                  <FontAwesomeIcon icon={repo?.private ? faLock : faGlobe} />
+                }
                 text={account?.login + '/' + repo?.name}
                 textColor="primary"
                 buttons={[
