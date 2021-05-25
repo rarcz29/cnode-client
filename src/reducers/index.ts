@@ -5,10 +5,10 @@ import githubReducer from './githubReducer';
 import gitlabReducer from './gitlabReducer';
 
 const rootReducer = combineReducers({
-    auth: authReducer,
-    github: githubReducer,
-    bitbucket: bitbucketReducer,
-    gitlab: gitlabReducer,
+  auth: authReducer,
+  github: githubReducer,
+  bitbucket: bitbucketReducer,
+  gitlab: gitlabReducer,
 });
 
 export default rootReducer;

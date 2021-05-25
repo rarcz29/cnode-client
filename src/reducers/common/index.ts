@@ -1,11 +1,11 @@
-import { IAccount } from 'actions/common';
+import { Account } from 'actions/common';
 
-export interface IDefaultPlatformState {
+export interface DefaultPlatformState {
   loading: boolean;
-  accounts: IAccount[];
+  accounts: Account[];
 }
 
-export const initialPlatformState: IDefaultPlatformState = {
+export const initialPlatformState: DefaultPlatformState = {
   loading: false,
   accounts: [],
 };

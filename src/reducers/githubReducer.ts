@@ -1,12 +1,12 @@
-import { IAccount, IAccountRepository } from 'actions/common';
+import { Account, AccountRepository } from 'actions/common';
 import {
   GithubActionTypes,
   GithubDispatchTypes,
 } from 'actions/githubActionTypes';
-import { IDefaultPlatformState, initialPlatformState } from './common';
+import { DefaultPlatformState, initialPlatformState } from './common';
 
 // TODO: improve
-const insertRepo = (accounts: IAccount[], repo: IAccountRepository) => {
+const insertRepo = (accounts: Account[], repo: AccountRepository) => {
   const index = accounts.findIndex((account) => account.login === repo.login);
   accounts[index].repos = accounts[index].repos
     ? [...accounts[index].repos, repo.repo]
@@ -15,9 +15,9 @@ const insertRepo = (accounts: IAccount[], repo: IAccountRepository) => {
 };
 
 const githubReducer = (
-  state: IDefaultPlatformState = initialPlatformState,
+  state: DefaultPlatformState = initialPlatformState,
   action: GithubDispatchTypes
-): IDefaultPlatformState => {
+): DefaultPlatformState => {
   switch (action.type) {
     case GithubActionTypes.LOADING:
       return {

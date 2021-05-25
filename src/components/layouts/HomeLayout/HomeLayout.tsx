@@ -1,8 +1,9 @@
 import {
-  connectAccountGithub,
-  loadGithub,
-  removeGithub,
-} from 'actions/githubActions';
+  connectAccount,
+  loadPlatform,
+  Platform,
+  removePlatform,
+} from 'actions/platformsActions';
 import { Container } from 'components/common';
 import { BREAKPOINTS } from 'constants/breakpoints';
 import DIMENSIONS from 'constants/dimensions';
@@ -30,7 +31,11 @@ const HomeLayout = () => {
   useEffect(() => {
     const code = queryString.get('code');
 
-    (async () => await dispatch(loadGithub(authState.token)))();
+    (async () => {
+      await dispatch(loadPlatform(Platform.Github, authState.token));
+      await dispatch(loadPlatform(Platform.Bitbucket, authState.token));
+      await dispatch(loadPlatform(Platform.Gitlab, authState.token));
+    })();
 
     if (code) {
       const platform = localStorage.getItem(LOCAL_STORAGE.PLATFORM_NAME);
@@ -49,7 +54,7 @@ const HomeLayout = () => {
     }
 
     return () => {
-      dispatch(removeGithub());
+      dispatch(removePlatform(Platform.Github));
     };
   }, []);
 
@@ -59,12 +64,16 @@ const HomeLayout = () => {
 
   function handleGithubConnection(code: string) {
     // TODO: error handling
-    dispatch(connectAccountGithub(code));
+    dispatch(connectAccount(Platform.Github, code));
   }
 
-  function handleBitbucketConnection(code: string) {}
+  function handleBitbucketConnection(code: string) {
+    dispatch(connectAccount(Platform.Bitbucket, code));
+  }
 
-  function handleGitlabConnection(code: string) {}
+  function handleGitlabConnection(code: string) {
+    dispatch(connectAccount(Platform.Gitlab, code));
+  }
 
   return (
     <LayoutContainer>

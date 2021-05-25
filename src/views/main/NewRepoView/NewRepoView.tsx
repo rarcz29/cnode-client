@@ -4,7 +4,7 @@ import {
   faGitlab,
 } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe, faLock } from '@fortawesome/free-solid-svg-icons';
-import { newRepoGithub } from 'actions/githubActions';
+import { newRepo, Platform } from 'actions/platformsActions';
 import axios from 'axiosConfig';
 import { TextInput } from 'components/common';
 import Button from 'components/common/Button';
@@ -82,6 +82,19 @@ const initialValues = {
   account: '',
 };
 
+const selectPlatform = (platform?: string) => {
+  switch (platform) {
+    case 'github':
+      return Platform.Github;
+    case 'bitbucket':
+      return Platform.Bitbucket;
+    case 'gitlab':
+      return Platform.Gitlab;
+    default:
+      return null;
+  }
+};
+
 const NewRepoView = () => {
   const dispatch = useDispatch();
   const githubState = useSelector((state: RootStore) => state.github);
@@ -93,15 +106,19 @@ const NewRepoView = () => {
     initialValues,
     validationSchema,
     onSubmit: (values: FormInput) => {
-      dispatch(
-        newRepoGithub(
-          values.account,
-          values.name,
-          values.visibility !== 'public',
-          addedTechnologies,
-          values.description
-        )
-      );
+      const platformType = selectPlatform(values.platform);
+
+      platformType &&
+        dispatch(
+          newRepo(
+            platformType,
+            values.account,
+            values.name,
+            values.visibility !== 'public',
+            addedTechnologies,
+            values.description
+          )
+        );
     },
   });
 
@@ -143,6 +160,8 @@ const NewRepoView = () => {
   const chipRemoveClickHandler = (index: number) => {
     setAddedTechnologies((prev) => prev.filter((item, i) => i !== index));
   };
+
+  console.log(formik.errors); // TODO: remove
 
   return (
     <form onSubmit={formik.handleSubmit}>

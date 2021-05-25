@@ -71,9 +71,17 @@ const AddAccountPanel: React.FC<FullProps> = ({ show, setShow }) => {
       );
       window.location.assign(PLATFORMS.URL.GITHUB + '&login=' + username);
     } else if (bitbucket) {
-      alert('not implemented');
+      localStorage.setItem(
+        LOCAL_STORAGE.PLATFORM_NAME,
+        LOCAL_STORAGE.BITBUCKET_VALUE
+      );
+      window.location.assign(PLATFORMS.URL.BITBUCKET);
     } else if (gitlab) {
-      alert('not implemented');
+      localStorage.setItem(
+        LOCAL_STORAGE.PLATFORM_NAME,
+        LOCAL_STORAGE.GITLAB_VALUE
+      );
+      window.location.assign(PLATFORMS.URL.GITLAB);
     }
 
     setLoading(false);

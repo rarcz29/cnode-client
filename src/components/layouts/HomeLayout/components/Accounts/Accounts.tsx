@@ -15,6 +15,8 @@ type AccountsProps = {
 
 const Accounts: React.FC<AccountsProps> = (props) => {
   const githubState = useSelector((state: RootStore) => state.github);
+  const bitbucketState = useSelector((state: RootStore) => state.bitbucket);
+  const gitlabState = useSelector((state: RootStore) => state.gitlab);
 
   // TODO: specific handlers
   const handleAddGithubAccount = () => {
@@ -38,47 +40,171 @@ const Accounts: React.FC<AccountsProps> = (props) => {
       <SideSection
         headerItem={<SidePanelItem text="GitHub" fontSize="bigger" />}
       >
-        {githubState.accounts?.map((account, index) => (
-          <SideSection
-            key={index}
-            headerItem={
-              <SidePanelItem
-                text={account?.login}
-                textColor="secondary"
-                buttons={[
-                  <FontAwesomeIcon
-                    icon={faLink}
-                    onClick={() => handleLinkClick(account?.originUrl)}
-                  />,
-                ]}
-              />
-            }
-          >
-            {account.repos?.map((repo, index) => (
-              <SidePanelItem
-                key={index}
-                icon={
-                  <FontAwesomeIcon icon={repo?.private ? faLock : faGlobe} />
-                }
-                text={account?.login + '/' + repo?.name}
-                textColor="primary"
-                buttons={[
-                  <FontAwesomeIcon
-                    icon={faLink}
-                    onClick={() => handleLinkClick(repo?.originUrl)}
-                  />,
-                ]}
-              />
-            ))}
-          </SideSection>
-        ))}
+        {githubState.accounts?.map(
+          (
+            // TODO: improve
+            account: {
+              login: string;
+              originUrl: string;
+              repos: { private: any; name: string; originUrl: string }[];
+            },
+            index: React.Key | null | undefined
+          ) => (
+            <SideSection
+              key={index}
+              headerItem={
+                <SidePanelItem
+                  text={account?.login}
+                  textColor="secondary"
+                  buttons={[
+                    <FontAwesomeIcon
+                      icon={faLink}
+                      onClick={() => handleLinkClick(account?.originUrl)}
+                    />,
+                  ]}
+                />
+              }
+            >
+              {account.repos?.map(
+                (
+                  // TODO: improve
+                  repo: { private: any; name: string; originUrl: string },
+                  index: React.Key | null | undefined
+                ) => (
+                  <SidePanelItem
+                    key={index}
+                    icon={
+                      <FontAwesomeIcon
+                        icon={repo?.private ? faLock : faGlobe}
+                      />
+                    }
+                    text={account?.login + '/' + repo?.name}
+                    textColor="primary"
+                    buttons={[
+                      <FontAwesomeIcon
+                        icon={faLink}
+                        onClick={() => handleLinkClick(repo?.originUrl)}
+                      />,
+                    ]}
+                  />
+                )
+              )}
+            </SideSection>
+          )
+        )}
       </SideSection>
       <SideSection
         headerItem={<SidePanelItem text="Bitbucket" fontSize="bigger" />}
-      ></SideSection>
+      >
+        {bitbucketState.accounts?.map(
+          (
+            // TODO: improve
+            account: {
+              login: string;
+              originUrl: string;
+              repos: { private: any; name: string; originUrl: string }[];
+            },
+            index: React.Key | null | undefined
+          ) => (
+            <SideSection
+              key={index}
+              headerItem={
+                <SidePanelItem
+                  text={account?.login}
+                  textColor="secondary"
+                  buttons={[
+                    <FontAwesomeIcon
+                      icon={faLink}
+                      onClick={() => handleLinkClick(account?.originUrl)}
+                    />,
+                  ]}
+                />
+              }
+            >
+              {account.repos?.map(
+                (
+                  // TODO: improve
+                  repo: { private: any; name: string; originUrl: string },
+                  index: React.Key | null | undefined
+                ) => (
+                  <SidePanelItem
+                    key={index}
+                    icon={
+                      <FontAwesomeIcon
+                        icon={repo?.private ? faLock : faGlobe}
+                      />
+                    }
+                    text={account?.login + '/' + repo?.name}
+                    textColor="primary"
+                    buttons={[
+                      <FontAwesomeIcon
+                        icon={faLink}
+                        onClick={() => handleLinkClick(repo?.originUrl)}
+                      />,
+                    ]}
+                  />
+                )
+              )}
+            </SideSection>
+          )
+        )}
+      </SideSection>
       <SideSection
         headerItem={<SidePanelItem text="GitLab" fontSize="bigger" />}
-      ></SideSection>
+      >
+        {gitlabState.accounts?.map(
+          (
+            // TODO: improve
+            account: {
+              login: string;
+              originUrl: string;
+              repos: { private: any; name: string; originUrl: string }[];
+            },
+            index: React.Key | null | undefined
+          ) => (
+            <SideSection
+              key={index}
+              headerItem={
+                <SidePanelItem
+                  text={account?.login}
+                  textColor="secondary"
+                  buttons={[
+                    <FontAwesomeIcon
+                      icon={faLink}
+                      onClick={() => handleLinkClick(account?.originUrl)}
+                    />,
+                  ]}
+                />
+              }
+            >
+              {account.repos?.map(
+                (
+                  // TODO: improve
+                  repo: { private: any; name: string; originUrl: string },
+                  index: React.Key | null | undefined
+                ) => (
+                  <SidePanelItem
+                    key={index}
+                    icon={
+                      <FontAwesomeIcon
+                        icon={repo?.private ? faLock : faGlobe}
+                      />
+                    }
+                    text={account?.login + '/' + repo?.name}
+                    textColor="primary"
+                    buttons={[
+                      <FontAwesomeIcon
+                        icon={faLink}
+                        onClick={() => handleLinkClick(repo?.originUrl)}
+                      />,
+                    ]}
+                  />
+                )
+              )}
+            </SideSection>
+          )
+        )}
+      </SideSection>
     </AccountContainer>
   );
 };

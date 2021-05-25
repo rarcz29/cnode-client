@@ -1,4 +1,4 @@
-import { IAccount, IAccountRepository } from './common';
+import { Account, AccountRepository } from './common';
 
 export enum GithubActionTypes {
   LOADING = 'GITHUB_LOADING',
@@ -11,47 +11,47 @@ export enum GithubActionTypes {
   REMOVE = 'GITHUB_REMOVE',
 }
 
-export interface IGithubLoading {
+export interface Loading {
   type: typeof GithubActionTypes.LOADING;
 }
 
-export interface IGithubSuccess {
+export interface LoadSuccess {
   type: typeof GithubActionTypes.LOAD_SUCCESS;
-  payload: IAccount[];
+  payload: Account[];
 }
 
-export interface IGithubFail {
+export interface LoadFail {
   type: typeof GithubActionTypes.LOAD_FAIL;
 }
 
-export interface IGithubNewRepoSuccess {
+export interface NewRepoSuccess {
   type: typeof GithubActionTypes.NEW_REPO_SUCCESS;
-  payload: IAccountRepository;
+  payload: AccountRepository;
 }
 
-export interface IGithubNewRepoFail {
+export interface NewRepoFail {
   type: typeof GithubActionTypes.NEW_REPO_FAIL;
 }
 
-export interface IGithubConnectAccountSuccess {
+export interface ConnectAccountSuccess {
   type: typeof GithubActionTypes.CONNECT_ACCOUNT_SUCCESS;
-  payload: IAccount;
+  payload: Account;
 }
 
-export interface IGithubConnectAccountFail {
+export interface ConnectAccountFail {
   type: typeof GithubActionTypes.CONNECT_ACCOUNT_FAIL;
 }
 
-export interface IGithubRemove {
+export interface Remove {
   type: typeof GithubActionTypes.REMOVE;
 }
 
 export type GithubDispatchTypes =
-  | IGithubLoading
-  | IGithubSuccess
-  | IGithubFail
-  | IGithubNewRepoSuccess
-  | IGithubNewRepoFail
-  | IGithubConnectAccountSuccess
-  | IGithubConnectAccountFail
-  | IGithubRemove;
+  | Loading
+  | LoadSuccess
+  | LoadFail
+  | NewRepoSuccess
+  | NewRepoFail
+  | ConnectAccountSuccess
+  | ConnectAccountFail
+  | Remove;

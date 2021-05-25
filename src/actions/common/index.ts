@@ -1,19 +1,19 @@
-interface ILinkable {
+interface Linkable {
   originUrl: string;
 }
 
-export interface IRepository extends ILinkable {
+export interface Repository extends Linkable {
   name: string;
   description: string;
   private: boolean;
 }
 
-export interface IAccount extends ILinkable {
+export interface Account extends Linkable {
   login: string;
-  repos: IRepository[];
+  repos: Repository[];
 }
 
-export interface IAccountRepository {
+export interface AccountRepository {
   login: string;
-  repo: IRepository;
+  repo: Repository;
 }
