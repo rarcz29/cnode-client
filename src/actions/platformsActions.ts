@@ -82,6 +82,7 @@ export const newRepo =
       GithubDispatchTypes | BitbucketDispatchTypes | GitlabDispatchTypes
     >
   ) => {
+    console.log('dziala');
     const actionTypes = createActionTypes(platform);
     const url = selectPlatformUrl(platform);
 

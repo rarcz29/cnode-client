@@ -18,7 +18,6 @@ const MainLayout = () => {
   return (
     <>
       <StyledHeader>
-        .gitnode
         <MainNav>
           <ul>
             {mainNavbarItems.map((item, index) => (

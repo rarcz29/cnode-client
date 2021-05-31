@@ -98,6 +98,8 @@ const selectPlatform = (platform?: string) => {
 const NewRepoView = () => {
   const dispatch = useDispatch();
   const githubState = useSelector((state: RootStore) => state.github);
+  const bitbucketState = useSelector((state: RootStore) => state.bitbucket);
+  const gitlabState = useSelector((state: RootStore) => state.gitlab);
   const technologyInput = useRef<HTMLInputElement>(null);
   const [toAddTechnologies, setToAddTechnologies] = useState<string[]>([]);
   const [addedTechnologies, setAddedTechnologies] = useState<string[]>([]);
@@ -106,9 +108,11 @@ const NewRepoView = () => {
     initialValues,
     validationSchema,
     onSubmit: (values: FormInput) => {
+      console.log(values.platform);
       const platformType = selectPlatform(values.platform);
+      console.log(platformType);
 
-      platformType &&
+      platformType != null &&
         dispatch(
           newRepo(
             platformType,
@@ -160,8 +164,6 @@ const NewRepoView = () => {
   const chipRemoveClickHandler = (index: number) => {
     setAddedTechnologies((prev) => prev.filter((item, i) => i !== index));
   };
-
-  console.log(formik.errors); // TODO: remove
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -312,7 +314,9 @@ const NewRepoView = () => {
       </StyledSection>
       <Button size="big" type="submit">
         {/* TODO: bitbucket, gitlab */}
-        {githubState.loading ? 'Loading...' : 'Create repository'}
+        {githubState.loading || bitbucketState.loading || gitlabState.loading
+          ? 'Loading...'
+          : 'Create repository'}
       </Button>
     </form>
   );
