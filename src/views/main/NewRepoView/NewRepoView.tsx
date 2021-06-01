@@ -108,9 +108,7 @@ const NewRepoView = () => {
     initialValues,
     validationSchema,
     onSubmit: (values: FormInput) => {
-      console.log(values.platform);
       const platformType = selectPlatform(values.platform);
-      console.log(platformType);
 
       platformType != null &&
         dispatch(

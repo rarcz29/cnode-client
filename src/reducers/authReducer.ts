@@ -62,16 +62,22 @@ const authReducer = (
         ...state,
         ...action.payload,
         loading: false,
+        success: true,
       };
     case AuthActionTypes.REFRESH_FAIL:
     case AuthActionTypes.REGISTER_FAIL:
     case AuthActionTypes.LOGIN_FAIL:
+    case AuthActionTypes.UPDATE_DATA_FAIL:
       return {
         ...initialState,
         success: false,
       };
+    case AuthActionTypes.UPDATE_DATA_SUCCESS:
     case AuthActionTypes.LOGOUT:
-      return initialState;
+      return {
+        ...initialState,
+        success: true,
+      };
     default:
       return state;
   }

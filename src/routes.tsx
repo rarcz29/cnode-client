@@ -11,6 +11,7 @@ import {
   RepositoriesView,
   SigninView,
   SignupView,
+  UserView,
 } from 'views';
 
 const routes = (isLoggedIn: boolean) => [
@@ -25,6 +26,7 @@ const routes = (isLoggedIn: boolean) => [
           { path: '/', element: <InfoView /> },
           { path: 'new', element: <NewRepoView /> },
           { path: 'repositories', element: <RepositoriesView /> },
+          { path: 'user', element: <UserView /> },
         ],
       },
       {

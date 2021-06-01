@@ -3,6 +3,8 @@ import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import store from 'store';
 
+const getToken = () => {};
+
 const instance = axios.create({
   baseURL: 'https://localhost:5001/api',
   timeout: 10000,
@@ -10,9 +12,18 @@ const instance = axios.create({
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    Authorization: `Bearer ${store.getState().auth.token}`,
   },
 });
+
+instance.interceptors.request.use(
+  (config) => {
+    const token = store.getState().auth.token;
+    const auth = token ? `Bearer ${token}` : '';
+    config.headers.common['Authorization'] = auth;
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 instance.interceptors.response.use(
   (response) => {

@@ -1,6 +1,7 @@
 const LOGIN = '/auth/login';
 const REGISTER = '/auth/register';
 const REFRESH = '/auth/refresh';
+const USER = '/user';
 
 // TODO: urls
 // const LOAD_GITHUB = '/github';
@@ -25,6 +26,7 @@ const PLATFORMS = {
 };
 
 const API_URLS = {
+  USER,
   LOGIN,
   REGISTER,
   REFRESH,

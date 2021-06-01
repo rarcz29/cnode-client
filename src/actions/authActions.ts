@@ -56,6 +56,7 @@ export const login =
       dispatch({
         type: AuthActionTypes.LOGIN_SUCCESS,
         payload: {
+          id: userData.id,
           username: userData.username,
           email: userData.email,
           token: res.data.token,
@@ -68,8 +69,6 @@ export const login =
       });
     }
   };
-
-interface IState {}
 
 export const refresh = () => async (dispatch: Dispatch<AuthDispatchTypes>) => {
   try {
@@ -116,6 +115,29 @@ export const refresh = () => async (dispatch: Dispatch<AuthDispatchTypes>) => {
     });
   }
 };
+
+export const update =
+  (username: string, email: string) =>
+  async (dispatch: Dispatch<AuthDispatchTypes>) => {
+    try {
+      dispatch({
+        type: AuthActionTypes.LOADING,
+      });
+
+      await axios.put(API_URLS.USER, {
+        username,
+        email,
+      });
+
+      dispatch({
+        type: AuthActionTypes.UPDATE_DATA_SUCCESS,
+      });
+    } catch (e) {
+      dispatch({
+        type: AuthActionTypes.UPDATE_DATA_FAIL,
+      });
+    }
+  };
 
 export const logout = () => (dispatch: Dispatch<AuthDispatchTypes>) => {
   dispatch({
