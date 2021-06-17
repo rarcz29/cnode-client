@@ -13,12 +13,27 @@
     "jest/globals": true
   },
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "crlf"
+      }
+    ],
+    "linebreak-style": ["error", "windows"],
     "no-use-before-define": "off",
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ],
     "react/jsx-filename-extension": [
       2,
       {
@@ -39,7 +54,7 @@
         "ts": "never",
         "tsx": "never"
       }
-   ]
+    ]
   },
   "settings": {
     "import/resolver": {

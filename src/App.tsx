@@ -1,5 +1,12 @@
 import React from 'react';
+import GlobalStyle from './styles/GlobalStyle';
 
-const App = () => <div>app</div>;
+type AppProps = {};
+
+const App: React.FC<AppProps> = () => (
+  <>
+    <GlobalStyle />
+  </>
+);
 
 export default App;
