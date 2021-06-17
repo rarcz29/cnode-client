@@ -11,8 +11,8 @@ const StyledDiv = styled.div`
   background-color: red;
 `;
 
-const Container: React.FC<ContainerProps> = (props) => {
-  return <StyledDiv {...props} />;
-};
+const Container: React.FC<ContainerProps> = ({ children }) => (
+  <StyledDiv>{children}</StyledDiv>
+);
 
 export default Container;
