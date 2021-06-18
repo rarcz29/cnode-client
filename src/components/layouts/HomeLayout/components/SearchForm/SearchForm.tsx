@@ -47,6 +47,7 @@ const SearchForm: React.FC<SearchFormProps> = () => (
         name={inputs.name}
         type={inputs.type}
         placeholder={inputs.placeholder}
+        fullWidth
         rounded
       />
     </Form>

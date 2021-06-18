@@ -1,15 +1,27 @@
+import {
+  faBars,
+  faBell,
+  faUserCircle,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from 'components/Logo/Logo';
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
-import { LogoSection, RightSection, StyledHeader } from './style';
+import { LogoContainer, RightContainer, StyledHeader } from './style';
 
 type TopBarProps = {};
 
 const TopBar: React.FC<TopBarProps> = () => (
   <StyledHeader>
-    <LogoSection>Logo</LogoSection>
-    <RightSection>
+    <LogoContainer>
+      <Logo />
+    </LogoContainer>
+    <RightContainer>
       <SearchForm />
-    </RightSection>
+      <FontAwesomeIcon icon={faBell} />
+      <FontAwesomeIcon icon={faBars} />
+      <FontAwesomeIcon icon={faUserCircle} />
+    </RightContainer>
   </StyledHeader>
 );
 

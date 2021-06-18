@@ -4,15 +4,25 @@ export const StyledHeader = styled.header`
   height: 80px;
   display: flex;
   align-items: center;
-  background-color: red;
+  position: sticky;
+  top: 0;
 `;
 
-export const LogoSection = styled.div`
+export const LogoContainer = styled.div`
   width: 248px;
-  background-color: blue;
 `;
 
-export const RightSection = styled.div`
+export const RightContainer = styled.div`
   width: calc(100% - 248px);
-  background-color: green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    font-size: 1.5rem;
+  }
+
+  form {
+    width: calc(100% - 200px);
+  }
 `;
