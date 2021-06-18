@@ -1,4 +1,4 @@
-import COLORS from 'constants/colors';
+import COLOUR from 'constants/colour';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -15,8 +15,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${COLORS.background1};
-    color: ${COLORS.foreground1};
+    background-color: ${COLOUR.background1};
+    color: ${COLOUR.foreground1};
     overflow-y: scroll;
   }
 `;

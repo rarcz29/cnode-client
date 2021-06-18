@@ -1,5 +1,5 @@
 import { TextInput } from 'components/common';
-import { useFormik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
 
@@ -34,26 +34,23 @@ const onSubmit = (values: FormInput) => {
   alert(values);
 };
 
-const SearchForm: React.FC<SearchFormProps> = () => {
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit,
-  });
-
-  return (
-    <form onSubmit={formik.handleSubmit}>
-      <TextInput
+const SearchForm: React.FC<SearchFormProps> = () => (
+  <Formik
+    initialValues={initialValues}
+    validationSchema={validationSchema}
+    onSubmit={onSubmit}
+  >
+    <Form>
+      <Field
+        as={TextInput}
+        id={inputs.name}
         name={inputs.name}
-        placeholder={inputs.placeholder}
         type={inputs.type}
-        value={formik.values.search}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        placeholder={inputs.placeholder}
         rounded
       />
-    </form>
-  );
-};
+    </Form>
+  </Formik>
+);
 
 export default SearchForm;
