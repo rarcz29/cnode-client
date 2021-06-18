@@ -1,4 +1,4 @@
-import { HomeLayout } from 'layouts';
+import { HomeLayout } from 'components/layouts';
 import React from 'react';
 
 const routes = [
