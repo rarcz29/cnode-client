@@ -3,7 +3,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import NavItem from '../NavItem';
-import { Aside } from './style';
+import { Aside, List } from './style';
 
 type Item = {
   to: string;
@@ -38,15 +38,17 @@ type SideNavProps = {};
 
 const SideNav: React.FC<SideNavProps> = () => (
   <Aside>
-    {items.map((item) => (
-      <NavItem
-        key={item.text}
-        to={item.to}
-        icon={<FontAwesomeIcon icon={item.icon} />}
-      >
-        {item.text}
-      </NavItem>
-    ))}
+    <nav>
+      <List>
+        {items.map((item) => (
+          <li key={item.text}>
+            <NavItem to={item.to} icon={<FontAwesomeIcon icon={item.icon} />}>
+              {item.text}
+            </NavItem>
+          </li>
+        ))}
+      </List>
+    </nav>
   </Aside>
 );
 
