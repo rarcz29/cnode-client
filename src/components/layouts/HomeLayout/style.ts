@@ -1,0 +1,10 @@
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  display: flex;
+`;
+
+export const Main = styled.main`
+  width: calc(100% - 248px);
+  background-color: red;
+`;
