@@ -6,6 +6,7 @@ export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   font-size: 1.125rem;
+  letter-spacing: 0.04rem;
 
   &:link,
   &:visited,

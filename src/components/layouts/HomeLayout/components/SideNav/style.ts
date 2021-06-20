@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Aside = styled.aside`
-  width: 248px;
+  width: 224px;
+  margin-right: 24px;
 `;
 
 export const List = styled.ul`
