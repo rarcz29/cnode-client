@@ -5,7 +5,7 @@ import styled from 'styled-components';
 type ContainerProps = {};
 
 const StyledDiv = styled.div`
-  width: ${DIMENSIONS.pageWidth + 40}px;
+  max-width: ${DIMENSIONS.pageWidth + 40}px;
   margin: 0 auto;
   padding: 0 20px;
 `;

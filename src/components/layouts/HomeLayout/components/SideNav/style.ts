@@ -6,4 +6,12 @@ export const Aside = styled.aside`
 
 export const List = styled.ul`
   list-style-type: none;
+
+  & > li {
+    margin-bottom: 1.75rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 `;

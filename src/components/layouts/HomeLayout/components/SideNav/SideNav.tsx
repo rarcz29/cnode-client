@@ -1,5 +1,10 @@
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faProjectDiagram,
+  faUser,
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import NavItem from '../NavItem';
@@ -19,17 +24,17 @@ const items: Item[] = [
   },
   {
     to: '#',
-    icon: faHome,
+    icon: faProjectDiagram,
     text: 'Repositories',
   },
   {
     to: '#',
-    icon: faHome,
+    icon: faUser,
     text: 'Contacts',
   },
   {
     to: '#',
-    icon: faHome,
+    icon: faUsers,
     text: 'Teams',
   },
 ];

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Icon, StyledLink } from './style';
 
 type NavItemProps = {
   to: string;
@@ -8,14 +7,10 @@ type NavItemProps = {
   icon: React.ReactNode;
 };
 
-const StyledLink = styled(Link)`
-  display: flex;
-`;
-
 const NavItem: React.FC<NavItemProps> = ({ to, children, icon }) => (
   <StyledLink to={to}>
-    {icon}
-    {children}
+    <Icon>{icon}</Icon>
+    <span>{children}</span>
   </StyledLink>
 );
 
