@@ -25,6 +25,7 @@
       }
     ],
     "linebreak-style": ["error", "windows"],
+    "arrow-body-style": "off",
     "no-use-before-define": "off",
     "import/prefer-default-export": "off",
     "react/prop-types": "off",

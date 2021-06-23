@@ -7,5 +7,4 @@ export const Wrapper = styled.div`
 
 export const Main = styled.main`
   width: calc(100% - 248px);
-  background-color: red;
 `;
