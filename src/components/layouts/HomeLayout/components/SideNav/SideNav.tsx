@@ -23,12 +23,12 @@ const items: Item[] = [
     text: 'Home',
   },
   {
-    to: '#',
+    to: 'repositories',
     icon: faProjectDiagram,
     text: 'Repositories',
   },
   {
-    to: '#',
+    to: 'contacts',
     icon: faUser,
     text: 'Contacts',
   },
