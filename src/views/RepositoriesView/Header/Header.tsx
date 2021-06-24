@@ -6,6 +6,7 @@ type HeaderProps = {};
 
 const StyledHeader = styled.header`
   display: flex;
+  margin-bottom: 30px;
 `;
 
 const LeftContainer = styled.div`

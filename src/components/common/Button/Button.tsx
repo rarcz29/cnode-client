@@ -79,6 +79,7 @@ const handleClickEffect = (
   circle.classList.add('ripple');
 
   const ripple = button.getElementsByClassName('ripple')[0];
+
   if (ripple) {
     ripple.remove();
   }
