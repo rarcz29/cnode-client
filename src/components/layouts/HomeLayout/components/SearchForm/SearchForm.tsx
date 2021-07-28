@@ -31,6 +31,7 @@ const initialValues = {
 
 const onSubmit = (values: FormInput) => {
   // TODO: search submit
+  console.log(values);
   return undefined;
 };
 
