@@ -31,7 +31,8 @@ const initialValues = {
 
 const onSubmit = (values: FormInput) => {
   // TODO: search submit
-  alert(values);
+  console.log(values);
+  return undefined;
 };
 
 const SearchForm: React.FC<SearchFormProps> = () => (

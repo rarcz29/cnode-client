@@ -37,6 +37,11 @@
     "eslint": "eslint src/**/*.ts src/**/*.tsx",
     "eslint:fix": "eslint --fix src/**/*.ts src/**/*.tsx"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn eslint:fix"
+    }
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -63,6 +68,8 @@
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
     "prettier": "2.3.1"
   }
 }
