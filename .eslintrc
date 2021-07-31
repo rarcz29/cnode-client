@@ -1,0 +1,132 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "import",
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "arrow-body-style": ["error", "always"],
+    "eol-last": "error",
+    "block-spacing": [
+      "error",
+      "always"
+    ],
+    "brace-style": "error",
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    "consistent-this": [
+      "error",
+      "self"
+    ],
+    "consistent-return": "off",
+    "dot-notation": "error",
+    "dot-location": [
+      "error",
+      "property"
+    ],
+    "new-cap": [
+      "off",
+      {
+        "capIsNew": true,
+        "newIsCap": true
+      }
+    ],
+    "no-shadow": "off",
+    "no-spaced-func": "error",
+    "no-multiple-empty-lines": "error",
+    "no-multi-spaces": "error",
+    "no-undef": "error",
+    "no-empty-pattern": "error",
+    "no-duplicate-case": "error",
+    "no-cond-assign": "error",
+    "no-extra-semi": "error",
+    "no-extra-boolean-cast": "error",
+    "no-trailing-spaces": "error",
+    "no-unneeded-ternary": "error",
+    "no-use-before-define": "off",
+    "no-unreachable": "error",
+    "no-var": "error",
+    "prefer-arrow-callback": "off",
+    "prefer-const": "error",
+    "semi": [
+      "error",
+      "always"
+    ],
+    "space-before-blocks": [
+      "error",
+      "always"
+    ],
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      "avoid-escape"
+    ],
+    "no-unused-expressions": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "curly": "error",
+    "max-len": [
+      "error",
+      80,
+      2
+    ],
+    "react/no-danger": "error",
+    "react/no-deprecated": "error",
+    "react/no-unknown-property": "error",
+    "react/no-unused-prop-types": "error",
+    "react/react-in-jsx-scope": "error",
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  }
+}
