@@ -13,14 +13,22 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "typescript": "^4.1.2",
+    "typescript": "^4.3.5",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "eslint --cache --ext .js,.ts,.tsx,.jsx ./",
+    "eslint:fix": "eslint --fix --cache --ext .js,.ts,.tsx,.jsx ./"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn eslint",
+      "pre-push": "yarn test"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +47,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "prettier": "2.3.1"
   }
 }
