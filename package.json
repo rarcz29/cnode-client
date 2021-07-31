@@ -26,8 +26,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn eslint",
-      "pre-push": "yarn test"
+      "pre-commit": "yarn eslint"
     }
   },
   "eslintConfig": {
