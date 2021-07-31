@@ -10,6 +10,10 @@
     "import",
     "react"
   ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "rules": {
     "arrow-body-style": ["error", "always"],
     "eol-last": "error",
@@ -66,6 +70,7 @@
     "no-extra-boolean-cast": "error",
     "no-trailing-spaces": "error",
     "no-unneeded-ternary": "error",
+    "no-use-before-define": "off",
     "no-unreachable": "error",
     "no-var": "error",
     "prefer-arrow-callback": "off",
@@ -87,18 +92,10 @@
       "single",
       "avoid-escape"
     ],
-    "no-use-before-define": [
-      "error",
-      {
-        "functions": true,
-        "classes": true
-      }
-    ],
     "no-unused-expressions": "error",
     "import/order": [
       "error",
       {
-        "newlines-between": "always",
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "pathGroups": [
           {
@@ -126,8 +123,10 @@
     "react/no-unused-prop-types": "error",
     "react/react-in-jsx-scope": "error",
     "@typescript-eslint/indent": ["error", 2],
-    "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error"
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
