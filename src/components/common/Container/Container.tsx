@@ -1,22 +1,17 @@
+import DIMENSIONS from 'constants/dimensions';
 import React from 'react';
 import styled from 'styled-components';
 
-type Props = {
-    width: string;
-    height?: string;
-    sidePadding?: string;
-    className?: string;
-};
+type ContainerProps = {};
 
-const StyledDiv = styled.div<Props>`
-    max-width: ${(props: Props) => props.width};
-    height: ${(props: Props) => props.height || 'auto'};
-    padding: 0 ${(props: Props) => props.sidePadding || '20px'};
-    margin: 0 auto;
+const StyledDiv = styled.div`
+  max-width: ${DIMENSIONS.pageWidth + 40}px;
+  margin: 0 auto;
+  padding: 0 20px;
 `;
 
-const Container: React.FC<Props> = (props) => {
-    return <StyledDiv {...props} />;
-};
+const Container: React.FC<ContainerProps> = ({ children }) => (
+  <StyledDiv>{children}</StyledDiv>
+);
 
 export default Container;

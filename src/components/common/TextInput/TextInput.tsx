@@ -1,54 +1,30 @@
-import COLORS from 'constants/colors';
+import COLOUR from 'constants/colour';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  forwardRef?: React.RefObject<HTMLInputElement>;
+interface InputProps {
+  fullWidth?: boolean;
   rounded?: boolean;
-  color?: 'primary' | 'secondary';
-  width?: 'short' | 'max';
-  error?: boolean;
 }
 
-const handleWidth = (width?: string) => {
-  switch (width) {
-    case 'short':
-      return '300px';
-    case 'max':
-    default:
-      return '100%';
-  }
-};
+interface TextInputProps extends InputProps {
+  name?: string;
+  type?: 'text' | 'password' | 'email';
+  placeholder?: string;
+}
 
-const handleColor = (color?: string) => {
-  switch (color) {
-    case 'secondary':
-      return COLORS.BACKGROUND.DARK_2;
-    case 'primary':
-    default:
-      return COLORS.BACKGROUND.DARK_3;
-  }
-};
-
-const StyledInput = styled.input<TextInputProps>`
-  width: ${(props: TextInputProps) => handleWidth(props.width)};
+const Input = styled.input<InputProps>`
   height: 40px;
-  border-radius: ${(props: TextInputProps) => (props.rounded ? '100vh' : '0')};
-  padding: 0 2rem;
-  font-size: 0.875rem;
-  background-color: ${(props: TextInputProps) => handleColor(props.color)};
-  color: ${COLORS.FOREGROUND.MAIN};
+  width: ${(props: InputProps) => (props.fullWidth ? '100%' : 'auto')};
+  border-radius: ${(props: InputProps) => (props.rounded ? '20px' : '3px')};
   border-width: 0;
-  ${(props: TextInputProps) =>
-    props.error &&
-    css`
-      box-shadow: 0px 0px 6px 1px ${COLORS.MAIN_COLOR};
-    `};
+  padding: 0 1.5rem;
+  background-color: ${COLOUR.darkGrey1};
+  color: ${COLOUR.foreground1};
 `;
 
-const TextInput: React.FC<TextInputProps> = (props) => {
-  const { forwardRef, ...rest } = props;
-  return <StyledInput {...rest} ref={forwardRef} />;
-};
+const TextInput: React.FC<TextInputProps> = (props) => (
+  <Input {...props} autoComplete="off" />
+);
 
 export default TextInput;
