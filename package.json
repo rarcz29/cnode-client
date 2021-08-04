@@ -25,8 +25,8 @@
     "eslint": "eslint . --ext .js,.ts,.tsx,.jsx",
     "eslint:fix": "eslint . --fix --ext .js,.ts,.tsx,.jsx",
     "stylelint": "stylelint src/**/*.{js,ts,tsx,jsx}",
-    "prettier": "prettier --check ./**/*.{js,ts,tsx,jsx}",
-    "prettier:fix": "prettier --write ./**/*.{js,ts,tsx,jsx}"
+    "prettier": "prettier --check src/**/*.{js,ts,tsx,jsx}",
+    "prettier:fix": "prettier --write src/**/*.{js,ts,tsx,jsx}"
   },
   "husky": {
     "hooks": {
