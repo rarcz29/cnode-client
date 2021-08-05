@@ -20,7 +20,6 @@
     }
   },
   "rules": {
-    "arrow-body-style": ["error", "always"],
     "eol-last": "error",
     "block-spacing": [
       "error",
