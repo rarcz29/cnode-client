@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { MARGINS } from '../../../constants'; // TODO: change path
+// TODO: change path
+import { MARGINS, MEDIA_QUERIES } from '../../../constants';
 
 export const HeaderWrapper = styled.header`
   height: ${MARGINS.margin64}px;
@@ -10,4 +11,8 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: pink;
+
+  @media ${MEDIA_QUERIES.mobileMax} {
+    margin-bottom: ${MARGINS.margin24}px;
+  }
 `;

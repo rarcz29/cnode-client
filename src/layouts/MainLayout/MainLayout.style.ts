@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MARGINS } from '../../constants'; // TODO: constants
+import { MARGINS, MEDIA_QUERIES } from '../../constants'; // TODO: constants
 
 export const LayoutContainer = styled.div`
   display: flex;
@@ -11,4 +11,15 @@ export const Main = styled.main`
   margin: 0 ${MARGINS.margin64}px;
   background-color: red;
   height: 3000px;
+
+  @media ${MEDIA_QUERIES.laptopMax} {
+    width: calc(100% - 212px);
+    margin-left: ${MARGINS.margin32}px;
+    margin-right: 0;
+  }
+
+  @media ${MEDIA_QUERIES.tabletMax} {
+    width: 100%;
+    margin: 0;
+  }
 `;
