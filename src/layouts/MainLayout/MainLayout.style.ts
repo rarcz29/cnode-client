@@ -13,8 +13,7 @@ export const Main = styled.main`
   height: 3000px;
 
   @media ${MEDIA_QUERIES.laptopMax} {
-    width: calc(100% - 212px);
-    margin-left: ${MARGINS.margin32}px;
+    width: calc(100% - 246px);
     margin-right: 0;
   }
 

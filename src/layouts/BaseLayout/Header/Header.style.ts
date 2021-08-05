@@ -10,7 +10,6 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: pink;
 
   @media ${MEDIA_QUERIES.mobileMax} {
     margin-bottom: ${MARGINS.margin24}px;
