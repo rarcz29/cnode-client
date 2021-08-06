@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { COLORS } from '../constants';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -10,11 +9,6 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 100%;
-  }
-
-  body {
-    background-color: ${COLORS.background1};
-    color: ${COLORS.text1};
   }
 `;
 
