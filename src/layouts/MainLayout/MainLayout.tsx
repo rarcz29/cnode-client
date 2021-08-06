@@ -8,8 +8,8 @@ import SidePanel from './SidePanel/SidePanel';
 interface MainLayoutProps {}
 
 const MainLayout : React.FC<MainLayoutProps> = () => {
-  const isLaptop = useMediaQuery(MEDIA_QUERIES.laptop);
-  const isDesktop = useMediaQuery(MEDIA_QUERIES.desktop);
+  const isMinLaptop = useMediaQuery(MEDIA_QUERIES.laptopMin);
+  const isMinDesktop = useMediaQuery(MEDIA_QUERIES.desktopMin);
 
   const renderLeftPanel = () => {
     return (
@@ -29,11 +29,11 @@ const MainLayout : React.FC<MainLayoutProps> = () => {
 
   return (
     <LayoutContainer>
-      {(isDesktop || isLaptop) && renderLeftPanel()}
+      {isMinLaptop && renderLeftPanel()}
       <Main>
         <Outlet />
       </Main>
-      {isDesktop && renderRightPanel()}
+      {isMinDesktop && renderRightPanel()}
     </LayoutContainer>
   );
 };

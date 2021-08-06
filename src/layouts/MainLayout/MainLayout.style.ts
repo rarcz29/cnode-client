@@ -6,6 +6,9 @@ export const LayoutContainer = styled.div`
   height: calc(100% - ${MARGINS.margin64 + MARGINS.margin32}px);
 `;
 
+// TODO: remove color
+// TODO: remove height
+// TODO: get media query from constants
 export const Main = styled.main`
   width: calc(100% - 632px);
   margin: 0 ${MARGINS.margin64}px;
@@ -20,5 +23,10 @@ export const Main = styled.main`
   @media ${MEDIA_QUERIES.tabletMax} {
     width: 100%;
     margin: 0;
+  }
+
+  @media (min-width: 1366px) {
+    width: 664px;
+    margin: 0 auto;
   }
 `;
