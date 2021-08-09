@@ -3,8 +3,8 @@ import LayoutWrapper from 'layouts/LayoutWrapper';
 import { useRoutes } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme';
-import GlobalStyle from './GlobalStyle';
 import routes from './routes';
+import GlobalStyle from './styles/GlobalStyle';
 
 interface AppProps {}
 

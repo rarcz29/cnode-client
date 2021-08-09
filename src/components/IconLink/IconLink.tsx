@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { StyledLink } from './IconLink.style';
 
 interface IconLink {
   icon: React.ReactNode, // TODO: type
@@ -9,10 +9,10 @@ interface IconLink {
 
 const IconLink : React.FC<IconLink> = ({ icon, text, to }) => {
   return (
-    <Link to={to}>
+    <StyledLink to={to}>
       <span>{icon}</span>
       <p>{text}</p>
-    </Link>
+    </StyledLink>
   );
 };
 

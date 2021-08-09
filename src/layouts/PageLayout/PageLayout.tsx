@@ -1,20 +1,21 @@
 import React from 'react';
+import { IconLink } from 'components';
 import { useMediaQuery } from 'hooks';
 import { Outlet } from 'react-router';
 import { MEDIA_QUERIES } from '../../constants';
-import { LayoutContainer, Main } from './MainLayout.style';
+import { LayoutContainer, Main } from './PageLayout.style';
 import SidePanel from './SidePanel/SidePanel';
 
-interface MainLayoutProps {}
+interface PageLayoutProps {}
 
-const MainLayout : React.FC<MainLayoutProps> = () => {
+const PageLayout : React.FC<PageLayoutProps> = () => {
   const isMinLaptop = useMediaQuery(MEDIA_QUERIES.laptopMin);
   const isMinDesktop = useMediaQuery(MEDIA_QUERIES.desktopMin);
 
   const renderLeftPanel = () => {
     return (
       <SidePanel width="180px">
-        <h1>asdf</h1>
+        <IconLink icon="x" text="abcdef" to="#" />
       </SidePanel>
     );
   };
@@ -38,4 +39,4 @@ const MainLayout : React.FC<MainLayoutProps> = () => {
   );
 };
 
-export default MainLayout;
+export default PageLayout;

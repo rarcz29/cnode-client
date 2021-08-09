@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { p2 } from 'styles';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -9,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 100%;
+  }
+
+  body {
+    ${p2}
   }
 `;
 

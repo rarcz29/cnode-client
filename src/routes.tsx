@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import BaseLayout from 'layouts/BaseLayout';
-import MainLayout from 'layouts/MainLayout';
+import PageLayout from 'layouts/PageLayout';
 
 const routes = [
   {
@@ -9,7 +9,7 @@ const routes = [
     children: [
       {
         path: '/',
-        element: <MainLayout />,
+        element: <PageLayout />,
         children: [
           {
             path: '/',
