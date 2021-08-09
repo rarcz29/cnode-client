@@ -1,3 +1,4 @@
 import IconLink from './IconLink';
+import List from './List';
 
-export { IconLink };
+export { IconLink, List };
