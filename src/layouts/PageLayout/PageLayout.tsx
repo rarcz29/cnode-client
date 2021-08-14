@@ -27,7 +27,7 @@ const navItems = [
 ];
 
 const PageLayout: React.FC<PageLayoutProps> = () => {
-  const { isWideScreen, isDesktop, isLaptop } = useContext(MediaQueryContext);
+  const { laptopMin, desktopMin } = useContext(MediaQueryContext);
 
   const renderLeftPanel = () => {
     return (
@@ -51,11 +51,11 @@ const PageLayout: React.FC<PageLayoutProps> = () => {
 
   return (
     <LayoutContainer>
-      {(isWideScreen || isDesktop || isLaptop) && renderLeftPanel()}
+      {laptopMin && renderLeftPanel()}
       <Main>
         <Outlet />
       </Main>
-      {(isWideScreen || isDesktop) && renderRightPanel()}
+      {desktopMin && renderRightPanel()}
     </LayoutContainer>
   );
 };
