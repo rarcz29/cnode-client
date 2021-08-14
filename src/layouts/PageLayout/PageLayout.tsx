@@ -1,28 +1,38 @@
 import React from 'react';
 import { useContext } from 'react';
-import { IconLink, List } from 'components';
+import {
+  faHome,
+  faProjectDiagram,
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
+import { IconLink } from 'components';
 import { MediaQueryContext } from 'context/MediaQueryContext';
 import { Outlet } from 'react-router';
-import { LayoutContainer, Main } from './PageLayout.style';
+import { LayoutContainer, Main, StyledList } from './PageLayout.style';
 import SidePanel from './SidePanel';
 
 interface PageLayoutProps {}
 
 const navItems = [
   {
-    text: 'asdf1',
+    text: 'Home',
+    icon: faHome,
   },
   {
-    text: 'asdf2',
+    text: 'Accounts',
+    icon: faProjectDiagram,
   },
   {
-    text: 'asdf3',
+    text: 'Repositories',
+    icon: faProjectDiagram,
   },
   {
-    text: 'asdf4',
+    text: 'Contacts',
+    icon: faUsers,
   },
   {
-    text: 'asdf5',
+    text: 'Teams',
+    icon: faUsers,
   },
 ];
 
@@ -32,9 +42,14 @@ const PageLayout: React.FC<PageLayoutProps> = () => {
   const renderLeftPanel = () => {
     return (
       <SidePanel width="180px">
-        <List
+        <StyledList
           render={navItems.map(item =>
-            <IconLink key={item.text} icon="x" text={item.text} to="#" />)}
+            <IconLink
+              key={item.text}
+              icon={item.icon}
+              text={item.text}
+              to="#"
+            />)}
           direction="column"
         />
       </SidePanel>

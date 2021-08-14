@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyledLink } from './IconLink.style';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { StyledIcon, StyledLink } from './IconLink.style';
 
 interface IconLink {
-  icon: React.ReactNode, // TODO: type
+  icon: IconDefinition,
   text: string,
   to: string,
 }
@@ -10,7 +11,7 @@ interface IconLink {
 const IconLink: React.FC<IconLink> = ({ icon, text, to }) => {
   return (
     <StyledLink to={to}>
-      <span>{icon}</span>
+      <StyledIcon icon={icon} />
       <p>{text}</p>
     </StyledLink>
   );

@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -62,6 +67,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-fontawesome": "^1.6.5",
     "@types/styled-components": "^5.1.11",
     "@types/styled-system": "^5.1.12",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
