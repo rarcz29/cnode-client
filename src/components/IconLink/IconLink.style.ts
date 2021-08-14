@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import iconLinks, { IconLinksProps } from 'theme/system/iconLinks';
+
+export interface StyleProps extends IconLinksProps {}
 
 // TODO: icon font size
 export const StyledIcon = styled(FontAwesomeIcon)`
   position: absolute;
-  font-size: 24px;
 `;
 
 export const StyledLink = styled(Link)`
+  ${iconLinks}
   position: relative;
   text-decoration: none;
   color: ${props => props.theme.colors.foreground1};
@@ -18,10 +21,7 @@ export const StyledLink = styled(Link)`
     color: inherit;
   }
 
-  & p {
-    font-size: ${props => props.theme.fonts.h5.fontSize};
-    line-height: ${props => props.theme.fonts.h5.lineHeight};
+  & > p {
     margin-left: ${props => props.theme.margins.margin64.str};
-    display: absolute;
   }
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../Logo';
 import { HeaderWrapper } from './Header.style';
 
 interface HeaderProps {}
@@ -6,7 +7,7 @@ interface HeaderProps {}
 const Header: React.FC<HeaderProps> = () => {
   return (
     <HeaderWrapper>
-      <div>logo</div>
+      <Logo />
       <div>something</div>
     </HeaderWrapper>
   );
