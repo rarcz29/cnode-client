@@ -1,10 +1,11 @@
 import React from 'react';
+import { MediaQueryProvider } from 'context/MediaQueryContext';
+import GlobalStyle from 'GlobalStyle';
 import LayoutWrapper from 'layouts/LayoutWrapper';
 import { useRoutes } from 'react-router';
+import routes from 'routes';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme';
-import routes from './routes';
-import GlobalStyle from './styles/GlobalStyle';
 
 interface AppProps {}
 
@@ -13,10 +14,12 @@ const App: React.FC<AppProps> = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <LayoutWrapper>
-        {routing}
-      </LayoutWrapper>
+      <MediaQueryProvider>
+        <GlobalStyle />
+        <LayoutWrapper>
+          {routing}
+        </LayoutWrapper>
+      </MediaQueryProvider>
     </ThemeProvider>
   );
 };

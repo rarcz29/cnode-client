@@ -1,9 +1,11 @@
 import React from 'react';
 import { Aside, StyleProps } from './SidePanel.style';
 
-interface SidePanelProps extends StyleProps {}
+interface SidePanelProps extends StyleProps {
+  children?: React.ReactNode;
+}
 
-const SidePanel : React.FC<SidePanelProps> = ({ width, children }) => {
+const SidePanel: React.FC<SidePanelProps> = ({ width, children }) => {
   return (
     <Aside width={width}>
       {children}
@@ -12,4 +14,3 @@ const SidePanel : React.FC<SidePanelProps> = ({ width, children }) => {
 };
 
 export default SidePanel;
-

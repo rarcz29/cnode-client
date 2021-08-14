@@ -5,7 +5,7 @@ import Header from './Header';
 
 interface BaseLayoutProps {}
 
-const BaseLayout : React.FC<BaseLayoutProps> = () => {
+const BaseLayout: React.FC<BaseLayoutProps> = () => {
   return (
     <Container>
       <Header />

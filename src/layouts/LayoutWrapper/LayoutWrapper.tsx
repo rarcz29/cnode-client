@@ -5,7 +5,7 @@ interface LayoutWrapperProps {
   children: React.ReactNode;
 }
 
-const LayoutWrapper : React.FC<LayoutWrapperProps> = ({ children }) => {
+const LayoutWrapper: React.FC<LayoutWrapperProps> = ({ children }) => {
   return (
     <StyledLayoutWrapper>
       {children}

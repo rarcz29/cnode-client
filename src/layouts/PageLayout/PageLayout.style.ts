@@ -1,26 +1,26 @@
+/* eslint-disable max-len */
 import styled from 'styled-components';
-import { MARGINS, MEDIA_QUERIES } from '../../constants'; // TODO: constants
 
 export const LayoutContainer = styled.div`
   display: flex;
-  height: calc(100% - ${MARGINS.margin64 + MARGINS.margin32}px);
+  height: calc(100% - ${props => props.theme.margins.margin64.number + props.theme.margins.margin32.number}px);
 `;
 
 // TODO: remove color
 // TODO: remove height
-// TODO: get media query from constants
+// TODO: change custom media query
 export const Main = styled.main`
   width: calc(100% - 632px);
-  margin: 0 ${MARGINS.margin64}px;
+  margin: 0 ${props => props.theme.margins.margin64.str};
   background-color: red;
   height: 3000px;
 
-  @media ${MEDIA_QUERIES.laptopMax} {
+  @media ${props => props.theme.mediaQueries.laptopMax} {
     width: calc(100% - 246px);
     margin-right: 0;
   }
 
-  @media ${MEDIA_QUERIES.tabletMax} {
+  @media ${props => props.theme.mediaQueries.tabletMax} {
     width: 100%;
     margin: 0;
   }

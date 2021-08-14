@@ -1,14 +1,13 @@
-// TODO: all
-import { COLORS } from '../constants'; // TODO: constants
+import colors from './colors';
 
 const buttons = {
   primary: {
-    color: COLORS.success,
-    backgroundColor: COLORS.error,
+    color: colors.success,
+    backgroundColor: colors.error,
   },
   secondary: {
-    color: COLORS.error,
-    backgroundColor: COLORS.success,
+    color: colors.error,
+    backgroundColor: colors.success,
   },
 };
 

@@ -3,7 +3,7 @@ import { HeaderWrapper } from './Header.style';
 
 interface HeaderProps {}
 
-const Header : React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = () => {
   return (
     <HeaderWrapper>
       <div>logo</div>

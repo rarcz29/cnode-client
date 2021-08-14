@@ -1,14 +1,12 @@
-import { COLORS } from '../constants'; // TODO: constants
-
 const colors = {
-  background1: COLORS.background1,
-  text1: COLORS.text1,
-  text2: COLORS.text2,
-  text3: COLORS.text3,
-  text4: COLORS.text4,
-  theme: COLORS.theme,
-  success: COLORS.success,
-  error: COLORS.error,
+  background1: '#000000',
+  foreground1: '#DEDEDE',
+  foreground2: '#949494',
+  foreground3: '#535353',
+  foreground4: '#333333',
+  theme: '#8D1010',
+  success: '#3DBA42',
+  error: '#CA3521',
 };
 
 export default colors;

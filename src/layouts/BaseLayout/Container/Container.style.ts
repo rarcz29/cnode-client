@@ -1,21 +1,19 @@
 import styled from 'styled-components';
-// TODO: constants
-import { MARGINS, MEDIA_QUERIES } from '../../../constants';
 
 export const Wrapper = styled.div`
   max-width: 1920px;
-  padding: 0 ${MARGINS.margin24}px;
+  padding: 0 ${props => props.theme.margins.margin24.str};
   margin: 0 auto;
 
-  @media ${MEDIA_QUERIES.wideScreenMin} {
+  @media ${props => props.theme.mediaQueries.wideScreenMin} {
     max-width: 1366px;
   }
 
-  @media ${MEDIA_QUERIES.tabletMax} {
-    padding: 0 ${MARGINS.margin16}px;
+  @media ${props => props.theme.mediaQueries.tabletMax} {
+    padding: 0 ${props => props.theme.margins.margin16.str};
   }
 
-  @media ${MEDIA_QUERIES.mobileMax} {
-    padding: 0 ${MARGINS.margin8}px;
+  @media ${props => props.theme.mediaQueries.mobileMax} {
+    padding: 0 ${props => props.theme.margins.margin8.str};
   }
 `;

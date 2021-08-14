@@ -7,7 +7,7 @@ interface IconLink {
   to: string,
 }
 
-const IconLink : React.FC<IconLink> = ({ icon, text, to }) => {
+const IconLink: React.FC<IconLink> = ({ icon, text, to }) => {
   return (
     <StyledLink to={to}>
       <span>{icon}</span>

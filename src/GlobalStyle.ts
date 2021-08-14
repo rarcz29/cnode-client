@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { p2 } from 'styles';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -13,7 +12,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    ${p2}
+    font-family: ${props => props.theme.fonts.family.default};
+    font-weight: ${props => props.theme.fonts.weight.normal};
+    font-size: ${props => props.theme.fonts.p2.fontSize};
+    line-height: ${props => props.theme.fonts.p2.lineHeight};
   }
 `;
 

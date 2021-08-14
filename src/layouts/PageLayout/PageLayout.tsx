@@ -1,10 +1,10 @@
 import React from 'react';
+import { useContext } from 'react';
 import { IconLink, List } from 'components';
-import { useMediaQuery } from 'hooks';
+import { MediaQueryContext } from 'context/MediaQueryContext';
 import { Outlet } from 'react-router';
-import { MARGINS, MEDIA_QUERIES } from '../../constants';
 import { LayoutContainer, Main } from './PageLayout.style';
-import SidePanel from './SidePanel/SidePanel';
+import SidePanel from './SidePanel';
 
 interface PageLayoutProps {}
 
@@ -26,9 +26,8 @@ const navItems = [
   },
 ];
 
-const PageLayout : React.FC<PageLayoutProps> = () => {
-  const isMinLaptop = useMediaQuery(MEDIA_QUERIES.laptopMin);
-  const isMinDesktop = useMediaQuery(MEDIA_QUERIES.desktopMin);
+const PageLayout: React.FC<PageLayoutProps> = () => {
+  const { isWideScreen, isDesktop, isLaptop } = useContext(MediaQueryContext);
 
   const renderLeftPanel = () => {
     return (
@@ -37,7 +36,7 @@ const PageLayout : React.FC<PageLayoutProps> = () => {
           render={navItems.map(item =>
             <IconLink key={item.text} icon="x" text={item.text} to="#" />)}
           direction="column"
-          space={`${MARGINS.margin32}px`} />
+        />
       </SidePanel>
     );
   };
@@ -52,11 +51,11 @@ const PageLayout : React.FC<PageLayoutProps> = () => {
 
   return (
     <LayoutContainer>
-      {isMinLaptop && renderLeftPanel()}
+      {(isWideScreen || isDesktop || isLaptop) && renderLeftPanel()}
       <Main>
         <Outlet />
       </Main>
-      {isMinDesktop && renderRightPanel()}
+      {(isWideScreen || isDesktop) && renderRightPanel()}
     </LayoutContainer>
   );
 };

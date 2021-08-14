@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-// TODO: constants
-import { MARGINS, MEDIA_QUERIES } from '../../../constants';
 
 export const HeaderWrapper = styled.header`
-  height: ${MARGINS.margin64}px;
-  margin-bottom: ${MARGINS.margin32}px;
+  height: ${props => props.theme.margins.margin64.str};
+  margin-bottom: ${props => props.theme.margins.margin32.str};
   position: sticky;
   top: 0;
   display: flex;
@@ -12,7 +10,7 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   background-color: ${props => props.theme.colors.background1};
 
-  @media ${MEDIA_QUERIES.mobileMax} {
-    margin-bottom: ${MARGINS.margin24}px;
+  @media ${props => props.theme.mediaQueries.mobileMax} {
+    margin-bottom: ${props => props.theme.margins.margin24.str};
   }
 `;
