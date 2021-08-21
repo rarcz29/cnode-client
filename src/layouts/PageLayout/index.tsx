@@ -9,14 +9,14 @@ import { IconLink } from 'components';
 import Button from 'components/Button';
 import { MediaQueryContext } from 'context/MediaQueryContext';
 import { Outlet } from 'react-router';
+import Separator from './Separator';
+import SidePanel from './SidePanel';
 import {
   FeedbackSection,
   LayoutContainer,
   Main,
   StyledList,
-} from './PageLayout.style';
-import Separator from './Separator/Separator';
-import SidePanel from './SidePanel';
+} from './style';
 
 interface PageLayoutProps {}
 

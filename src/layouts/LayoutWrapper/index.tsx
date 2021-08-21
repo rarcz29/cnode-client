@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledLayoutWrapper } from './LayoutWrapper.style';
+import { StyledLayoutWrapper } from './style';
 
 interface LayoutWrapperProps {
   children: React.ReactNode;

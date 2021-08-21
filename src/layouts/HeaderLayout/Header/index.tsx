@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../Logo';
-import { HeaderWrapper, RightPanel } from './Header.style';
+import { HeaderWrapper, RightPanel } from './style';
 
 interface HeaderProps {}
 
