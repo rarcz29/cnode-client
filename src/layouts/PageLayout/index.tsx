@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { IconLink } from 'components';
 import Button from 'components/Button';
+import Contact from 'components/Contact';
 import { MediaQueryContext } from 'context/MediaQueryContext';
 import { Outlet } from 'react-router';
 import Separator from './Separator';
@@ -48,7 +49,7 @@ const PageLayout: React.FC<PageLayoutProps> = () => {
 
   const renderLeftPanel = () => {
     return (
-      <SidePanel width="324px">
+      <SidePanel>
         <section>
           <nav>
             <StyledList
@@ -78,8 +79,12 @@ const PageLayout: React.FC<PageLayoutProps> = () => {
 
   const renderRightPanel = () => {
     return (
-      <SidePanel width="324px">
-        <h1>asdf</h1>
+      <SidePanel>
+        <StyledList
+          render={navItems.map(item =>
+            <Contact key={item.text} />)}
+          direction="column"
+        />
       </SidePanel>
     );
   };

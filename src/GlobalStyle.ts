@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${props => props.theme.fonts.family.default}, sans-serif;
     font-weight: ${props => props.theme.fonts.weight.normal};
     font-size: ${props => props.theme.fonts.p2.fontSize};
-    line-height: ${props => props.theme.fonts.p2.lineHeight};
   }
 `;
 
