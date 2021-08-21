@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { StyledIcon, StyledLink, StyleProps } from './IconLink.style';
+import { StyledIcon, StyledLink, StyleProps } from './style';
 
 interface IconLink extends StyleProps {
   icon: IconDefinition,

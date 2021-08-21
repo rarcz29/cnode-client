@@ -1,5 +1,5 @@
 import React from 'react';
-import { Aside, StyleProps } from './SidePanel.style';
+import { Aside, StyleProps } from './style';
 
 interface SidePanelProps extends StyleProps {
   children?: React.ReactNode;

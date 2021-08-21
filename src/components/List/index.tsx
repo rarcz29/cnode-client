@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledList, StyleProps } from './List.style';
+import { StyledList, StyleProps } from './style';
 
 interface ListProps extends StyleProps {
   render?: React.ReactNode[]; // TODO: proper type?

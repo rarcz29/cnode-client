@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledHr } from './Separator.style';
+import { StyledHr } from './style';
 
 interface SeparatorProps {}
 
