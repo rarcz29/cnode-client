@@ -9,11 +9,7 @@
     "stylelint-order"
   ],
   "rules": {
-    "number-leading-zero": null,
-    "no-missing-end-of-source-newline": null,
-    "block-no-empty": null,
-    "no-empty-source": null,
-    "at-rule-no-unknown": null,
+    "value-keyword-case": null,
     "property-no-unknown": [
       true,
       {
