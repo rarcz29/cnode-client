@@ -23,5 +23,6 @@ export const RightPanel = styled.div`
 
   & > svg {
     font-size: ${props => props.theme.fonts.h4.fontSize};
+    color: ${props => props.theme.colors.foreground2};
   }
 `;
