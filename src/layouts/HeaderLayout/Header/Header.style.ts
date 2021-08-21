@@ -14,3 +14,14 @@ export const HeaderWrapper = styled.header`
     margin-bottom: ${props => props.theme.margins.margin24.str};
   }
 `;
+
+export const RightPanel = styled.div`
+  width: 324px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > svg {
+    font-size: ${props => props.theme.fonts.h4.fontSize};
+  }
+`;

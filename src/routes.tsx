@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
-import BaseLayout from 'layouts/BaseLayout';
+import HeaderLayout from 'layouts/HeaderLayout';
 import PageLayout from 'layouts/PageLayout';
 
 const routes = [
   {
     path: '/',
-    element: <BaseLayout />,
+    element: <HeaderLayout />,
     children: [
       {
         path: '/',

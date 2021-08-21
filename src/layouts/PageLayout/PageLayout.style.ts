@@ -11,13 +11,13 @@ export const LayoutContainer = styled.div`
 // TODO: remove height
 // TODO: change custom media query
 export const Main = styled.main`
-  width: calc(100% - 632px);
+  width: calc(100% - 776px);
   margin: 0 ${props => props.theme.margins.margin64.str};
   background-color: red;
   height: 3000px;
 
   @media ${props => props.theme.mediaQueries.laptopMax} {
-    width: calc(100% - 246px);
+    width: calc(100% - 388px);
     margin-right: 0;
   }
 
@@ -27,7 +27,7 @@ export const Main = styled.main`
   }
 
   @media (min-width: 1366px) {
-    width: 664px;
+    width: 540px;
     margin: 0 auto;
   }
 `;
@@ -39,5 +39,16 @@ export const StyledList = styled(List)`
     &:last-child {
       margin-bottom: 0;
     }
+  }
+`;
+
+// TODO; text
+// TODO: margin
+export const FeedbackSection = styled.section`
+  & p {
+    color: ${props => props.theme.colors.foreground2};
+    font-size: ${props => props.theme.fonts.p2.fontSize};
+    line-height: ${props => props.theme.fonts.p2.lineHeight};
+    margin-bottom: ${props => props.theme.margins.margin24.str};
   }
 `;

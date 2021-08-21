@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from 'layouts/BaseLayout/Container';
+import Container from 'layouts/HeaderLayout/Container';
 import { Outlet } from 'react-router';
 import Header from './Header';
 
