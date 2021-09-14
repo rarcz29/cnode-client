@@ -1,6 +1,6 @@
-import colors from './colors';
+import { colors } from './colors';
 
-const buttons = {
+export const buttons = {
   primary: {
     color: colors.success,
     backgroundColor: colors.error,
@@ -10,5 +10,3 @@ const buttons = {
     backgroundColor: colors.success,
   },
 };
-
-export default buttons;

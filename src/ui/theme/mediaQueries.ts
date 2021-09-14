@@ -8,7 +8,7 @@ const LAPTOP_MIN = '(min-width: 769px)';
 const DESKTOP_MIN = '(min-width: 1025px)';
 const WIDE_SCREEN_MIN = '(min-width: 1921px)';
 
-const mediaQueries = {
+export const mediaQueries = {
   mobileMax: MOBILE_MAX,
   tabletMax: TABLET_MAX,
   laptopMax: LAPTOP_MAX,
@@ -23,5 +23,3 @@ const mediaQueries = {
   desktop: `${DESKTOP_MIN} and ${DESKTOP_MAX}`,
   wideScreen: WIDE_SCREEN_MIN,
 };
-
-export default mediaQueries;

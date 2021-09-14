@@ -28,7 +28,7 @@ const mediumIconLink = css`
   }
 `;
 
-const iconLinks = css<IconLinksProps>`
+export const iconLinks = css<IconLinksProps>`
   ${props => {
     switch (props.size) {
       case 'large':
@@ -39,5 +39,3 @@ const iconLinks = css<IconLinksProps>`
     }
   }}
 `;
-
-export default iconLinks;

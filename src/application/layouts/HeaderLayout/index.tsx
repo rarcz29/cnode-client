@@ -1,11 +1,9 @@
 import React from 'react';
-import Container from 'application/layouts/HeaderLayout/Container';
+import { Container } from 'application/layouts/HeaderLayout/Container';
 import { Outlet } from 'react-router';
-import Header from './Header';
+import { Header } from './Header';
 
-interface BaseLayoutProps {}
-
-const BaseLayout: React.FC<BaseLayoutProps> = () => {
+export const HeaderLayout: React.FC = () => {
   return (
     <Container>
       <Header />
@@ -13,5 +11,3 @@ const BaseLayout: React.FC<BaseLayoutProps> = () => {
     </Container>
   );
 };
-
-export default BaseLayout;

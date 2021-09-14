@@ -8,7 +8,7 @@ interface IconLink extends StyleProps {
   to: string,
 }
 
-const IconLink: React.FC<IconLink> = ({ icon, text, to, size }) => {
+export const IconLink: React.FC<IconLink> = ({ icon, text, to, size }) => {
   return (
     <StyledLink to={to} size={size}>
       <StyledIcon icon={icon} />
@@ -16,5 +16,3 @@ const IconLink: React.FC<IconLink> = ({ icon, text, to, size }) => {
     </StyledLink>
   );
 };
-
-export default IconLink;

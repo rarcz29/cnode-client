@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
-import HeaderLayout from 'application/layouts/HeaderLayout';
-import PageLayout from 'application/layouts/PageLayout';
+import { HeaderLayout } from 'application/layouts/HeaderLayout';
+import { PageLayout } from 'application/layouts/PageLayout';
 
 export const routes = [
   {

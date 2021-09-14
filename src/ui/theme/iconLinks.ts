@@ -1,4 +1,4 @@
-const iconLinks = {
+export const iconLinks = {
   medium: {
     iconSize: '24px',
     fontSize: '20px',
@@ -8,5 +8,3 @@ const iconLinks = {
     fontSize: '24px',
   },
 };
-
-export default iconLinks;

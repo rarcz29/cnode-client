@@ -1,4 +1,4 @@
-const margins = {
+export const margins = {
   margin8: {
     str: '8px',
     number: 8,
@@ -36,5 +36,3 @@ const margins = {
     number: 128,
   },
 };
-
-export default margins;

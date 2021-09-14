@@ -8,17 +8,15 @@ import {
 import { MediaQueryContext } from 'infrastructure/mediaQuery/MediaQueryContext';
 import { Outlet } from 'react-router';
 import { IconLink } from 'ui/components';
-import Button from 'ui/components/Button';
-import Separator from './Separator';
-import SidePanel from './SidePanel';
+import { Button } from 'ui/components';
+import { Separator } from './Separator';
+import { SidePanel } from './SidePanel';
 import {
   FeedbackSection,
   LayoutContainer,
   Main,
   StyledList,
 } from './style';
-
-interface PageLayoutProps {}
 
 const navItems = [
   {
@@ -43,7 +41,7 @@ const navItems = [
   },
 ];
 
-const PageLayout: React.FC<PageLayoutProps> = () => {
+export const PageLayout: React.FC = () => {
   const { laptopMin, desktopMin } = useContext(MediaQueryContext);
 
   const renderLeftPanel = () => {
@@ -94,5 +92,3 @@ const PageLayout: React.FC<PageLayoutProps> = () => {
     </LayoutContainer>
   );
 };
-
-export default PageLayout;

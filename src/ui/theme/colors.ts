@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   background1: '#000000',
   foreground1: '#DEDEDE',
   foreground2: '#949494',
@@ -8,5 +8,3 @@ const colors = {
   success: '#3DBA42',
   error: '#CA3521',
 };
-
-export default colors;

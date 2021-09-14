@@ -7,7 +7,7 @@ interface ListProps extends StyleProps {
 }
 
 // TODO: index as a key
-const List: React.FC<ListProps> = ({ render, direction, className }) => {
+export const List: React.FC<ListProps> = ({ render, direction, className }) => {
   return (
     <StyledList className={className} direction={direction}>
       {render && render.map((item, index) => (
@@ -18,5 +18,3 @@ const List: React.FC<ListProps> = ({ render, direction, className }) => {
     </StyledList>
   );
 };
-
-export default List;

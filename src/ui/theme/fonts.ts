@@ -1,4 +1,4 @@
-const fonts = {
+export const fonts = {
   family: {
     default: 'Karla',
     header: 'Rubik',
@@ -43,5 +43,3 @@ const fonts = {
     lineHeight: '20px',
   },
 };
-
-export default fonts;

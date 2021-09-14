@@ -6,12 +6,10 @@ import {
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Logo from '../Logo';
+import { Logo } from '../Logo';
 import { HeaderWrapper, RightPanel } from './style';
 
-interface HeaderProps {}
-
-const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC = () => {
   return (
     <HeaderWrapper>
       <Logo />
@@ -24,5 +22,3 @@ const Header: React.FC<HeaderProps> = () => {
     </HeaderWrapper>
   );
 };
-
-export default Header;

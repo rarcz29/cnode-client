@@ -5,12 +5,10 @@ interface ContainerProps {
   children: React.ReactNode;
 }
 
-const Container: React.FC<ContainerProps> = ({ children }) => {
+export const Container: React.FC<ContainerProps> = ({ children }) => {
   return (
     <Wrapper>
       {children}
     </Wrapper>
   );
 };
-
-export default Container;
