@@ -1,3 +1,4 @@
+import { Contact } from 'domain/contacts/Contact';
 import React from 'react';
 import { useContext } from 'react';
 import {
@@ -5,10 +6,9 @@ import {
   faProjectDiagram,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { MediaQueryContext } from 'infrastructure/mediaQuery/MediaQueryContext';
+import { MediaQueryContext } from 'infrastructure/mediaQuery';
 import { Outlet } from 'react-router';
-import { IconLink } from 'ui/components';
-import { Button } from 'ui/components';
+import { Button, IconLink } from 'ui/components';
 import { Separator } from './Separator';
 import { SidePanel } from './SidePanel';
 import {
@@ -46,7 +46,7 @@ export const PageLayout: React.FC = () => {
 
   const renderLeftPanel = () => {
     return (
-      <SidePanel width="324px">
+      <SidePanel>
         <section>
           <nav>
             <StyledList
@@ -76,8 +76,12 @@ export const PageLayout: React.FC = () => {
 
   const renderRightPanel = () => {
     return (
-      <SidePanel width="324px">
-        <h1>asdf</h1>
+      <SidePanel>
+        <StyledList
+          render={navItems.map(item =>
+            <Contact key={item.text} />)}
+          direction="column"
+        />
       </SidePanel>
     );
   };

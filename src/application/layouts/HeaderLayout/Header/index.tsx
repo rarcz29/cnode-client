@@ -3,9 +3,9 @@ import {
   faBars,
   faBell,
   faSearch,
-  faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Avatar } from 'ui/components';
 import { Logo } from '../Logo';
 import { HeaderWrapper, RightPanel } from './style';
 
@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
         <FontAwesomeIcon icon={faSearch} />
         <FontAwesomeIcon icon={faBell} />
         <FontAwesomeIcon icon={faBars} />
-        <FontAwesomeIcon icon={faUserCircle} />
+        <Avatar />
       </RightPanel>
     </HeaderWrapper>
   );
