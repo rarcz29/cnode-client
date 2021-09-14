@@ -5,10 +5,10 @@ import {
   faProjectDiagram,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { IconLink } from 'components';
-import Button from 'components/Button';
-import { MediaQueryContext } from 'context/MediaQueryContext';
+import { MediaQueryContext } from 'infrastructure/mediaQuery/MediaQueryContext';
 import { Outlet } from 'react-router';
+import { IconLink } from 'ui/components';
+import Button from 'ui/components/Button';
 import Separator from './Separator';
 import SidePanel from './SidePanel';
 import {

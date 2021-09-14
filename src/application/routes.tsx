@@ -1,8 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
-import HeaderLayout from 'layouts/HeaderLayout';
-import PageLayout from 'layouts/PageLayout';
+import HeaderLayout from 'application/layouts/HeaderLayout';
+import PageLayout from 'application/layouts/PageLayout';
 
-const routes = [
+export const routes = [
   {
     path: '/',
     element: <HeaderLayout />,
@@ -20,5 +20,3 @@ const routes = [
     ],
   },
 ];
-
-export default routes;

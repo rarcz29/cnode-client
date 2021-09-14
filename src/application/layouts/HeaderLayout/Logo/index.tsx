@@ -1,6 +1,6 @@
 import React from 'react';
 import { faSlack } from '@fortawesome/free-brands-svg-icons';
-import { IconLink } from 'components';
+import { IconLink } from 'ui/components';
 
 interface LogoProps {}
 

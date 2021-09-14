@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import iconLinks, { IconLinksProps } from 'theme/system/iconLinks';
+import iconLinks, { IconLinksProps } from 'ui/theme/system/iconLinks';
 
 export interface StyleProps extends IconLinksProps {}
 

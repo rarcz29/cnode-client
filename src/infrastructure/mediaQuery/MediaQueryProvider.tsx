@@ -1,44 +1,8 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useMediaQuery } from 'hooks';
+import React, { useContext, useEffect, useState } from 'react';
+import { MediaQueryContext, useMediaQuery } from 'infrastructure/mediaQuery';
 import { ThemeContext } from 'styled-components';
 
-interface ProviderProps {
-  children: React.ReactNode;
-}
-
-interface MediaQueryContent {
-  isMobile: boolean;
-  isTablet: boolean;
-  isLaptop: boolean;
-  isDesktop: boolean;
-  isWideScreen: boolean;
-  mobileMax: boolean;
-  tabletMax: boolean;
-  laptopMax: boolean;
-  desktopMax: boolean;
-  tabletMin: boolean;
-  laptopMin: boolean;
-  desktopMin: boolean;
-  wideScreenMin: boolean;
-}
-
-export const MediaQueryContext = createContext<MediaQueryContent>({
-  isMobile: false,
-  isTablet: false,
-  isLaptop: false,
-  isDesktop: false,
-  isWideScreen: false,
-  mobileMax: false,
-  tabletMax: false,
-  laptopMax: false,
-  desktopMax: false,
-  tabletMin: false,
-  laptopMin: false,
-  desktopMin: false,
-  wideScreenMin: false,
-});
-
-export const MediaQueryProvider: React.FC<ProviderProps> = ({ children }) => {
+export const MediaQueryProvider: React.FC = ({ children }) => {
   const theme = useContext(ThemeContext);
   const isMobile = useMediaQuery(theme.mediaQueries.mobile);
   const isTablet = useMediaQuery(theme.mediaQueries.tablet);

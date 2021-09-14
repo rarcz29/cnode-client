@@ -1,15 +1,13 @@
 import React from 'react';
-import { MediaQueryProvider } from 'context/MediaQueryContext';
-import GlobalStyle from 'GlobalStyle';
-import LayoutWrapper from 'layouts/LayoutWrapper';
+import GlobalStyle from 'application/GlobalStyle';
+import LayoutWrapper from 'application/layouts/LayoutWrapper';
+import { routes } from 'application/routes';
+import { MediaQueryProvider } from 'infrastructure/mediaQuery';
 import { useRoutes } from 'react-router';
-import routes from 'routes';
 import { ThemeProvider } from 'styled-components';
-import theme from 'theme';
+import theme from 'ui/theme';
 
-interface AppProps {}
-
-const App: React.FC<AppProps> = () => {
+export const App: React.FC = () => {
   const routing = useRoutes(routes);
 
   return (
@@ -23,5 +21,3 @@ const App: React.FC<AppProps> = () => {
     </ThemeProvider>
   );
 };
-
-export default App;

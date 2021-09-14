@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-import { List } from 'components';
 import styled from 'styled-components';
+import { List } from 'ui/components';
 
 export const LayoutContainer = styled.div`
   display: flex;
