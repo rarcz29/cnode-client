@@ -1,10 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { useContext } from 'react';
 import { HeaderLayout } from 'application/layouts/HeaderLayout';
 import { PageLayout } from 'application/layouts/PageLayout';
+import { MediaQueryContext } from 'infrastructure/mediaQuery';
+import { Navigate, useRoutes } from 'react-router';
 import { ContactsView } from './views/ContactsView';
 import { RepositoriesView } from './views/RepositoriesView';
 
-export const routes = [
+export const routes = (desktopMax: boolean) => [
   {
     path: '/',
     element: <HeaderLayout />,
@@ -23,10 +26,16 @@ export const routes = [
           },
           {
             path: 'contacts',
-            element: <ContactsView />,
+            element: desktopMax ? <Navigate to='/' /> : <ContactsView />,
           },
         ],
       },
     ],
   },
 ];
+
+export const Router = () => {
+  const { desktopMin } = useContext(MediaQueryContext);
+  const routing = useRoutes(routes(desktopMin));
+  return routing;
+};

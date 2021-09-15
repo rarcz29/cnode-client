@@ -1,18 +1,36 @@
 import React from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { StyledIcon, StyledLink, StyleProps } from './style';
+import { StyledButton, StyledIcon, StyledLink, StyleProps } from './style';
 
-interface IconLink extends StyleProps {
+interface IconLinkProps extends StyleProps {
   icon: IconDefinition,
   text: string,
   to: string,
+  onClick?: () => void;
 }
 
-export const IconLink: React.FC<IconLink> = ({ icon, text, to, size }) => {
-  return (
-    <StyledLink to={to} size={size}>
-      <StyledIcon icon={icon} />
-      <p>{text}</p>
-    </StyledLink>
-  );
-};
+type IconButtonProps = Omit<IconLinkProps, 'to' | 'size'>;
+
+export const IconLink: React.FC<IconLinkProps> = ({
+  icon,
+  text,
+  to,
+  size,
+  onClick,
+}) => (
+  <StyledLink to={to} size={size} onClick={onClick}>
+    <StyledIcon icon={icon} />
+    <p>{text}</p>
+  </StyledLink>
+);
+
+export const IconButton: React.FC<IconButtonProps> = ({
+  icon,
+  text,
+  onClick,
+}) => (
+  <StyledButton onClick={onClick}>
+    <StyledIcon icon={icon} />
+    <p>{text}</p>
+  </StyledButton>
+);

@@ -8,4 +8,5 @@ export const StyledButton = styled.button`
   background-color: transparent;
   border-radius: 12px;
   font-size: ${props => props.theme.fonts.p2.fontSize};
+  font-family: ${props => props.theme.fonts.family.default}, sans-serif;
 `;
