@@ -4,5 +4,5 @@ export const StyledImage = styled.img`
   width: 57px;
   height: 57px;
   border-radius: 50%;
-  background-color: red;
+  background-color: gray;
 `;
