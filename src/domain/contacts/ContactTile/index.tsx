@@ -9,7 +9,7 @@ import {
   StyledButton,
 } from './style';
 
-export const Contact: React.FC = () => {
+export const ContactTile: React.FC = () => {
   return (
     <ContactWrapper>
       <Avatar />

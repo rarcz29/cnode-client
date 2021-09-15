@@ -13,8 +13,6 @@ export const LayoutContainer = styled.div`
 export const Main = styled.main`
   width: calc(100% - 776px);
   margin: 0 ${props => props.theme.margins.margin64.str};
-  background-color: red;
-  height: 3000px;
 
   @media ${props => props.theme.mediaQueries.laptopMax} {
     width: calc(100% - 388px);
