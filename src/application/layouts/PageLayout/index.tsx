@@ -4,7 +4,6 @@ import { ContactsView } from 'application/views/ContactsView';
 import { MediaQueryContext } from 'infrastructure/mediaQuery';
 import { Outlet } from 'react-router';
 import { Button, IconLink } from 'ui/components';
-import { IconButton } from 'ui/components/IconLink';
 import { NavbarItem, navbarItems } from './navbarItems';
 import { Separator } from './Separator';
 import { SidePanel } from './SidePanel';
@@ -32,20 +31,17 @@ export const PageLayout: React.FC = () => {
   };
 
   const renderNavLinkOrButton = (navItem: NavbarItem) => {
-    return navItem.type === 'tabletAndMobileOnly' && desktopMin
-      ? (
-        <IconButton
-          icon={navItem.icon}
-          text={navItem.text}
-          onClick={() => setSecondRoutePath(navItem.text)}
-        />
-      ) : (
-        <IconLink
-          icon={navItem.icon}
-          text={navItem.text}
-          to={navItem.url}
-        />
-      );
+    const url = navItem.type === 'tabletAndMobileOnly' && desktopMin
+      ? undefined
+      : navItem.url;
+    return (
+      <IconLink
+        icon={navItem.icon}
+        text={navItem.text}
+        to={url}
+        onClick={() => url || setSecondRoutePath(navItem.text)}
+      />
+    );
   };
 
   const renderLeftPanel = () => {
