@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { useContext } from 'react';
 import { ContactsView } from 'application/views/ContactsView';
 import { MediaQueryContext } from 'infrastructure/mediaQuery';
 import { Outlet } from 'react-router';
 import { Button, IconLink } from 'ui/components';
-import { navbarItems } from './navbarItems';
+import { NavbarItem, navbarItems } from './navbarItems';
 import { Separator } from './Separator';
 import { SidePanel } from './SidePanel';
 import {
@@ -14,8 +14,35 @@ import {
   StyledList,
 } from './style';
 
+const selectComplexNavlinks = () => {
+  return navbarItems
+    .filter(item => item.type === 'tabletAndMobileOnly')
+    .map(item => item.text);
+};
+
 export const PageLayout: React.FC = () => {
   const { laptopMin, desktopMin } = useContext(MediaQueryContext);
+  const complexNavlinks = useMemo(selectComplexNavlinks, []);
+  const [secondRouteName, setSecondRouteName] =
+    useState<string | null>(complexNavlinks[0]);
+
+  const setSecondRoutePath = (path: string) => {
+    setSecondRouteName(complexNavlinks.find(item => item === path) ?? null);
+  };
+
+  const renderNavLinkOrButton = (navItem: NavbarItem) => {
+    const url = navItem.type === 'tabletAndMobileOnly' && desktopMin
+      ? undefined
+      : navItem.url;
+    return (
+      <IconLink
+        icon={navItem.icon}
+        text={navItem.text}
+        to={url}
+        onClick={() => url || setSecondRoutePath(navItem.text)}
+      />
+    );
+  };
 
   const renderLeftPanel = () => {
     return (
@@ -23,13 +50,7 @@ export const PageLayout: React.FC = () => {
         <section>
           <nav>
             <StyledList
-              render={navbarItems.map(item =>
-                <IconLink
-                  key={item.text}
-                  icon={item.icon}
-                  text={item.text}
-                  to={item.url}
-                />)}
+              render={navbarItems.map(item => renderNavLinkOrButton(item))}
               direction="column"
             />
           </nav>
@@ -48,9 +69,18 @@ export const PageLayout: React.FC = () => {
   };
 
   const renderRightPanel = () => {
+    const viewSelector = () => {
+      switch (secondRouteName?.toLowerCase()) {
+        case 'contacts':
+          return <ContactsView />;
+        default:
+          return null;
+      }
+    };
+
     return (
       <SidePanel>
-        <ContactsView />
+        {viewSelector()}
       </SidePanel>
     );
   };
